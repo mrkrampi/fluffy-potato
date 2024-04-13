@@ -19,6 +19,11 @@ const config = {
     },
     extend: {
       colors: {
+        'primary-black': '#040309',
+        'primary-white': '#F2F2F2',
+        'primary-gray': '#6C6C70',
+        'primary-accent': '#302DD4',
+        'text-bg': '#181818',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -72,6 +77,15 @@ const config = {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      backgroundImage: {
+        'hero-pattern': "url('/hero-background.png')",
+        'course-pattern': "url('/courses/course-section-background.png')",
+        'contact-form': "url('/contact-form-bg.png')",
+      },
+      backgroundPosition: {
+        'center-1': 'center top 60%',
+        'center-2': 'center top 40%'
+      }
     },
   },
   plugins: [require("tailwindcss-animate")],
