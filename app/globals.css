@@ -1,76 +1,149 @@
+@font-face {
+    font-family: 'PlanetNSExpanded';
+    src: url('/fonts/planetnsv2e.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 @tailwind base;
-  @tailwind components;
-  @tailwind utilities;
+@tailwind components;
+@tailwind utilities;
 
-  @layer base {
+
+@layer base {
     :root {
-      --background: 0 0% 100%;
-      --foreground: 224 71.4% 4.1%;
+        --background: 0 0% 100%;
+        --foreground: 224 71.4% 4.1%;
 
-      --card: 0 0% 100%;
-      --card-foreground: 224 71.4% 4.1%;
+        --card: 0 0% 100%;
+        --card-foreground: 224 71.4% 4.1%;
 
-      --popover: 0 0% 100%;
-      --popover-foreground: 224 71.4% 4.1%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 224 71.4% 4.1%;
 
-      --primary: 220.9 39.3% 11%;
-      --primary-foreground: 210 20% 98%;
+        --primary: 220.9 39.3% 11%;
+        --primary-foreground: 210 20% 98%;
 
-      --secondary: 220 14.3% 95.9%;
-      --secondary-foreground: 220.9 39.3% 11%;
+        --secondary: 220 14.3% 95.9%;
+        --secondary-foreground: 220.9 39.3% 11%;
 
-      --muted: 220 14.3% 95.9%;
-      --muted-foreground: 220 8.9% 46.1%;
+        --muted: 220 14.3% 95.9%;
+        --muted-foreground: 220 8.9% 46.1%;
 
-      --accent: 220 14.3% 95.9%;
-      --accent-foreground: 220.9 39.3% 11%;
+        --accent: 220 14.3% 95.9%;
+        --accent-foreground: 220.9 39.3% 11%;
 
-      --destructive: 0 84.2% 60.2%;
-      --destructive-foreground: 210 20% 98%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 20% 98%;
 
-      --border: 220 13% 91%;
-      --input: 220 13% 91%;
-      --ring: 224 71.4% 4.1%;
+        --border: 220 13% 91%;
+        --input: 220 13% 91%;
+        --ring: 224 71.4% 4.1%;
 
-      --radius: 0.5rem;
+        --radius: 0.5rem;
     }
 
     .dark {
-      --background: 224 71.4% 4.1%;
-      --foreground: 210 20% 98%;
+        --background: 224 71.4% 4.1%;
+        --foreground: 210 20% 98%;
 
-      --card: 224 71.4% 4.1%;
-      --card-foreground: 210 20% 98%;
+        --card: 224 71.4% 4.1%;
+        --card-foreground: 210 20% 98%;
 
-      --popover: 224 71.4% 4.1%;
-      --popover-foreground: 210 20% 98%;
+        --popover: 224 71.4% 4.1%;
+        --popover-foreground: 210 20% 98%;
 
-      --primary: 210 20% 98%;
-      --primary-foreground: 220.9 39.3% 11%;
+        --primary: 210 20% 98%;
+        --primary-foreground: 220.9 39.3% 11%;
 
-      --secondary: 215 27.9% 16.9%;
-      --secondary-foreground: 210 20% 98%;
+        --secondary: 215 27.9% 16.9%;
+        --secondary-foreground: 210 20% 98%;
 
-      --muted: 215 27.9% 16.9%;
-      --muted-foreground: 217.9 10.6% 64.9%;
+        --muted: 215 27.9% 16.9%;
+        --muted-foreground: 217.9 10.6% 64.9%;
 
-      --accent: 215 27.9% 16.9%;
-      --accent-foreground: 210 20% 98%;
+        --accent: 215 27.9% 16.9%;
+        --accent-foreground: 210 20% 98%;
 
-      --destructive: 0 62.8% 30.6%;
-      --destructive-foreground: 210 20% 98%;
+        --destructive: 0 62.8% 30.6%;
+        --destructive-foreground: 210 20% 98%;
 
-      --border: 215 27.9% 16.9%;
-      --input: 215 27.9% 16.9%;
-      --ring: 216 12.2% 83.9%;
+        --border: 215 27.9% 16.9%;
+        --input: 215 27.9% 16.9%;
+        --ring: 216 12.2% 83.9%;
     }
-  }
+}
 
-  @layer base {
+@layer base {
     * {
-      @apply border-border;
+        @apply border-border;
     }
+
     body {
-      @apply bg-background text-foreground;
+        @apply bg-background text-foreground;
     }
-  }
+}
+
+.area-logo {
+    grid-area: logo;
+}
+
+.area-hamburger {
+    grid-area: hamburger;
+}
+
+.area-consultation {
+    grid-area: consultation;
+}
+
+.area-navigation {
+    grid-area: navigation;
+}
+
+.header-areas {
+    @media screen and (max-width: 1025px) {
+        display: grid !important;
+        grid-template-areas:
+        "logo logo logo hamburger consultation"
+        "navigation navigation navigation navigation navigation";
+    }
+
+    @media screen and (max-width: 768px) {
+        grid-template-areas:
+        "logo hamburger"
+        "navigation navigation";
+    }
+}
+
+/*
+    Niko IT Academy Logo
+    Done like that, cause we need fonts for it
+*/
+.cls-1 {
+    fill: none;
+    stroke: #e6e7e8;
+    stroke-miterlimit: 10;
+    stroke-width: 40px;
+}
+
+.cls-2 {
+    font-size: 251.81px;
+    font-weight: 700;
+}
+
+.cls-2, .cls-3 {
+    fill: #e6e7e8;
+}
+
+.cls-4 {
+    letter-spacing: -.05em;
+}
+
+.cls-5 {
+    letter-spacing: 0em;
+}
+
+.cls-3 {
+    font-family: PlanetNSExpanded, 'Planet NS Expanded';
+    font-size: 85px;
+}

@@ -18,11 +18,17 @@ const config = {
       },
     },
     extend: {
+      fontFamily: {
+        inter: 'var(--font-inter)',
+        onest: 'var(--font-onest)',
+        unbounded: 'var(--font-unbounded)',
+      },
       colors: {
         'primary-black': '#040309',
         'primary-white': '#F2F2F2',
         'primary-gray': '#6C6C70',
         'primary-accent': '#302DD4',
+        'primary-blue': '#0B84FF',
         'text-bg': '#181818',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
