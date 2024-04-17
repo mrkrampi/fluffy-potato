@@ -29,6 +29,7 @@ const config = {
         'primary-gray': '#6C6C70',
         'primary-accent': '#302DD4',
         'primary-blue': '#0B84FF',
+        'primary-blue-pressed': '#222094',
         'text-bg': '#181818',
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",

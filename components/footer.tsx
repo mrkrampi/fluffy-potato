@@ -2,13 +2,11 @@ import { ContactForm } from '@/components/contact-form';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
+import Link from 'next/link';
 
 export const Footer = () => {
   return (
     <footer className="w-full h-full bg-primary-black">
-      <div className="xl:mb-[400px] mx-8 md:mb-[200px]">
-        <ContactForm/>
-      </div>
       <div className="border-l-primary-white pt-16 md:pt-0 border-b-2">
         <div className="flex-col md:flex-row w-full py-2 px-2 md:px-8 xl:py-20 xl:px-24 flex justify-between items-center">
           <div className="flex justify-between items-end w-full md:w-auto">
@@ -80,16 +78,17 @@ export const Footer = () => {
               <Button
                 asChild
                 size="lg"
-                className="bg-primary-accent rounded-3xl px-6 py-3 min-w-36 xl:min-w-fit"
+                className="bg-primary-accent rounded-3xl px-6 py-3 min-w-36 xl:min-w-fit hover:bg-primary-white hover:text-primary-accent"
               >
-                <a href="/">Курси</a>
+                <Link href="/courses">Курси</Link>
               </Button>
               <Button
                 asChild
                 size="lg"
-                className="rounded-3xl bg-primary-black border-2 border-primary-white px-6 py-3 min-w-36 xl:min-w-fit"
+                variant="outline"
+                className="rounded-3xl text-primary-white bg-transparent border-2 px-6 py-3 min-w-36 xl:min-w-fit"
               >
-                <a href="/">Про нас</a>
+                <Link href="/about-us">Про нас</Link>
               </Button>
             </div>
           </div>

@@ -6,12 +6,11 @@ import { StudyFormatsSection } from '@/components/sections/study-formats-section
 import { StudentsBenefitsSection } from '@/components/sections/students-benefits-section';
 import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
 import { FaqSection } from '@/components/sections/faq-section';
-import { Header } from '@/components/header';
+import { ContactForm } from '@/components/contact-form';
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between py-0 md:px-2 xl:px-5 bg-primary-black">
-      <Header/>
       <div className="w-full">
         <HeroSection/>
       </div>
@@ -35,6 +34,9 @@ export default function Home() {
       </div>
       <div className="my-20 w-full lg:mt-[360px] lg:mb-40">
         <FaqSection/>
+      </div>
+      <div className="xl:mb-[400px] mx-8 md:mb-[200px]">
+        <ContactForm/>
       </div>
     </main>
   );

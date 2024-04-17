@@ -7,7 +7,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
     image: 'courses/qa-course.png',
     level: 'Початківцям',
     duration: '3 місяці',
-    modules: 6,
+    modules: 10,
     class: 'bg-center-2'
   },
   {
@@ -16,7 +16,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
     image: 'courses/pm-course.png',
     level: 'Початківцям',
     duration: '3 місяці',
-    modules: 6,
+    modules: 10,
     class: 'bg-center-2'
   },
   {
@@ -25,7 +25,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
     image: 'courses/ba-course.png',
     level: 'Початківцям',
     duration: '3 місяці',
-    modules: 6,
+    modules: 10,
     class: 'bg-center-2'
   },
 ]

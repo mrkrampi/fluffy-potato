@@ -1,18 +1,40 @@
 'use client';
 
 import Link from 'next/link';
-import Image from 'next/image';
-import { useMediaQuery, useToggle } from 'usehooks-ts';
+import { useToggle } from 'usehooks-ts';
+import { usePathname } from 'next/navigation';
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons';
-import logo from '../public/logo.svg';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
+import { MenuLinkInterface } from '@/interfaces/menu-link.interface';
+import { MENU_LINKS_LIST } from '@/consts/menu-links';
 
 export const Header = () => {
   const [isMenuOpen, toggleMenu] = useToggle(false);
-  const isMobile = useMediaQuery('(max-width: 1024px)');
+  const pathname = usePathname();
+
+  const renderMenuLink = ({ link, title }: MenuLinkInterface) => {
+    const isActiveLink = pathname.includes(link);
+
+    return (
+      <li
+        key={`${link}-menu-link`}
+        className={cn(
+          "relative before:absolute before:h-2 before:-bottom-6 before:w-full before:bg-primary-accent before:rounded-3xl before:opacity-0 hover:before:opacity-100 before:transition before:duration-200 before:ease-linear",
+          isActiveLink && "before:opacity-100"
+        )}>
+        <Button
+          asChild
+          variant="link"
+          className="p-0 text-primary-white h-auto text-base hover:no-underline"
+        >
+          <Link href={link}>{title}</Link>
+        </Button>
+      </li>
+    );
+  };
 
   return (
     <header
@@ -41,60 +63,7 @@ export const Header = () => {
           isMenuOpen && 'block',
         )}>
           <ul className="flex flex-col xl:flex-row text-primary-white gap-y-3 gap-x-12 py-4">
-            <li>
-              <Button
-                asChild
-                variant="link"
-                className="p-0 text-primary-white h-auto text-base"
-              >
-                <Link href="/">Курси</Link>
-              </Button>
-            </li>
-            <li>
-              <Button
-                asChild
-                variant="link"
-                className="p-0 text-primary-white h-auto text-base"
-              >
-                <Link href="/">Менторство</Link>
-              </Button>
-            </li>
-            <li>
-              <Button
-                asChild
-                variant="link"
-                className="p-0 text-primary-white h-auto text-base"
-              >
-                <Link href="/">Про академію</Link>
-              </Button>
-            </li>
-            <li>
-              <Button
-                asChild
-                variant="link"
-                className="p-0 text-primary-white h-auto text-base"
-              >
-                <Link href="/">Блог</Link>
-              </Button>
-            </li>
-            <li>
-              <Button
-                asChild
-                variant="link"
-                className="p-0 text-primary-white h-auto text-base"
-              >
-                <Link href="/">Відгуки</Link>
-              </Button>
-            </li>
-            <li>
-              <Button
-                asChild
-                variant="link"
-                className="p-0 text-primary-white h-auto text-base"
-              >
-                <Link href="/">FAQ</Link>
-              </Button>
-            </li>
+            {MENU_LINKS_LIST.map(renderMenuLink)}
           </ul>
           <div className="hidden lg:block w-full bg-primary-white h-2 rounded-3xl"/>
         </nav>
@@ -117,7 +86,7 @@ export const Header = () => {
           <Button
             size="xlg"
             variant="cta"
-            className="hidden md:block text-primary-accent bg-primary-white"
+            className="hidden md:flex text-primary-accent bg-primary-white"
           >
             Консультація
           </Button>

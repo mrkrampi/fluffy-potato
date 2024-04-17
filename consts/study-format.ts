@@ -19,7 +19,7 @@ export const STUDY_FORMATS_LIST: Array<StudyFormatInterface> = [
       'Групи до 20 студентів',
       'Підтримка ментора',
     ],
-    price: 20e3,
+    price: 15000,
   },
   {
     id: 3,
@@ -29,6 +29,6 @@ export const STUDY_FORMATS_LIST: Array<StudyFormatInterface> = [
       'Запис лекцій та домашні завдання',
       'Доступ до курсу на 12 місяців',
     ],
-    price: 20e3,
+    price: 8000,
   },
 ];

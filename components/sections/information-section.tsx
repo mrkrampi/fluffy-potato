@@ -11,7 +11,7 @@ export const InformationSection = () => {
             <div className="bg-primary-white ml-5 w-14 h-1 text-xl"/>
           </div>
           <div className="md:text-xl xl:text-4xl ml-auto max-w-[360px] w-full text-primary-white font-medium">
-            <span className="text-primary-gray">Середня заробітня плата</span> в Українській IT сфері - від $1500 до $3500.
+            <span className="text-primary-gray">Середня заробітня плата</span> в українській IT сфері - від $1500 до $3500.
           </div>
         </div>
         <div className="max-w-[480px] w-full">

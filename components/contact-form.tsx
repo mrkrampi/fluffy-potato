@@ -79,7 +79,8 @@ export const ContactForm = () => {
         <div className="flex gap-x-5 -mx-3">
           <Button
             size="lg"
-            className="bg-primary-white text-primary-accent rounded-3xl h-50 text-xl font-semibold md:w-52 hover:bg-primary-white/90"
+            variant="cta"
+            className="bg-primary-white text-primary-accent rounded-3xl h-50 text-xl font-semibold md:w-52"
           >
             Надіслати
           </Button>

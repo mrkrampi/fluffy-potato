@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const HeroSection = () => {
   return (
@@ -25,7 +26,7 @@ export const HeroSection = () => {
               variant="outline"
               className="bg-transparent text-primary-white text-base md:text-xl xl:text-3xl font-bold md:h-[72px] py-3 px-6 md:py-6 md:px-16"
             >
-              Дізнатись більше
+              <Link href="/about-us">Дізнатись більше</Link>
             </Button>
           </div>
         </div>
