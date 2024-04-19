@@ -22,6 +22,7 @@ export const HeroSection = () => {
         <div className="flex justify-center items-center">
           <div className="rounded-tl-3xl w-full bg-primary-black relative flex justify-center p-2 xl:px-8 md:px-6 md:py-2 xl:py-4">
             <Button
+              asChild
               size="5xl"
               variant="outline"
               className="bg-transparent text-primary-white text-base md:text-xl xl:text-3xl font-bold md:h-[72px] py-3 px-6 md:py-6 md:px-16"

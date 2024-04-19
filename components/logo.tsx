@@ -1,6 +1,6 @@
 export const Logo = () => {
   return (
-    <svg id="Layer_1" data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1443 617">
+    <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1443 617">
       <g>
         <polyline className="cls-1" points="428.5 390.5 428.5 333.52 216 60 62.01 60 62.01 560.88 195 560.88 195 503"/>
         <polyline className="cls-1" points="194.01 230.38 194.01 287.36 406.51 560.88 560.5 560.88 560.5 60 427.51 60 427 121"/>

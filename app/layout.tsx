@@ -3,14 +3,14 @@ import { Onest, Inter, Unbounded } from 'next/font/google';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
+import { siteConfig } from '@/config/site';
 
-const onest = Onest({ subsets: ['latin', 'cyrillic'], variable: '--font-onest' });
-const inter = Inter({ subsets: ['latin', 'cyrillic'], variable: '--font-inter' });
-const unbounded = Unbounded({ subsets: ['latin', 'cyrillic'], variable: '--font-unbounded' });
+const onest = Onest({ subsets: ['latin', 'cyrillic'], variable: '--font-onest', adjustFontFallback: false });
+const unbounded = Unbounded({ subsets: ['latin', 'cyrillic'], variable: '--font-unbounded', adjustFontFallback: false });
 
 export const metadata: Metadata = {
-  title: 'Niko IT Academy',
-  description: 'Онлайн курси для розвитку твоєї кар’єри в IT',
+  title: siteConfig.mainTitle,
+  description: siteConfig.mainDescription,
 };
 
 export default function RootLayout({
@@ -19,11 +19,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="uk">
     <body className={cn(
       onest.className,
       'bg-primary-black',
-      `${onest.variable} ${inter.variable} ${unbounded.variable}`,
+      `${onest.variable} ${unbounded.variable}`,
     )}>{children}</body>
     </html>
   );

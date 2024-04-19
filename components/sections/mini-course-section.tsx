@@ -2,15 +2,16 @@ import Image from 'next/image';
 import { MINI_COURSES_LIST } from '@/consts/mini-courses';
 import { MiniCourseInterface } from '@/interfaces/mini-course.interface';
 import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 
 export const MiniCourseSection = () => {
   return (
     <section className="w-full">
       <div className="mt-[-260px] md:mt-[-450px] lg:mt-[-420px] xl:mt-[-500px]">
         <div className="md:w-[75%] xl:max-w-[50vw] xl:w-full md:bg-primary-black rounded-tr-3xl xl:pt-16 md:p-5 xl:px-20">
-          <h1 className="text-primary-white text-2xl md:text-5xl mb-8 md:mb-5 xl:mb-16 px-4 md:px-0 w-3/4 bg-primary-black pt-2 rounded-tr-3xl font-unbounded">
+          <h4 className="text-primary-white text-2xl md:text-5xl mb-8 md:mb-5 xl:mb-16 px-4 md:px-0 w-3/4 bg-primary-black pt-2 rounded-tr-3xl font-unbounded">
             Не впевнені що вам підійде IT професія?
-          </h1>
+          </h4>
           <p className="text-primary-white px-4 md:px-0 lg:text-xl">
             Курс “Знайомство з професією Тестувальник ПЗ” від Niko IT Academy — це ваш шанс познайомитися з IT-інфраструктурою і відчути
             себе в ролі тестувальника
@@ -29,9 +30,9 @@ export const MiniCourseSection = () => {
                 className="object-contain object-center"
               />
             </div>
-            <h1 className="uppercase text-primary-white text-4xl md:text-6xl xl:text-[6.5rem] text-center md:text-left font-unbounded">
+            <h2 className="uppercase text-primary-white text-4xl md:text-6xl xl:text-[6.5rem] text-center md:text-left font-unbounded">
               Міні-курс
-            </h1>
+            </h2>
             <div className="flex xl:flex-col md:justify-between md:items-center xl:items-start flex-col md:flex-row">
               <div className="flex flex-col gap-y-6 xl:gap-y-8 text-primary-white md:text-xl my-10 md:my-16 xl:my-28 font-medium">
                 {MINI_COURSES_LIST.map((miniCourse: MiniCourseInterface, index: number) => {
@@ -55,11 +56,12 @@ export const MiniCourseSection = () => {
               </div>
 
               <Button
+                asChild
                 size="5xl"
                 variant="outline"
                 className="bg-transparent text-primary-white md:text-xl xl:text-3xl font-bold md:h-[72px] py-3 px-16 md:py-6 md:px-16 w-fit md:w-auto mx-auto md:mx-0"
               >
-                До міні - курсу
+                <Link href="courses">До міні - курсу</Link>
               </Button>
             </div>
           </div>

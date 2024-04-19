@@ -7,13 +7,14 @@ import InputMask from 'react-input-mask';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
 export const ContactForm = () => {
   return (
     <div className="max-w-screen-2xl px-6 py-20 mx-auto md:py-24 md:px-32 bg-contact-form bg-cover bg-center rounded-3xl shadow-sm shadow-primary-accent">
-      <h1 className="max-w-5xl uppercase text-primary-white text-4xl md:text-6xl xl:text-[6.5rem] leading-none font-medium tracking-tighter text-center xl:text-left font-unbounded">
+      <h4 className="max-w-5xl uppercase text-primary-white text-4xl md:text-6xl xl:text-[6.5rem] leading-none font-medium tracking-tighter text-center xl:text-left font-unbounded">
         Звʼязатись з нами
-      </h1>
+      </h4>
       <p className="xl:w-1/2 text-center xl:text-left xl:text-xl text-primary-white tracking-tighter md:my-8 xl:my-16">
         Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором курсу? Заповніть форму зворотнього звʼязку, і наш менеджер звʼяжеться з вами протягом доби
       </p>
@@ -25,6 +26,7 @@ export const ContactForm = () => {
               Ваше імʼя
             </Label>
             <Input
+              id="name"
               placeholder="Імʼя"
               name="name"
               type="text"
@@ -37,6 +39,7 @@ export const ContactForm = () => {
               Ваш Email
             </Label>
             <Input
+              id="email"
               placeholder="Email"
               name="email"
               type="email"
@@ -53,6 +56,7 @@ export const ContactForm = () => {
               {(inputProps) => {
                 return (
                   <Input
+                    id="phone"
                     placeholder="+380"
                     name="phone"
                     type="tel"
@@ -69,6 +73,7 @@ export const ContactForm = () => {
               Ваш запит
             </Label>
             <Input
+              id="request"
               placeholder="Ваш запит"
               name="request"
               type="text"
@@ -84,20 +89,24 @@ export const ContactForm = () => {
           >
             Надіслати
           </Button>
-          <a href="https://www.instagram.com/niko_it_courses/" target="_blank" className="w-12 h-12 relative">
-            <Image
-              src="instagram.svg"
-              alt="Instagram"
-              fill
-            />
-          </a>
-          <a href="https://ca.linkedin.com/in/niko-it-academy" target="_blank" className="w-12 h-12 relative">
-            <Image
-              src="linkedin.svg"
-              alt="Linkedin"
-              fill
-            />
-          </a>
+          <Button
+            asChild
+            size="icon"
+            className="w-12 h-12 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
+          >
+            <a href="https://www.instagram.com/niko_it_courses/" target="_blank">
+              <Instagram className="w-10 h-10"/>
+            </a>
+          </Button>
+          <Button
+            asChild
+            size="icon"
+            className="w-12 h-12 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
+          >
+            <a href="https://linkedin.com/in/niko-it-academy" target="_blank">
+              <Linkedin className="w-10 h-10"/>
+            </a>
+          </Button>
         </div>
       </div>
     </div>

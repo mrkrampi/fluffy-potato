@@ -23,7 +23,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
       </div>
       <div className="z-10 flex flex-col justify-between h-full">
         <div>
-          <h1 className="text-primary-white text-2xl md:text-6xl max-w-md mb-4 md:mb-2" dangerouslySetInnerHTML={{ __html: course.name }}/>
+          <h3 className="text-primary-white text-2xl md:text-6xl max-w-md mb-4 md:mb-2" dangerouslySetInnerHTML={{ __html: course.name }}/>
           <p className="text-primary-white mt-auto md:text-xl">
             {course.level}
           </p>

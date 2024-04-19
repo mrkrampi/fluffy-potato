@@ -10,10 +10,10 @@ export const CourseSection = () => {
     <section className="w-full h-full pt-12 lg:pt-24 xl:pt-56 px-4 pb-4 md:pb-[426px] xl:pb-[572px] bg-center bg-cover bg-course-pattern rounded-3xl">
       <div className="max-w-[1600px] w-full mx-auto md:px-8">
         <div className="w-full flex justify-between md:items-center xl:items-end">
-          <h1
+          <h2
             className="max-w-5xl uppercase text-primary-black text-3xl md:text-6xl xl:text-[6.5rem] leading-none font-normal font-unbounded tracking-tight">
             Легкий шлях до&nbsp;професії мрії
-          </h1>
+          </h2>
           <div className="w-16 h-12 relative">
             <Image
               src="/arrow.svg"

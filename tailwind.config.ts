@@ -19,7 +19,6 @@ const config = {
     },
     extend: {
       fontFamily: {
-        inter: 'var(--font-inter)',
         onest: 'var(--font-onest)',
         unbounded: 'var(--font-unbounded)',
       },
@@ -88,6 +87,7 @@ const config = {
         'hero-pattern': "url('/hero-background.png')",
         'course-pattern': "url('/courses/course-section-background.png')",
         'contact-form': "url('/contact-form-bg.png')",
+        'stories-section': "url('/stories-bg.png')"
       },
       backgroundPosition: {
         'center-1': 'center top 60%',

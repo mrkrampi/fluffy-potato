@@ -22,8 +22,8 @@ export const Header = () => {
       <li
         key={`${link}-menu-link`}
         className={cn(
-          "relative before:absolute before:h-2 before:-bottom-6 before:w-full before:bg-primary-accent before:rounded-3xl before:opacity-0 hover:before:opacity-100 before:transition before:duration-200 before:ease-linear",
-          isActiveLink && "before:opacity-100"
+          "relative before:absolute before:h-2 before:-bottom-6 before:w-full before:bg-primary-accent before:rounded-3xl before:opacity-0 xl:hover:before:opacity-100 before:transition before:duration-200 before:ease-linear",
+          isActiveLink && "xl:before:opacity-100"
         )}>
         <Button
           asChild
@@ -40,7 +40,7 @@ export const Header = () => {
     <header
       className="w-full bg-[#04030933] backdrop-blur-2xl py-3 px-6 lg:px-12 flex justify-center items-center fixed top-0 z-40 right-0 left-0">
       <div className="max-w-screen-2xl w-full px-5 py-2 grid lg:flex justify-between items-center header-areas">
-        <Link href="/" className="area-logo relative w-24 h-10 md:w-36 md:h-16">
+        <Link href="/" aria-label="Головна сторінка" className="area-logo relative w-24 h-10 md:w-36 md:h-16">
           <Logo/>
         </Link>
         <button
@@ -65,7 +65,7 @@ export const Header = () => {
           <ul className="flex flex-col xl:flex-row text-primary-white gap-y-3 gap-x-12 py-4">
             {MENU_LINKS_LIST.map(renderMenuLink)}
           </ul>
-          <div className="hidden lg:block w-full bg-primary-white h-2 rounded-3xl"/>
+          <div className="hidden xl:block w-full bg-primary-white h-2 rounded-3xl"/>
         </nav>
         <div className="hidden md:flex area-consultation gap-x-6">
           <button
