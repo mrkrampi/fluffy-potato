@@ -20,7 +20,7 @@ export const InformationSection = () => {
             <div className="bg-primary-white ml-5 w-14 h-1 text-xl"/>
           </div>
           <div className="md:text-xl xl:text-4xl ml-auto max-w-[360px] w-full text-primary-white font-medium">
-            <span className="text-primary-gray">Протягом 2023</span> року попит на ІТ-спеціалістів виріс на 30-35%.
+            <span className="text-primary-gray">Впродовж 2023</span> року попит на ІТ-спеціалістів виріс на 30-35%.
           </div>
         </div>
       </div>

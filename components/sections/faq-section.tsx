@@ -29,10 +29,10 @@ export const FaqSection = () => {
                       <span className="md:max-w-20 xl:max-w-28 min-w-12 md:w-full md:h-28 h-9 relative">
                         <Image src="faq-question.svg" alt="Faq Question" fill/>
                       </span>
-                      <p
+                      <span
                         className="bg-[#191821] p-4 md:px-10 md:py-7 rounded-2xl font-medium text-sm md:text-lg lg:text-2xl text-primary-white text-left">
                         {item.question}
-                      </p>
+                      </span>
                       <span className="relative min-w-6 min-h-6 md:w-12 md:h-12 trigger transition-transform duration-200">
                         <Image src="white-arrow.svg" alt="Faq Question Trigger" fill/>
                       </span>

@@ -18,6 +18,7 @@ export const STUDY_FORMATS_LIST: Array<StudyFormatInterface> = [
       'Поглиблене вивчення профільних тем',
       'Групи до 20 студентів',
       'Підтримка ментора',
+      'Курси англійської'
     ],
     price: 15000,
   },
