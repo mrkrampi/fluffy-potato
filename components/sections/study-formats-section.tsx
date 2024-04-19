@@ -5,9 +5,9 @@ import { StudyFormatCard } from '@/components/study-format-card';
 export const StudyFormatsSection = () => {
   return (
     <section className="w-full h-full px-2 md:px-0">
-      <div className="max-w-screen-2xl w-full md:px-6 xl:px-0 xl:mx-auto">
-        <div className="flex xl:justify-center xl:w-full md:w-1/2">
-          <h3 className="max-w-5xl uppercase text-primary-white text-5xl md:text-6xl xl:text-[6.5rem] leading-none font-normal font-unbounded -tracking-widest">
+      <div className="max-w-[1600px] w-full md:px-6 xl:px-0 xl:mx-auto">
+        <div className="flex lg:w-full md:w-1/2">
+          <h3 className="w-full lg:min-w-full max-w-5xl uppercase text-primary-white text-5xl md:text-6xl xl:text-[6rem] leading-none font-normal font-unbounded -tracking-widest">
             Формати навчання
           </h3>
         </div>

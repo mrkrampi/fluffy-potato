@@ -32,7 +32,7 @@ export default function Home() {
       <div className="my-20 w-full md:mt-[160px] lg:mt-[346px]">
         <StudentsStoriesSection/>
       </div>
-      <div className="my-20 w-full lg:mt-[360px] lg:mb-40">
+      <div className="mb-20 w-full lg:mt-[54px] lg:mb-40">
         <FaqSection/>
       </div>
       <div className="xl:mb-[400px] mx-8 md:mb-[200px]">
