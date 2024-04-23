@@ -1,7 +1,15 @@
+import type { Metadata } from 'next';
+
+import { siteConfig } from '@/config/site';
 import { ALL_COURSES_LIST } from '@/consts/courses';
 import { CourseSelector } from '@/app/(public)/courses/[courseSlug]/_components/course-selector';
 import { GoalsSection } from '@/app/(public)/courses/[courseSlug]/_components/goals-section';
 import { StudyGuideSection } from '@/app/(public)/courses/[courseSlug]/_components/study-guide-section';
+
+export const metadata: Metadata = {
+  title: siteConfig.coursesTitle,
+  description: siteConfig.coursesDescription,
+};
 
 interface CourseSlugPageProps {
   params: {

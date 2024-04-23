@@ -11,10 +11,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
   return (
     <Link
       href={`/courses/${course.slug}`}
-      className={cn(
-        'flex flex-col justify-between px-4 py-12 md:p-12 bg-cover w-full h-[400px] rounded-md hover:shadow-lg relative group overflow-hidden',
-        course.class,
-      )}>
+      className="flex flex-col justify-between px-4 py-12 md:p-12 bg-cover w-full h-[400px] rounded-md hover:shadow-lg relative group overflow-hidden">
       <div
         style={{ backgroundImage: `url(${course.previewImage})` }}
         className="absolute inset-0 bg-center bg-cover md:group-hover:scale-125 transition-transform duration-200"

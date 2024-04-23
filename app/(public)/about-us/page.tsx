@@ -1,15 +1,22 @@
 import Image from 'next/image';
+import type { Metadata } from 'next';
 
 import 'react-circular-progressbar/dist/styles.css';
 
 import whyUsImg from '@/public/why-us.webp';
 import aboutUsImg from '@/public/about-us.webp';
 
+import { siteConfig } from '@/config/site';
 import { ContactForm } from '@/components/contact-form';
 import { PerksSection } from '@/app/(public)/about-us/_component/perks-section';
 import { WhyUsSection } from '@/app/(public)/about-us/_component/why-us-section';
 import { AboutUsSection } from '@/app/(public)/about-us/_component/about-us.section';
 import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
+
+export const metadata: Metadata = {
+  title: siteConfig.aboutUsTitle,
+  description: siteConfig.aboutUsDescription,
+};
 
 const AboutUsPage = () => {
   return (
