@@ -1,9 +1,10 @@
 import Link from 'next/link';
 import Image from 'next/image';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
 
 import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
+import { SocialButton } from '@/components/social-button';
+import { SocialEnum } from '@/enums/social.enum';
 
 export const Footer = () => {
   return (
@@ -25,53 +26,29 @@ export const Footer = () => {
               </div>
             </div>
             <div className="flex md:hidden gap-x-4 md:gap-x-6">
-              <Button
-                asChild
-                size="icon"
-                className="w-6 h-6 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-              >
-                <a href="https://www.facebook.com/profile.php?id=61556998809290" target="_blank">
-                  <Facebook className="w-4 h-4"/>
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="icon"
-                className="w-6 h-6 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-              >
-                <a href="https://linkedin.com/in/niko-it-academy" target="_blank">
-                  <Linkedin className="w-4 h-4"/>
-                </a>
-              </Button>
-              <Button
-                asChild
-                size="icon"
-                className="w-6 h-6 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-              >
-                <a href="https://www.instagram.com/niko_it_courses/" target="_blank">
-                  <Instagram className="w-4 h-4"/>
-                </a>
-              </Button>
+              <SocialButton type={SocialEnum.FACEBOOK}/>
+              <SocialButton type={SocialEnum.LINKEDIN}/>
+              <SocialButton type={SocialEnum.INSTAGRAM}/>
             </div>
           </div>
           <div className="hidden xl:flex gap-x-10">
             <div className="relative w-24 h-32">
               <Image
-                src="visa.svg"
+                src="/payment-logos/visa.svg"
                 alt="Visa"
                 fill
               />
             </div>
             <div className="relative w-48 h-32">
               <Image
-                src="mastercard.svg"
+                src="/payment-logos/mastercard.svg"
                 alt="Visa"
                 fill
               />
             </div>
             <div className="relative w-40 h-32">
               <Image
-                src="way4pay.svg"
+                src="/payment-logos/way4pay.svg"
                 alt="Visa"
                 fill
               />
@@ -104,54 +81,30 @@ export const Footer = () => {
           <div className="flex xl:hidden gap-x-4 md:gap-x-10 w-full justify-between md:justify-start">
             <div className="relative h-6 w-16 md:w-16 md:h-24">
               <Image
-                src="visa.svg"
+                src="/payment-logos/visa.svg"
                 alt="Visa"
                 fill
               />
             </div>
             <div className="relative h-6 w-32 md:w-32 md:h-24">
               <Image
-                src="mastercard.svg"
+                src="/payment-logos/mastercard.svg"
                 alt="Visa"
                 fill
               />
             </div>
             <div className="relative w-28 h-6 md:w-32 md:h-24">
               <Image
-                src="way4pay.svg"
+                src="/payment-logos/way4pay.svg"
                 alt="Visa"
                 fill
               />
             </div>
           </div>
           <div className="md:flex gap-x-4 md:gap-x-6 hidden">
-            <Button
-              asChild
-              size="icon"
-              className="w-6 h-6 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-            >
-              <a href="https://www.facebook.com/profile.php?id=61556998809290" target="_blank">
-                <Facebook className="w-4 h-4"/>
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="icon"
-              className="w-6 h-6 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-            >
-              <a href="https://linkedin.com/in/niko-it-academy" target="_blank">
-                <Linkedin className="w-4 h-4"/>
-              </a>
-            </Button>
-            <Button
-              asChild
-              size="icon"
-              className="w-6 h-6 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-            >
-              <a href="https://www.instagram.com/niko_it_courses/" target="_blank">
-                <Instagram className="w-4 h-4"/>
-              </a>
-            </Button>
+            <SocialButton type={SocialEnum.FACEBOOK} size="sm"/>
+            <SocialButton type={SocialEnum.LINKEDIN} size="sm"/>
+            <SocialButton type={SocialEnum.INSTAGRAM} size="sm"/>
           </div>
         </div>
       </div>
@@ -164,33 +117,9 @@ export const Footer = () => {
           <a href="/" className="text-sm lg:text-xl text-primary-gray underline">Політика конфіденційності</a>
         </div>
         <div className="hidden xl:flex gap-x-6">
-          <Button
-            asChild
-            size="icon"
-            className="w-12 h-12 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-          >
-            <a href="https://www.facebook.com/profile.php?id=61556998809290" target="_blank">
-              <Facebook className="w-10 h-10"/>
-            </a>
-          </Button>
-          <Button
-            asChild
-            size="icon"
-            className="w-12 h-12 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-          >
-            <a href="https://linkedin.com/in/niko-it-academy" target="_blank">
-              <Linkedin className="w-10 h-10"/>
-            </a>
-          </Button>
-          <Button
-            asChild
-            size="icon"
-            className="w-12 h-12 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-          >
-            <a href="https://www.instagram.com/niko_it_courses/" target="_blank">
-              <Instagram className="w-10 h-10"/>
-            </a>
-          </Button>
+          <SocialButton type={SocialEnum.FACEBOOK}/>
+          <SocialButton type={SocialEnum.LINKEDIN}/>
+          <SocialButton type={SocialEnum.INSTAGRAM}/>
         </div>
       </div>
     </footer>

@@ -10,10 +10,17 @@ import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
 import { MenuLinkInterface } from '@/interfaces/menu-link.interface';
 import { MENU_LINKS_LIST } from '@/consts/menu-links';
+import { useEffect } from 'react';
 
 export const Header = () => {
   const [isMenuOpen, toggleMenu] = useToggle(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      toggleMenu();
+    }
+  }, [pathname]);
 
   const renderMenuLink = ({ link, title }: MenuLinkInterface) => {
     const isActiveLink = pathname.includes(link);
@@ -30,7 +37,7 @@ export const Header = () => {
           variant="link"
           className="p-0 text-primary-white h-auto text-base hover:no-underline"
         >
-          <Link href={link}>{title}</Link>
+          <Link href={`/${link}`}>{title}</Link>
         </Button>
       </li>
     );

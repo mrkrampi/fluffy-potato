@@ -7,13 +7,13 @@ interface StudentStoryCardProps {
 
 export const StudentStoryCard = ({ story }: StudentStoryCardProps) => {
   return (
-    <div className="w-full h-full bg-[#191821] rounded-3xl px-8 md:px-6 pt-8 pb-14 flex flex-col justify-center items-center">
+    <div className="w-full h-full bg-secondary-black lg:hover:bg-primary-accent transition duration-75 cursor-pointer rounded-3xl px-8 md:px-6 pt-8 pb-14 flex flex-col justify-center items-center">
       <div className="rounded-full relative w-28 h-28">
         <Image
           src={story.image}
           alt=""
           fill
-          className="object-cover object-center rounded-full"
+          className="object-cover object-center"
         />
         <div className="absolute -bottom-2 right-0 bg-primary-blue rounded-full w-8 h-8">
           <Image

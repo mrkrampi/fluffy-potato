@@ -1,7 +1,7 @@
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { STUDENT_STORIES_LIST } from '@/consts/student-stories';
 import { StudentStoryCard } from '@/components/student-story-card';
 import { StudentStoryInterface } from '@/interfaces/student-story.interface';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
 export const StudentsStoriesSection = () => {
   return (

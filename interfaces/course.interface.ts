@@ -3,7 +3,10 @@ export type  CourseInterface = {
   name: string;
   level: string;
   duration: string;
-  modules: number;
-  image: string;
-  class?: string;
+  countOfModules?: number;
+  previewImage?: string;
+  slug: string;
+  overview: Array<string>;
+  goals: Array<string>;
+  overviewImage: string;
 }

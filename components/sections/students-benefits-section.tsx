@@ -1,5 +1,4 @@
-import { CarouselItem } from '@/components/ui/carousel';
-import { CarouselWrapper } from '@/components/carousel-wrapper';
+import { GoalsContainer } from '@/components/goals-container';
 import { BENEFITS_FOR_STUDENTS_LIST } from '@/consts/benefits-for-students';
 
 export const StudentsBenefitsSection = () => {
@@ -12,30 +11,7 @@ export const StudentsBenefitsSection = () => {
             Переваги для студентів
           </h3>
         </div>
-        <div className="hidden w-full lg:grid lg:grid-cols-2 xl:grid-cols-3 justify-center gap-y-14 my-40 gap-x-9">
-          {BENEFITS_FOR_STUDENTS_LIST.map((benefit: string, index: number) => {
-            return (
-              <div key={benefit} className="w-full flex flex-col gap-y-8 max-w-md">
-                <p className="text-xl font-medium text-primary-gray">[ {index + 1} ]</p>
-                <p className="text-primary-white font-medium text-2xl tracking-tight">{benefit}</p>
-              </div>
-            );
-          })}
-        </div>
-        <div className="lg:hidden md:w-2/3 mx-auto mt-16 md:mt-28">
-          <CarouselWrapper>
-            {BENEFITS_FOR_STUDENTS_LIST.map((benefit: string, index: number) => {
-              return (
-                <CarouselItem key={benefit} className="justify-center px-2 md:p-0">
-                  <div className="w-full flex flex-col gap-y-8 max-w-md mx-auto">
-                    <p className="text-xl font-medium text-primary-gray">[ {index + 1} ]</p>
-                    <p className="text-primary-white font-medium text-2xl tracking-tight">{benefit}</p>
-                  </div>
-                </CarouselItem>
-              );
-            })}
-          </CarouselWrapper>
-        </div>
+        <GoalsContainer items={BENEFITS_FOR_STUDENTS_LIST}/>
       </div>
     </section>
   );

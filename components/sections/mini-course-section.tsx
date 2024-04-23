@@ -45,7 +45,7 @@ export const MiniCourseSection = () => {
                       <div>{miniCourse.name}</div>
                       <div className="relative w-8 h-6 md:w-12 md:h-9 my-auto md:my-0">
                         <Image
-                          src="blue-arrow.svg"
+                          src="/arrows/blue.svg"
                           alt="Mini Course"
                           fill
                         />
@@ -59,9 +59,9 @@ export const MiniCourseSection = () => {
                 asChild
                 size="5xl"
                 variant="outline"
-                className="bg-transparent text-primary-white md:text-xl xl:text-3xl font-bold md:h-[72px] py-3 px-16 md:py-6 md:px-16 w-fit md:w-auto mx-auto md:mx-0"
+                className="bg-transparent text-primary-white md:text-xl xl:text-3xl font-bold md:h-[72px] py-3 px-16 md:py-6 md:px-16 w-fit md:w-auto mx-auto md:mx-0 xl:h-20 rounded-full xl:px-14 xl:py-12"
               >
-                <Link href="courses">До міні - курсу</Link>
+                <Link href="/courses/mini-course">До міні - курсу</Link>
               </Button>
             </div>
           </div>

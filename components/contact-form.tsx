@@ -1,13 +1,12 @@
 'use client';
 
-import Image from 'next/image';
-
 import InputMask from 'react-input-mask';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Facebook, Instagram, Linkedin } from 'lucide-react';
+import { SocialButton } from '@/components/social-button';
+import { SocialEnum } from '@/enums/social.enum';
 
 export const ContactForm = () => {
   return (
@@ -89,24 +88,8 @@ export const ContactForm = () => {
           >
             Надіслати
           </Button>
-          <Button
-            asChild
-            size="icon"
-            className="w-12 h-12 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-          >
-            <a href="https://www.instagram.com/niko_it_courses/" target="_blank">
-              <Instagram className="w-10 h-10"/>
-            </a>
-          </Button>
-          <Button
-            asChild
-            size="icon"
-            className="w-12 h-12 flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white"
-          >
-            <a href="https://linkedin.com/in/niko-it-academy" target="_blank">
-              <Linkedin className="w-10 h-10"/>
-            </a>
-          </Button>
+          <SocialButton type={SocialEnum.INSTAGRAM}/>
+          <SocialButton type={SocialEnum.LINKEDIN}/>
         </div>
       </div>
     </div>

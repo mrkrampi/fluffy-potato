@@ -27,21 +27,21 @@ export const FaqSection = () => {
                   <AccordionTrigger hideChevron className="hover:no-underline">
                     <span className="flex items-center gap-x-5 md:gap-x-6">
                       <span className="md:max-w-20 xl:max-w-28 min-w-12 md:w-full md:h-28 h-9 relative">
-                        <Image src="faq-question.svg" alt="Faq Question" fill/>
+                        <Image src="/faq/question.svg" alt="Faq Question" fill/>
                       </span>
                       <span
-                        className="bg-[#191821] p-4 md:px-10 md:py-7 rounded-2xl font-medium text-sm md:text-lg lg:text-2xl text-primary-white text-left">
+                        className="bg-secondary-black p-4 md:px-10 md:py-7 rounded-2xl font-medium text-sm md:text-lg lg:text-2xl text-primary-white text-left">
                         {item.question}
                       </span>
                       <span className="relative min-w-6 min-h-6 md:w-12 md:h-12 trigger transition-transform duration-200">
-                        <Image src="white-arrow.svg" alt="Faq Question Trigger" fill/>
+                        <Image src="/arrows/white.svg" alt="Faq Question Trigger" fill/>
                       </span>
                     </span>
                   </AccordionTrigger>
                   <AccordionContent>
                     <div className="flex flex-row-reverse items-center gap-x-5 md:gap-x-6 my-12">
                       <div className="md:max-w-20 xl:max-w-28 min-w-12 md:w-full md:h-28 h-9 relative">
-                        <Image src="faq-response.svg" alt="Faq Question" fill/>
+                        <Image src="/faq/response.svg" alt="Faq Question" fill/>
                       </div>
                       <p
                         className="text-[#222094] p-4 md:px-10 md:py-7 rounded-2xl bg-primary-white max-w-3xl font-medium text-sm md:text-lg lg:text-2xl">

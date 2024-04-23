@@ -4,6 +4,8 @@ import { Carousel, CarouselContent, CarouselNext, CarouselOptions, CarouselPrevi
 
 interface CarouselWrapperProps {
   opts?: CarouselOptions;
+  nextArrowClassName?: string;
+  previousArrowClassName?: string;
 }
 
 export const CarouselWrapper = ({ children, opts }: PropsWithChildren<CarouselWrapperProps>) => {

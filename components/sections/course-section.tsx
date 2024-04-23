@@ -16,7 +16,7 @@ export const CourseSection = () => {
           </h2>
           <div className="w-16 h-12 relative">
             <Image
-              src="/arrow.svg"
+              src="/arrows/black.svg"
               alt="Arrow"
               fill
             />
