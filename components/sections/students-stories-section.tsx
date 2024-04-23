@@ -2,11 +2,19 @@ import { STUDENT_STORIES_LIST } from '@/consts/student-stories';
 import { StudentStoryCard } from '@/components/student-story-card';
 import { StudentStoryInterface } from '@/interfaces/student-story.interface';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
+import { cn } from '@/lib/utils';
 
-export const StudentsStoriesSection = () => {
+interface StudentsStoriesSectionProps {
+  withoutBackground?: boolean;
+}
+
+export const StudentsStoriesSection = ({ withoutBackground }: StudentsStoriesSectionProps) => {
   return (
     <section
-      className="w-full h-full bg-stories-section bg-center bg-cover relative px-3 mx:px-5 xl:px-0 pb-20 lg:pb-[260px]">
+      className={cn(
+        "w-full h-full bg-center bg-cover relative px-3 mx:px-5 xl:px-0 pb-20 lg:pb-[260px]",
+        !withoutBackground && 'bg-stories-section'
+      )}>
       <div className="absolute inset-0 bg-gradient-to-b from-[#040309] from-55% to-[#040309] to-90% opacity-80"/>
       <div className="max-w-[1600px] md:px-4 xl:px-0 xl:mx-auto w-full z-10 relative">
         <div className="w-full flex md:w-1/2 lg:w-full">
@@ -19,17 +27,16 @@ export const StudentsStoriesSection = () => {
           <Carousel
             opts={{
               loop: true,
-              align: 'start'
+              align: 'start',
             }}
           >
             <CarouselContent className="ml-0">
-              {STUDENT_STORIES_LIST.map((story: StudentStoryInterface) => {
-                return (
+              {STUDENT_STORIES_LIST.map((story: StudentStoryInterface) =>
+                (
                   <CarouselItem key={story.id} className="px-2 md:px-3 md:basis-1/2 xl:basis-1/3">
                     <StudentStoryCard story={story}/>
                   </CarouselItem>
-                );
-              })}
+                ))}
             </CarouselContent>
             <CarouselPrevious
               size="xlg"

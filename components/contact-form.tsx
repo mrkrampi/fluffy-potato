@@ -10,12 +10,15 @@ import { SocialEnum } from '@/enums/social.enum';
 
 export const ContactForm = () => {
   return (
-    <div className="max-w-screen-2xl px-6 py-20 mx-auto md:py-24 md:px-32 bg-contact-form bg-cover bg-center rounded-3xl shadow-sm shadow-primary-accent">
-      <h4 className="max-w-5xl uppercase text-primary-white text-4xl md:text-6xl xl:text-[6.5rem] leading-none font-medium tracking-tighter text-center xl:text-left font-unbounded">
+    <div
+      className="max-w-screen-2xl px-6 py-20 mx-auto md:py-24 md:px-32 bg-contact-form bg-cover bg-center rounded-3xl shadow-sm shadow-primary-accent">
+      <h4
+        className="max-w-5xl uppercase text-primary-white text-4xl md:text-6xl xl:text-[6.5rem] leading-none font-medium tracking-tighter text-center xl:text-left font-unbounded">
         Звʼязатись з нами
       </h4>
       <p className="xl:w-1/2 text-center xl:text-left xl:text-xl text-primary-white tracking-tighter md:my-8 xl:my-16">
-        Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором курсу? Заповніть форму зворотнього звʼязку, і наш менеджер звʼяжеться з вами протягом доби
+        Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором курсу? Заповніть форму зворотнього звʼязку, і наш
+        менеджер звʼяжеться з вами протягом доби
       </p>
       <div>
         <div className="my-12 max-w-sm w-full">
@@ -64,7 +67,7 @@ export const ContactForm = () => {
                   />
                 );
               }}
-            </InputMask>;
+            </InputMask>
           </div>
           <div className="md:my-6 xl:my-8">
             <Label htmlFor="request" className="text-semibold text-base text-primary-white">
@@ -93,5 +96,5 @@ export const ContactForm = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

@@ -10,7 +10,7 @@ import { ContactForm } from '@/components/contact-form';
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between py-0 md:px-2 xl:px-5 bg-primary-black">
+    <div className="flex min-h-screen flex-col items-center justify-between py-0 md:px-2 xl:px-5 bg-primary-black">
       <div className="w-full">
         <HeroSection/>
       </div>
@@ -38,6 +38,6 @@ export default function Home() {
       <div className="xl:mb-[400px] mx-8 md:mb-[200px]">
         <ContactForm/>
       </div>
-    </main>
+    </div>
   );
 }

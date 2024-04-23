@@ -5,11 +5,11 @@ import { Header } from '@/components/header';
 
 const PublicLayout = ({ children }: PropsWithChildren) => {
   return (
-    <div>
+    <main>
       <Header/>
       {children}
       <Footer/>
-    </div>
+    </main>
   );
 };
 
