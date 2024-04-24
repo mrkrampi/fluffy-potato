@@ -21,15 +21,15 @@ export const metadata: Metadata = {
 const AboutUsPage = () => {
   return (
     <main className="text-primary-white">
-      <section className="h-screen flex items-center md:mx-4 lg:mx-24">
-        <h1 className="lg:text-6xl text-5xl uppercase font-unbounded tracking-tight">
+      <section className="h-screen flex items-center mx-3 md:mx-4 lg:mx-24">
+        <h1 className="lg:text-6xl text-3xl md:text-5xl uppercase font-unbounded tracking-tight">
           створюємо <span className="text-primary-accent">міцну  основу</span> для <span
           className="text-primary-accent">успішної кар&apos;єри</span> в IT, сприяючи зростанню професіоналізму <span
           className="text-primary-accent">українців</span>
         </h1>
       </section>
 
-      <section className="md:h-56 lg:h-96 relative">
+      <section className="h-40 md:h-56 lg:h-96 relative">
         <Image src={aboutUsImg} alt="About us" fill className="object-cover"/>
       </section>
 
@@ -39,7 +39,7 @@ const AboutUsPage = () => {
         <Image
           src={whyUsImg}
           alt="Why Us"
-          className="object-contain opacity-50 absolute bottom-0 md:w-3/4 lg:w-full md:h-3/4 lg:h-full lg:top-[42%] lg:-translate-y-1/2 lg:-right-[20vw] md:-right-[35%] md:top-0"
+          className="hidden md:block object-contain opacity-50 absolute bottom-0 md:w-3/4 lg:w-full md:h-3/4 lg:h-full lg:top-[42%] lg:-translate-y-1/2 lg:-right-[20vw] md:-right-[35%] md:top-0"
         />
 
         <WhyUsSection/>
@@ -47,7 +47,7 @@ const AboutUsPage = () => {
         <PerksSection/>
       </div>
 
-      <div className="lg:pt-[200px] lg:pb-20">
+      <div className="lg:pt-[200px] lg:pb-20 py-8">
         <StudentsStoriesSection withoutBackground/>
       </div>
 

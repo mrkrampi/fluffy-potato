@@ -24,14 +24,14 @@ export const CarouselWrapper = ({ children, opts }: PropsWithChildren<CarouselWr
         variant="link"
         className="left-0 md:-left-32 -bottom-16 hover:bg-none active:bg-none"
         arrow={<span
-          className="h-1 min-w-16 bg-primary-white relative before:absolute before:w-4 before:h-4 before:left-0 md:before:left-1 before:border-b-4 before:border-l-4 before:border-primary-white before:rotate-45 before:top-0.5 before:-translate-y-1/2"></span>}
+          className="h-1 min-w-16 bg-primary-white relative before:absolute before:w-4 before:h-4 before:left-0 md:before:left-0 before:border-b-4 before:border-l-4 before:border-primary-white before:rotate-45 before:top-0.5 before:-translate-y-1/2"></span>}
       />
       <CarouselNext
         size="xlg"
         variant="link"
         className="right-0 md:-right-32 md:top-1/2 -bottom-16 hover:bg-none active:bg-none"
         arrow={<span
-          className="h-1 min-w-16 bg-primary-white relative before:absolute before:w-4 before:h-4 before:right-0 md:before:right-1 before:border-t-4 before:border-r-4 before:border-primary-white before:rotate-45 before:top-0.5 before:-translate-y-1/2"></span>}
+          className="h-1 min-w-16 bg-primary-white relative before:absolute before:w-4 before:h-4 before:right-0 md:before:right-0 before:border-t-4 before:border-r-4 before:border-primary-white before:rotate-45 before:top-0.5 before:-translate-y-1/2"></span>}
       />
     </Carousel>
   );

@@ -1,7 +1,7 @@
 export const AboutUsSection = () => {
   return (
-    <section className="flex md:gap-4 lg:gap-14 items-center md:mx-4 lg:mx-24 md:py-14 lg:py-[200px] z-10 relative">
-      <h2 className="uppercase text-primary-accent md:text-[6.5rem] lg:text-[220px] leading-none font-unbounded font-medium">
+    <section className="flex flex-col md:flex-row gap-4 lg:gap-14 items-center mx-3 md:mx-4 lg:mx-24 py-8 md:py-14 lg:py-[200px] z-10 relative">
+      <h2 className="uppercase text-primary-accent text-6xl md:text-[6.5rem] lg:text-[220px] leading-none font-unbounded font-medium">
         Про нас
       </h2>
       <p className="font-medium lg:text-2xl">

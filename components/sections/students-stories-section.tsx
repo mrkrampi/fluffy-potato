@@ -12,7 +12,7 @@ export const StudentsStoriesSection = ({ withoutBackground }: StudentsStoriesSec
   return (
     <section
       className={cn(
-        "w-full h-full bg-center bg-cover relative px-3 mx:px-5 xl:px-0 pb-20 lg:pb-[260px]",
+        "w-full h-full bg-center bg-cover px-3 mx:px-5 xl:px-0 pb-20 lg:pb-[260px] relative",
         !withoutBackground && 'bg-stories-section'
       )}>
       <div className="absolute inset-0 bg-gradient-to-b from-[#040309] from-55% to-[#040309] to-90% opacity-80"/>

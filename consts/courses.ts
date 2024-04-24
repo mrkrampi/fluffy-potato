@@ -30,7 +30,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
   {
     id: 2,
     name: 'Project Manager',
-    previewImage: '/courses/pm-course.png',
+    previewImage: '/courses/pm-course.webp',
     level: 'Початківцям',
     duration: '3 місяці',
     countOfModules: 10,
@@ -56,7 +56,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
   {
     id: 3,
     name: 'Business Analyst',
-    previewImage: '/courses/ba-course.png',
+    previewImage: '/courses/ba-course.webp',
     level: 'Початківцям',
     duration: '3 місяці',
     countOfModules: 10,
