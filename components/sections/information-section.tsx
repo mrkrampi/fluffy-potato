@@ -3,10 +3,10 @@ import { InformationCard } from '@/components/information-card';
 export const InformationSection = () => {
   return (
     <section className="lg:max-w-[770px] xl:max-w-[1660px] w-full h-full px-8 lg:px-0 mx-auto">
-      <h1
+      <h2
         className="uppercase text-[60px] md:text-[140px] lg:text-[160px] xl:text-[280px] text-text-bg -tracking-widest font-bold leading-[1.1]">
         IT - Це майбутнє України
-      </h1>
+      </h2>
       <div
         className="flex flex-col md:flex-row gap-y-12 max-w-6xl w-full justify-between mx-auto top-[-40px] md:-top-16 xl:top-[-140px] relative px-4 md:px-0">
         <InformationCard source="За даними Forbes.ua">
