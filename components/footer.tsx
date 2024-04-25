@@ -5,8 +5,11 @@ import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/logo';
 import { SocialButton } from '@/components/social-button';
 import { SocialEnum } from '@/enums/social.enum';
+import { COURSES_LIST } from '@/consts/courses';
 
 export const Footer = () => {
+  const firstCourseSlug = COURSES_LIST.at(0)?.slug;
+
   return (
     <footer className="w-full h-full bg-primary-black">
       <div className="border-l-primary-white pt-16 md:pt-0 border-b-2">
@@ -64,7 +67,7 @@ export const Footer = () => {
                 size="lg"
                 className="bg-primary-accent rounded-3xl px-6 py-3 min-w-36 xl:min-w-fit hover:bg-primary-white hover:text-primary-accent"
               >
-                <Link href="/courses">Курси</Link>
+                <Link href={`/courses/${firstCourseSlug}`}>Курси</Link>
               </Button>
               <Button
                 asChild

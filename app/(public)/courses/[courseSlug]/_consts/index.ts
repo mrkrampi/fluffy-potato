@@ -26,3 +26,22 @@ export const STUDY_GUIDE_LIST: Array<StudyGuideInterface> = [
     imageUrl: '/study-guide/4.webp',
   },
 ];
+
+export const TEACHER_ACHIEVEMENTS: Array<string> = [
+  'Менеджер з доставки в Grid Dynamics',
+  'Керівник проекту в Randstad',
+  'Засновник Niko IT Academy',
+  'Працювала в топ компаніях світу (Randstad, Grid Dynamics, GIS Art, Impressit, Omilia)',
+  'Сертифікований Scrum Master та Product Owner',
+  'Практикуючий тренер та коуч міжнародного рівня',
+  'Випустила понад 2000 студентів, які успішно працюють в IT',
+];
+
+export const TEACHER_ACHIEVEMENTS_IMAGES: Array<string> = [
+  '/teacher-achievements/1.png',
+  '/teacher-achievements/2.png',
+  '/teacher-achievements/3.png',
+  '/teacher-achievements/4.png',
+  '/teacher-achievements/5.png',
+  '/teacher-achievements/6.jpeg',
+];

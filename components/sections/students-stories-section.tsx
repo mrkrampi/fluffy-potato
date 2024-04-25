@@ -12,18 +12,18 @@ export const StudentsStoriesSection = ({ withoutBackground }: StudentsStoriesSec
   return (
     <section
       className={cn(
-        "w-full h-full bg-center bg-cover px-3 mx:px-5 xl:px-0 pb-20 lg:pb-[260px] relative",
+        "w-full h-full bg-center bg-cover px-3 pb-20 lg:pb-[260px] relative lg:px-5 md:px-8",
         !withoutBackground && 'bg-stories-section'
       )}>
       <div className="absolute inset-0 bg-gradient-to-b from-[#040309] from-55% to-[#040309] to-90% opacity-80"/>
-      <div className="max-w-[1600px] md:px-4 xl:px-0 xl:mx-auto w-full z-10 relative">
+      <div className="w-full z-10 relative">
         <div className="w-full flex md:w-1/2 lg:w-full">
           <h3
             className="max-w-5xl xl:w-full md:w-3/2 uppercase text-primary-white text-4xl md:text-6xl xl:text-[6.5rem] leading-none font-normal font-unbounded tracking-tighter">
             Відгуки студентів
           </h3>
         </div>
-        <div className="max-w-full my-16 md:my-0 md:mt-20 xl:mt-40 xl:mx-[100px]">
+        <div className="max-w-full lg:w-10/12 my-16 md:my-0 md:mt-20 xl:mt-40 mx-auto">
           <Carousel
             opts={{
               loop: true,

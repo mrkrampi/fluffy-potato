@@ -7,9 +7,9 @@ import { StudyGuideCard } from '@/app/(public)/courses/[courseSlug]/_components/
 
 export const StudyGuideSection = () => {
   return (
-    <section className="lg:mx-5 md:mx-8">
+    <section className="lg:mx-5 md:mx-8 mx-2">
       <Heading>Як проходить навчання</Heading>
-      <div className="w-4/5 mx-auto md:my-24 lg:my-44">
+      <div className="w-full md:w-4/5 mx-auto md:my-24 lg:my-44">
         <CarouselWrapper>
           {STUDY_GUIDE_LIST.map((item: StudyGuideInterface, index: number) =>
             (

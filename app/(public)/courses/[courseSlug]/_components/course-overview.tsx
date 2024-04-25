@@ -11,7 +11,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
   }
 
   return (
-    <div className="mt-24 py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 px-8 md:px-24 relative rounded-3xl overflow-hidden">
+    <div className="mt-12 md:mt-24 py-12 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 mx-2 md:mx-0 px-8 md:px-24 relative rounded-3xl overflow-hidden">
       <Image
         src="/backgrounds/course-overview-bg.png"
         alt="Overview bg"
@@ -20,7 +20,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
       />
       <div className="z-10">
         <h1
-          className="text-primary-white lg:text-6xl md:text-5xl"
+          className="text-primary-white lg:text-6xl md:text-5xl text-3xl"
         >
           {course.name}
         </h1>

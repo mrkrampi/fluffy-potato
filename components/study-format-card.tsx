@@ -1,10 +1,12 @@
 import { StudyFormatInterface } from '@/interfaces/study-format.interface';
+import { Button } from '@/components/ui/button';
 
 interface StudyFormatCardProps {
   studyFormat: StudyFormatInterface;
+  registerButton?: boolean;
 }
 
-export const StudyFormatCard = ({ studyFormat }: StudyFormatCardProps) => {
+export const StudyFormatCard = ({ studyFormat, registerButton }: StudyFormatCardProps) => {
   return (
     <div className="bg-gradient-to-b from-[#191923] to-[#5a5ad2] p-3 w-full max-w-[412px] items-center rounded-3xl text-center group cursor-pointer md:min-w-[340px] xl:min-w-max">
       <div className="w-full h-full border border-[#272eb6] pt-12 py-10 md:pb-16md: px-4 flex flex-col justify-between items-center rounded-3xl">
@@ -20,8 +22,15 @@ export const StudyFormatCard = ({ studyFormat }: StudyFormatCardProps) => {
               ))}
           </ul>
         </div>
-        <div className="text-primary-white text-3xl xl:text-4xl my-9 xl:opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out">
+        <div className="text-primary-white text-3xl xl:text-4xl my-9 xl:opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out flex flex-col">
           {studyFormat.price} ₴
+          {registerButton && <Button
+              size="lg"
+              variant="cta"
+              className="bg-primary-white mt-6 text-primary-accent rounded-3xl py-3 text-xl font-semibold md:w-52"
+          >
+              Записатись
+          </Button>}
         </div>
       </div>
     </div>

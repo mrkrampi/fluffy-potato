@@ -1,4 +1,4 @@
-export type  CourseInterface = {
+export interface CourseInterface {
   id: number;
   name: string;
   level: string;
@@ -9,4 +9,12 @@ export type  CourseInterface = {
   overview: Array<string>;
   goals: Array<string>;
   overviewImage: string;
+  courseProgram?: Array<CourseProgram>;
+}
+
+export interface CourseProgram {
+  id: number;
+  title: string;
+  lessons: Array<string>;
+  objective: string;
 }

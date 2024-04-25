@@ -14,12 +14,12 @@ export const StudyGuideCard = ({ item, index }: StudyGuideCardProps) => {
         <Image src={item.imageUrl} alt="Study Guide" fill className="object-cover"/>
       </div>
       <div className="flex flex-col gap-y-8 lg:gap-y-12 lg:w-1/2">
-        <p className="text-primary-gray font-semibold text-3xl">[ {index} ]</p>
+        <p className="text-primary-gray font-semibold text-xl md:text-3xl">[ {index} ]</p>
         <div>
-          <p className="text-primary-accent text-4xl">
+          <p className="text-primary-accent text-3xl md:text-4xl">
             {item.title}
           </p>
-          <p className="md:mt-12 lg:mt-14 text-primary-white text-xl font-medium">
+          <p className="mt-8 md:mt-12 lg:mt-14 text-primary-white text-xl font-medium">
             {item.description}
           </p>
         </div>
