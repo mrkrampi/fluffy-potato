@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 
 const AboutUsPage = () => {
   return (
-    <main className="text-primary-white">
+    <div className="text-primary-white">
       <section className="h-screen flex items-center mx-3 md:mx-4 lg:mx-24">
         <h1 className="lg:text-6xl text-3xl md:text-5xl uppercase font-unbounded tracking-tight">
           створюємо <span className="text-primary-accent">міцну  основу</span> для <span
@@ -54,7 +54,7 @@ const AboutUsPage = () => {
       <div className="lg:pb-64">
         <ContactForm/>
       </div>
-    </main>
+    </div>
   );
 };
 
