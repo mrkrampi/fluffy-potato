@@ -28,15 +28,15 @@ export const CourseProgramSection = ({ course: { courseProgram } }: CourseProgra
                   hideChevron
                   className="hover:no-underline my-6 md:my-14 grid grid-cols-4 md:grid-cols-6 lg:grid-cols-7 gap-4 md:gap-8 lg:gap-10 lg:mx-5 md:mx-8 mx-2"
                 >
-                  <div className="text-primary-accent font-medium lg:text-xl col-span-4 md:col-span-1 text-left">
+                  <span className="text-primary-accent font-medium lg:text-xl col-span-4 md:col-span-1 text-left">
                     [ {index + 1} Модуль ]
-                  </div>
-                  <div className="text-primary-white font-unbounded md:text-3xl lg:text-4xl col-span-2 md:col-span-3 lg:col-span-3 text-left">
+                  </span>
+                  <span className="text-primary-white font-unbounded md:text-3xl lg:text-4xl col-span-2 md:col-span-3 lg:col-span-3 text-left">
                     {program.title}
-                  </div>
-                  <div className="text-primary-white font-medium lg:text-xl lg:col-span-2 text-left text-nowrap">
+                  </span>
+                  <span className="text-primary-white font-medium lg:text-xl lg:col-span-2 text-left text-nowrap">
                     [ Результат ]
-                  </div>
+                  </span>
                   <span
                     className="hidden md:block relative min-w-6 min-h-6 md:w-8 md:h-8 lg:w-12 lg:h-12 trigger transition-transform duration-200 ml-auto">
                       <Image src="/arrows/blue.svg" alt="Програма курсу" fill/>

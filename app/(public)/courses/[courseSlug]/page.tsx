@@ -32,7 +32,7 @@ const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
   }
 
   return (
-    <main className="pt-24">
+    <div className="pt-24">
       <div className="mt-10 mb-28 md:my-10 lg:my-28 mx-auto">
         <CourseSelector activeCourse={activeCourse}/>
       </div>
@@ -74,7 +74,7 @@ const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
       <div className="lg:pt-8 pt-24">
         <StudentsStoriesSection withoutBackground/>
       </div>
-    </main>
+    </div>
   );
 };
 
