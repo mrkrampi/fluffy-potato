@@ -1,26 +1,28 @@
+import Image from 'next/image';
 import type { Metadata } from 'next';
 
-import { siteConfig } from '@/config/site';
 import { ALL_COURSES_LIST } from '@/consts/courses';
-import { CourseSelector } from '@/app/(public)/courses/[courseSlug]/_components/course-selector';
+import { StudyFormatsSection } from '@/components/sections/study-formats-section';
+import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
 import { GoalsSection } from '@/app/(public)/courses/[courseSlug]/_components/goals-section';
+import { CourseSelector } from '@/app/(public)/courses/[courseSlug]/_components/course-selector';
 import { StudyGuideSection } from '@/app/(public)/courses/[courseSlug]/_components/study-guide-section';
+import { AboutTeacherSection } from '@/app/(public)/courses/[courseSlug]/_components/about-teacher-section';
 import { CourseProgramSection } from '@/app/(public)/courses/[courseSlug]/_components/course-program-section';
 
 import courseProgram from '@/public/courses/course-program.webp';
-import Image from 'next/image';
-import { AboutTeacherSection } from '@/app/(public)/courses/[courseSlug]/_components/about-teacher-section';
-import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
-import { StudyFormatsSection } from '@/components/sections/study-formats-section';
-
-export const metadata: Metadata = {
-  title: siteConfig.coursesTitle,
-  description: siteConfig.coursesDescription,
-};
 
 interface CourseSlugPageProps {
   params: {
     courseSlug: string;
+  };
+}
+
+export function generateMetadata({ params: { courseSlug } }: CourseSlugPageProps): Metadata {
+  const activeCourse = ALL_COURSES_LIST.find((course) => course.slug === courseSlug);
+  return {
+    title: activeCourse?.courseTitle,
+    description: activeCourse?.courseDescription,
   };
 }
 

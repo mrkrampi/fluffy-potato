@@ -9,7 +9,9 @@ export interface CourseInterface {
   overview: Array<string>;
   goals: Array<string>;
   overviewImage: string;
-  courseProgram?: Array<CourseProgram>;
+  courseProgram: Array<CourseProgram>;
+  courseTitle: string;
+  courseDescription: string;
 }
 
 export interface CourseProgram {

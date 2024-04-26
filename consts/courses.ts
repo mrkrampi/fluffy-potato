@@ -98,7 +98,9 @@ export const COURSES_LIST: Array<CourseInterface> = [
         ],
         objective: 'На тренінгах ви навчитесь проходити співбесіди, та отримаєте цінні навички, які допоможуть вам в майбутній професії. Також вам буде доступний бонусний тренінг з Метології SCRUM.'
       },
-    ]
+    ],
+    courseTitle: 'Курс QA Engineer в IT | NIKO IT ACADEMY',
+    courseDescription: 'QA Engineer курс, де Ви навчитесь тестувати веб та додатки  та зрозумієте як відбується розробка. Приєднуйтесь до курсів тестування у нашій академії.',
   },
   {
     id: 2,
@@ -192,7 +194,9 @@ export const COURSES_LIST: Array<CourseInterface> = [
         ],
         objective: 'На тренінгах ви навчитесь проходити співбесіди, та отримаєте цінні навички, які допоможуть вам в майбутній професії. Також вам буде доступний бонусний тренінг з Метології SCRUM.'
       },
-    ]
+    ],
+    courseTitle: 'Курс Project Manager в IT | NIKO IT ACADEMY',
+    courseDescription: 'Курс Project manager, де Ви ознайомитесь з основними методологіями управління проєктами, в IT. Приєднуйтесь до курсів Project Manager у нашій академії.',
   },
   {
     id: 3,
@@ -296,7 +300,9 @@ export const COURSES_LIST: Array<CourseInterface> = [
         ],
         objective: 'Ви, та інші студенти, які закінчили навчання будете готові до вступу на ринок праці як професійні Бізнес Аналітики, знаючи основні принципи та методики своєї області'
       },
-    ]
+    ],
+    courseTitle: 'Курс Business Analysis в IT | NIKO IT ACADEMY',
+    courseDescription: 'Курс Business Analysis, де Ви отримаєте глибоке розуміння ролі бізнес-аналітика в процесі розробки програмного забезпечення. Приєднуйтесь до курсів Business Analysis в IT у нашій академії.',
   },
 ];
 
@@ -309,6 +315,9 @@ export const MINI_COURSE: CourseInterface = {
   goals: [],
   level: 'Початківцям',
   duration: '',
+  courseProgram: [],
+  courseTitle: 'Каталог міні-курсів NIKO IT ACADEMY',
+  courseDescription: 'Каталог міні - курсів NIKO IT ACADEMY,  де Ви зможете знайти собі курс за потребами',
 };
 
 export const ALL_COURSES_LIST = COURSES_LIST.concat(MINI_COURSE);

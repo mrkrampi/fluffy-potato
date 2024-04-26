@@ -1,8 +1,9 @@
+import Image from 'next/image';
+
 import { Heading } from '@/components/heading';
+import { TEACHER_ACHIEVEMENTS, TEACHER_ACHIEVEMENTS_IMAGES } from '@/app/(public)/courses/[courseSlug]/_consts';
 
 import nataliaImage from '@/public/natalia.webp';
-import Image from 'next/image';
-import { TEACHER_ACHIEVEMENTS, TEACHER_ACHIEVEMENTS_IMAGES } from '@/app/(public)/courses/[courseSlug]/_consts';
 
 export const AboutTeacherSection = () => {
   return (
@@ -20,9 +21,9 @@ export const AboutTeacherSection = () => {
         />
 
         <div>
-          <h1 className="text-primary-black lg:text-6xl md:text-5xl text-3xl text-center lg:text-left">
+          <h3 className="text-primary-black lg:text-6xl md:text-5xl text-3xl text-center lg:text-left">
             Наталія Яцишинець
-          </h1>
+          </h3>
           <ul className="list-disc marker:text-primary-accent my-6">
             {TEACHER_ACHIEVEMENTS.map((item: string) => {
               return (
