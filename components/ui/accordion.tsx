@@ -25,7 +25,7 @@ const AccordionTrigger = React.forwardRef<
   React.ComponentPropsWithoutRef<typeof AccordionPrimitive.Trigger> & { hideChevron?: boolean }
 >(({ className, children, hideChevron, ...props }, ref) => {
   return (
-    <AccordionPrimitive.Header className="flex">
+    <div className="flex">
       <AccordionPrimitive.Trigger
         ref={ref}
         className={cn(
@@ -37,7 +37,7 @@ const AccordionTrigger = React.forwardRef<
         {children}
         {!hideChevron && <ChevronDown className="h-4 w-4 shrink-0 transition-transform duration-200"/>}
       </AccordionPrimitive.Trigger>
-    </AccordionPrimitive.Header>
+    </div>
   )
 });
 AccordionTrigger.displayName = AccordionPrimitive.Trigger.displayName;
