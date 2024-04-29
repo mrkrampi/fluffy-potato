@@ -7,10 +7,10 @@ import { StudentsStoriesSection } from '@/components/sections/students-stories-s
 import { GoalsSection } from '@/app/(public)/courses/[courseSlug]/_components/goals-section';
 import { CourseSelector } from '@/app/(public)/courses/[courseSlug]/_components/course-selector';
 import { StudyGuideSection } from '@/app/(public)/courses/[courseSlug]/_components/study-guide-section';
-import { AboutTeacherSection } from '@/app/(public)/courses/[courseSlug]/_components/about-teacher-section';
 import { CourseProgramSection } from '@/app/(public)/courses/[courseSlug]/_components/course-program-section';
 
 import courseProgram from '@/public/courses/course-program.webp';
+import { AboutTeacherSection } from '@/components/sections/about-teacher-section';
 
 interface CourseSlugPageProps {
   params: {

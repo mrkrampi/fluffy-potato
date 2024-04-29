@@ -5,7 +5,7 @@ const DEFAULT_CLASS_NAME = 'font-unbounded text-primary-white tracking-tighter t
 
 interface HeadingProps {
   className?: string;
-  level?: number;
+  level?: 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 export const Heading = ({ level, className, children }: PropsWithChildren<HeadingProps>) => {

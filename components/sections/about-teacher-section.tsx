@@ -7,7 +7,7 @@ import nataliaImage from '@/public/natalia.webp';
 
 export const AboutTeacherSection = () => {
   return (
-    <section className="lg:mx-5 md:mx-8 mx-2">
+    <section className="md:px-8 px-2 lg:px-24 mx-auto md:py-14 lg:py-24">
       <Heading className="lg:text-6xl">
         <span className="text-primary-accent">Вас навчатиме експерт</span> <br className="hidden lg:block"/> із 6 - річним досвідом у галузі
       </Heading>
@@ -27,7 +27,7 @@ export const AboutTeacherSection = () => {
           <ul className="list-disc marker:text-primary-accent my-6">
             {TEACHER_ACHIEVEMENTS.map((item: string) => {
               return (
-                <li key={item} className="text-primary-black font-medium md:text-xl lg:text-2xl md:py-10 lg:py-3">
+                <li key={item} className="text-primary-black font-medium md:text-xl lg:text-2xl py-3 md:py-10 lg:py-3">
                   {item}
                 </li>
               );
@@ -37,13 +37,12 @@ export const AboutTeacherSection = () => {
           <div className="lg:mt-12 flex justify-between items-center lg:mx-0 -mx-6 md:-mx-20">
             {TEACHER_ACHIEVEMENTS_IMAGES.map((item: string) => {
               return (
-                <div key={item}>
+                <div key={item} className="relative md:w-[104px] md:h-[104px] w-12 h-12">
                   <Image
                     src={item}
                     alt={item}
-                    width={104}
-                    height={104}
-                    className="object-cover w-3/4 md:w-full"
+                    fill
+                    className="object-cover md:w-full"
                   />
                 </div>
               );

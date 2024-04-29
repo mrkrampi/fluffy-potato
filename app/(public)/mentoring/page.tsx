@@ -1,6 +1,15 @@
 import type { Metadata } from 'next';
 
 import { siteConfig } from '@/config/site';
+import { ContactForm } from '@/components/contact-form';
+import { AboutTeacherSection } from '@/components/sections/about-teacher-section';
+import { MentoringHeadingSection } from '@/app/(public)/mentoring/_components/mentoring-heading-section';
+import { MentoringBenefitsSection } from '@/app/(public)/mentoring/_components/mentoring-benefits-section';
+import { MentoringProcessSection } from '@/app/(public)/mentoring/_components/mentoring-process-section';
+import { MentoringDirectionsSection } from '@/app/(public)/mentoring/_components/mentoring-directions-section';
+
+import mentoringBg from '@/public/mentoring.webp';
+import Image from 'next/image';
 
 export const metadata: Metadata = {
   title: siteConfig.mentoringTitle,
@@ -9,11 +18,33 @@ export const metadata: Metadata = {
 
 const MentoringPage = () => {
   return (
-    <section className="text-primary-white">
-      <h1>
-        Mentoring page
-      </h1>
-    </section>
+    <>
+      <div className="relative overflow-hidden">
+        <MentoringHeadingSection/>
+
+        <Image
+          src={mentoringBg}
+          alt="Mentoring"
+          className="object-cover absolute -right-44 md:w-3/4 lg:w-[60vw] top-80 md:top-52 lg:top-[40vh] xl:top-52 -rotate-12 opacity-50"
+        />
+
+        <div className="lg:pb-24 pt-10 relative z-10">
+          <MentoringBenefitsSection/>
+        </div>
+      </div>
+      <div className="py-20 md:py-24 lg:py-52">
+        <MentoringProcessSection/>
+      </div>
+      <div>
+        <MentoringDirectionsSection/>
+      </div>
+      <div className="lg:py-20 md:mt-24 mt-36">
+        <AboutTeacherSection/>
+      </div>
+      <div className="mt-20 md:mt-40 lg:pt-16 lg:pb-52 md:pb-48">
+        <ContactForm/>
+      </div>
+    </>
   )
 }
 
