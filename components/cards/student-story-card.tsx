@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
+import { Quote } from '@/components/drawings/quote';
 import { StudentStoryInterface } from '@/interfaces/student-story.interface';
-import { Quote } from '@/components/quote';
 
 interface StudentStoryCardProps {
   story: StudentStoryInterface;

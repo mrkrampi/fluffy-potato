@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 
-import { Footer } from '@/components/footer';
-import { Header } from '@/components/header';
+import { Footer } from '@/components/markup/footer';
+import { Header } from '@/components/markup/header';
 
 const PublicLayout = ({ children }: PropsWithChildren) => {
   return (

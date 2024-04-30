@@ -39,7 +39,7 @@ const AboutUsPage = () => {
         <Image
           src={whyUsImg}
           alt="Why Us"
-          className="hidden md:block object-contain opacity-50 absolute bottom-0 md:w-3/4 lg:w-full md:h-3/4 lg:h-full lg:top-[42%] lg:-translate-y-1/2 lg:-right-[20vw] md:-right-[35%] md:top-0"
+          className="object-contain opacity-50 absolute bottom-0 w-3/4 lg:w-full md:h-3/4 lg:h-full lg:top-[42%] lg:-translate-y-1/2 lg:-right-[20vw] md:-right-[35%] top-[25%] -right-[10%] md:top-0"
         />
 
         <WhyUsSection/>
@@ -47,7 +47,7 @@ const AboutUsPage = () => {
         <PerksSection/>
       </div>
 
-      <div className="lg:pt-[200px] lg:pb-20 py-8">
+      <div className="py-20 md:py-24 lg:py-48 px-2 md:px-8 lg:px-24 mx-auto">
         <StudentsStoriesSection withoutBackground/>
       </div>
 

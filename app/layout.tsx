@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import { Onest, Inter, Unbounded } from 'next/font/google';
+import { Onest, Unbounded } from 'next/font/google';
+import { GoogleTagManager } from '@next/third-parties/google';
 
 import './globals.css';
 import { cn } from '@/lib/utils';
@@ -24,7 +25,10 @@ export default function RootLayout({
       onest.className,
       'bg-primary-black',
       `${onest.variable} ${unbounded.variable}`,
-    )}>{children}</body>
+    )}>
+    {children}
+    <GoogleTagManager gtmId="GTM-PQTVP6D4"/>
+    </body>
     </html>
   );
 }

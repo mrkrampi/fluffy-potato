@@ -1,4 +1,4 @@
-import { Heading } from '@/components/heading';
+import { Heading } from '@/components/markup/heading';;
 import { GoalsContainer } from '@/components/goals-container';
 
 interface GoalsSectionProps {

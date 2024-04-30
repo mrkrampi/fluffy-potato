@@ -1,4 +1,4 @@
-import { Heading } from '@/components/heading';
+import { Heading } from '@/components/markup/heading';
 import { CarouselItem } from '@/components/ui/carousel';
 import { CarouselWrapper } from '@/components/carousel-wrapper';
 import { StudyGuideInterface } from '@/interfaces/study-guide.interface';
@@ -20,5 +20,5 @@ export const StudyGuideSection = () => {
         </CarouselWrapper>
       </div>
     </section>
-  )
-}
+  );
+};

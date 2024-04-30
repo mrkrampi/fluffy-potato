@@ -1,9 +1,9 @@
 import Image from 'next/image';
 
+import { GoalCard } from '@/components/cards/goals-card';
 import { MENTORING_PROCESS_LIST, MENTORING_PROCESS_TITLE } from '@/app/(public)/mentoring/_consts';
 
 import arrowWhite from '@/public/arrows/white.svg';
-import { GoalCard } from '@/components/goals-card';
 
 export const MentoringProcessSection = () => {
   return (

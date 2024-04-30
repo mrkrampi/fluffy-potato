@@ -1,6 +1,6 @@
 import { STUDY_FORMATS_LIST } from '@/consts/study-format';
 import { StudyFormatInterface } from '@/interfaces/study-format.interface';
-import { StudyFormatCard } from '@/components/study-format-card';
+import { StudyFormatCard } from '@/components/cards/study-format-card';
 
 interface StudyFormatCardProps {
   registerButton?: boolean;

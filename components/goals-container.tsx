@@ -1,7 +1,7 @@
-import { GoalCard } from '@/components/goals-card';
+import { cn } from '@/lib/utils';
+import { GoalCard } from '@/components/cards/goals-card';
 import { CarouselItem } from '@/components/ui/carousel';
 import { CarouselWrapper } from '@/components/carousel-wrapper';
-import { cn } from '@/lib/utils';
 
 interface GoalsContainerProps {
   items: Array<string>;

@@ -1,5 +1,5 @@
 import { STUDENT_STORIES_LIST } from '@/consts/student-stories';
-import { StudentStoryCard } from '@/components/student-story-card';
+import { StudentStoryCard } from '@/components/cards/student-story-card';
 import { StudentStoryInterface } from '@/interfaces/student-story.interface';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 import { cn } from '@/lib/utils';
@@ -12,7 +12,7 @@ export const StudentsStoriesSection = ({ withoutBackground }: StudentsStoriesSec
   return (
     <section
       className={cn(
-        "w-full h-full bg-center bg-cover px-3 pb-20 lg:pb-[260px] relative lg:px-5 md:px-8",
+        "w-full h-full bg-center bg-cover pb-20 lg:pb-[260px] relative",
         !withoutBackground && 'bg-stories-section'
       )}>
       <div className="absolute inset-0 bg-gradient-to-b from-[#040309] from-55% to-[#040309] to-90% opacity-80"/>

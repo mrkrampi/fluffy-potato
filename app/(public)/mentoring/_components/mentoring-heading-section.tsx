@@ -1,4 +1,4 @@
-import { Heading } from '@/components/heading';
+import { Heading } from '@/components/markup/heading';;
 import { MENTORING_SUBTITLE, MENTORING_TITLE } from '@/app/(public)/mentoring/_consts';
 
 export const MentoringHeadingSection = () => {

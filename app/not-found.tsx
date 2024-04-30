@@ -1,9 +1,10 @@
 import Link from 'next/link';
-
-import { Header } from '@/components/header';
-import { Button } from '@/components/ui/button';
-import image404 from '@/public/404.webp';
 import Image from 'next/image';
+
+import { Button } from '@/components/ui/button';
+import { Header } from '@/components/markup/header';
+
+import image404 from '@/public/404.webp';
 
 const NotFound = () => {
   return (

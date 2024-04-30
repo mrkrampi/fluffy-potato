@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Heading } from '@/components/heading';
+import { Heading } from '@/components/markup/heading';
 import { TEACHER_ACHIEVEMENTS, TEACHER_ACHIEVEMENTS_IMAGES } from '@/app/(public)/courses/[courseSlug]/_consts';
 
 import nataliaImage from '@/public/natalia.webp';

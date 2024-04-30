@@ -1,4 +1,4 @@
-import { InformationCard } from '@/components/information-card';
+import { InformationCard } from '@/components/cards/information-card';
 
 export const InformationSection = () => {
   return (

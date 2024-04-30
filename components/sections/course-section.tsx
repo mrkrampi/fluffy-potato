@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { COURSES_LIST } from '@/consts/courses';
 import { CourseInterface } from '@/interfaces/course.interface';
-import { CourseCard } from '@/components/course-card';
+import { CourseCard } from '@/components/cards/course-card';
 import { CarouselWrapper } from '@/components/carousel-wrapper';
 import { CarouselItem } from '@/components/ui/carousel';
 

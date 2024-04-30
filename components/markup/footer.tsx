@@ -2,10 +2,10 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
-import { Logo } from '@/components/logo';
-import { SocialButton } from '@/components/social-button';
-import { SocialEnum } from '@/enums/social.enum';
 import { COURSES_LIST } from '@/consts/courses';
+import { SocialEnum } from '@/enums/social.enum';
+import { Logo } from '@/components/drawings/logo';
+import { SocialButton } from '@/components/social-button';
 
 export const Footer = () => {
   const firstCourseSlug = COURSES_LIST.at(0)?.slug;

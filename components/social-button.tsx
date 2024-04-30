@@ -18,20 +18,20 @@ export const SocialButton = ({ type, size }: SocialButtonProps) => {
   const renderIcon = () => {
     switch (type) {
       case SocialEnum.FACEBOOK:
-        return <Facebook className={iconsSize}/>
+        return <Facebook className={iconsSize}/>;
       case SocialEnum.INSTAGRAM:
-        return <Instagram className={iconsSize}/>
+        return <Instagram className={iconsSize}/>;
       case SocialEnum.LINKEDIN:
-        return <Linkedin className={iconsSize}/>
+        return <Linkedin className={iconsSize}/>;
     }
-  }
+  };
 
   return (
     <Button
       asChild
       size="icon"
       className={cn(
-        "flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white",
+        'flex justify-center bg-primary-white text-primary-black hover:bg-primary-accent hover:text-primary-white',
         buttonSize,
       )}
     >
@@ -41,3 +41,5 @@ export const SocialButton = ({ type, size }: SocialButtonProps) => {
     </Button>
   );
 };
+
+

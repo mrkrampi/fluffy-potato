@@ -1,16 +1,16 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect } from 'react';
 import { useToggle } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
 import { Cross1Icon, HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { Logo } from '@/components/logo';
-import { MenuLinkInterface } from '@/interfaces/menu-link.interface';
+import { Logo } from '@/components/drawings/logo';
 import { MENU_LINKS_LIST } from '@/consts/menu-links';
-import { useEffect } from 'react';
+import { MenuLinkInterface } from '@/interfaces/menu-link.interface';
 
 export const Header = () => {
   const [isMenuOpen, toggleMenu] = useToggle(false);

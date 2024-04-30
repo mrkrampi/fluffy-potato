@@ -1,5 +1,5 @@
 import { CourseInterface, CourseProgram } from '@/interfaces/course.interface';
-import { Heading } from '@/components/heading';
+import { Heading } from '@/components/markup/heading';;
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import Image from 'next/image';
 
