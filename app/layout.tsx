@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { Onest, Unbounded } from 'next/font/google';
-import { GoogleTagManager } from '@next/third-parties/google';
+import { GoogleTagManager, GoogleAnalytics } from '@next/third-parties/google';
 
-import './globals.css';
 import { cn } from '@/lib/utils';
 import { siteConfig } from '@/config/site';
+
+import './globals.css';
 
 const onest = Onest({ subsets: ['latin', 'cyrillic'], variable: '--font-onest', adjustFontFallback: false });
 const unbounded = Unbounded({ subsets: ['latin', 'cyrillic'], variable: '--font-unbounded', adjustFontFallback: false });
@@ -27,7 +28,8 @@ export default function RootLayout({
       `${onest.variable} ${unbounded.variable}`,
     )}>
     {children}
-    <GoogleTagManager gtmId="GTM-PQTVP6D4"/>
+    {process.env.NODE_ENV === 'production' && (<GoogleTagManager gtmId="GTM-PQTVP6D4"/>)}
+    {process.env.NODE_ENV === 'production' && (<GoogleAnalytics gaId="G-3BC6PKN4ZV" />)}
     </body>
     </html>
   );
