@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   title: siteConfig.mainTitle,
   description: siteConfig.mainDescription,
   verification: {
-    google: 'google1a239d9ea71773e9'
+    google: 'CFKUxXq60_TIEAK929jIOgZr3YDOK1vTkhuBKSJNj7M'
   }
 };
 
