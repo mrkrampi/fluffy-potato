@@ -13,6 +13,9 @@ const unbounded = Unbounded({ subsets: ['latin', 'cyrillic'], variable: '--font-
 export const metadata: Metadata = {
   title: siteConfig.mainTitle,
   description: siteConfig.mainDescription,
+  verification: {
+    google: 'google1a239d9ea71773e9'
+  }
 };
 
 export default function RootLayout({
