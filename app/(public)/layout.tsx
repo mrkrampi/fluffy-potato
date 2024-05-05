@@ -5,11 +5,13 @@ import { Header } from '@/components/markup/header';
 
 const PublicLayout = ({ children }: PropsWithChildren) => {
   return (
-    <main>
+    <div className="border-b-[6px] border-primary-accent">
       <Header/>
-      {children}
+      <main>
+        {children}
+      </main>
       <Footer/>
-    </main>
+    </div>
   );
 };
 

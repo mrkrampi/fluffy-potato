@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   title: siteConfig.mainTitle,
   description: siteConfig.mainDescription,
   verification: {
-    google: 'CFKUxXq60_TIEAK929jIOgZr3YDOK1vTkhuBKSJNj7M'
-  }
+    google: process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION_ID,
+  },
 };
 
 export default function RootLayout({
@@ -26,13 +26,14 @@ export default function RootLayout({
   return (
     <html lang="uk" className="scroll-smooth">
     <body className={cn(
+      'bg-primary-black h-full',
       onest.className,
-      'bg-primary-black',
       `${onest.variable} ${unbounded.variable}`,
     )}>
     {children}
-    {process.env.NODE_ENV === 'production' && (<GoogleTagManager gtmId="GTM-PQTVP6D4"/>)}
-    {process.env.NODE_ENV === 'production' && (<GoogleAnalytics gaId="G-3BC6PKN4ZV" />)}
+
+    {process.env.NODE_ENV === 'production' && (<GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}/>)}
+    {process.env.NODE_ENV === 'production' && (<GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!}/>)}
     </body>
     </html>
   );

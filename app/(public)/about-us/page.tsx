@@ -12,6 +12,7 @@ import { PerksSection } from '@/app/(public)/about-us/_component/perks-section';
 import { WhyUsSection } from '@/app/(public)/about-us/_component/why-us-section';
 import { AboutUsSection } from '@/app/(public)/about-us/_component/about-us.section';
 import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
+import { Section } from '@/components/markup/section';
 
 export const metadata: Metadata = {
   title: siteConfig.aboutUsTitle,
@@ -20,14 +21,14 @@ export const metadata: Metadata = {
 
 const AboutUsPage = () => {
   return (
-    <div className="text-primary-white">
-      <section className="h-screen flex items-center mx-3 md:mx-4 lg:mx-24">
+    <div className="text-primary-white pt-[86px] md:pt-[108px]">
+      <Section className="flex items-center py-12 md:py-40 lg:py-52">
         <h1 className="lg:text-6xl text-3xl md:text-5xl uppercase font-unbounded tracking-tight">
           створюємо <span className="text-primary-accent">міцну  основу</span> для <span
           className="text-primary-accent">успішної кар&apos;єри</span> в IT, сприяючи зростанню професіоналізму <span
           className="text-primary-accent">українців</span>
         </h1>
-      </section>
+      </Section>
 
       <section className="h-40 md:h-56 lg:h-96 relative">
         <Image src={aboutUsImg} alt="About us" fill className="object-cover"/>

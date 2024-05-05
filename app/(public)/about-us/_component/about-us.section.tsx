@@ -1,6 +1,8 @@
+import { Section } from '@/components/markup/section';
+
 export const AboutUsSection = () => {
   return (
-    <section className="flex flex-col md:flex-row gap-4 lg:gap-14 lg:items-center py-20 md:py-24 lg:py-48 px-2 md:px-8 lg:px-24 mx-auto relative z-10">
+    <Section className="flex flex-col md:flex-row gap-4 lg:gap-14 lg:items-center relative z-10">
       <h2 className="uppercase text-primary-accent text-6xl md:text-[6.5rem] xl:text-[220px] leading-none font-unbounded font-medium lg:w-1/2">
         Про нас
       </h2>
@@ -15,6 +17,6 @@ export const AboutUsSection = () => {
         IT-сфері. Наша школа відмінно справляється з поставленною задачею, адже 90% студентів отримують роботу у накоротший час. Ми
         підтримуємо наших студентів, допомагаємо досягти успіху та випускаємо на ринок праці професіоналів.
       </p>
-    </section>
+    </Section>
   );
 };
