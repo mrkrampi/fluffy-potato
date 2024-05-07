@@ -9,6 +9,9 @@ const config = {
     './src/**/*.{ts,tsx}',
 	],
   prefix: "",
+  safelist: [
+    "marker:[content:counters(section,\'.\')_\'._\']"
+  ],
   theme: {
     container: {
       center: true,
