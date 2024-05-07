@@ -11,7 +11,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
   }
 
   return (
-    <div className="mt-12 md:mt-24 py-12 md:py-24 grid grid-cols-1 lg:grid-cols-2 gap-6 mx-2 md:mx-0 px-8 md:px-24 relative rounded-3xl overflow-hidden">
+    <div className="mt-20 md:mt-24 py-10 md:pt-8 md:pb-20 lg:py-[104px] grid grid-cols-1 lg:grid-cols-2 gap-6 mx-2 md:mx-0 px-8 md:px-24 relative rounded-3xl overflow-hidden">
       <Image
         src="/backgrounds/course-overview-bg.png"
         alt="Overview bg"
@@ -19,21 +19,21 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
         className="object-cover object-center"
       />
       <div className="z-10">
-        <h1
-          className="text-primary-white lg:text-6xl md:text-5xl text-3xl"
-        >
+        <h1 className="text-primary-white lg:text-[64px] md:text-[54px] text-[32px] text-center uppercase">
           {course.name}
         </h1>
+
         <ul className="list-disc marker:text-primary-accent my-6">
           {course.overview.map((item: string) => {
             return (
-              <li key={item} className="text-primary-white font-medium md:text-xl lg:text-2xl my-3">
+              <li key={item} className="text-primary-white font-medium md:text-xl lg:text-2xl my-6">
                 {item}
               </li>
             );
           })}
         </ul>
       </div>
+
       <div className="h-full min-h-[478px] w-full rounded-2xl relative overflow-hidden">
         <Image
           src={course.overviewImage}

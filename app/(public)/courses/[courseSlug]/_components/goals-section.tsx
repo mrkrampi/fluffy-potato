@@ -1,5 +1,6 @@
 import { Heading } from '@/components/markup/heading';;
 import { GoalsContainer } from '@/components/goals-container';
+import { Section } from '@/components/markup/section';
 
 interface GoalsSectionProps {
   goals: Array<string>;
@@ -7,11 +8,11 @@ interface GoalsSectionProps {
 
 export const GoalsSection = ({ goals }: GoalsSectionProps) => {
   return (
-    <section className="lg:mx-5 mx-2 md:mx-8">
+    <Section>
       <Heading>
         Цілі курсу
       </Heading>
       <GoalsContainer items={goals}/>
-    </section>
+    </Section>
   );
 };

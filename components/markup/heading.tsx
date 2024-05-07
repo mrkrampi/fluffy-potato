@@ -1,7 +1,7 @@
 import { PropsWithChildren } from 'react';
 import { cn } from '@/lib/utils';
 
-const DEFAULT_CLASS_NAME = 'font-unbounded text-primary-white tracking-tighter text-5xl md:text-6xl lg:text-[6.5rem]';
+const DEFAULT_CLASS_NAME = 'font-unbounded text-primary-white tracking-tighter text-5xl md:text-[64px] lg:text-[6.5rem] uppercase';
 
 interface HeadingProps {
   className?: string;

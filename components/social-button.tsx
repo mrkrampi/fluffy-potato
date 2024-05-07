@@ -11,20 +11,22 @@ interface SocialButtonProps {
 }
 
 export const SocialButton = ({ type, size }: SocialButtonProps) => {
-  const iconsSize = size === 'sm' ? 'w-4 h-4' : 'w-10 h-10';
+  const iconsSize = size === 'sm' ? 'w-4 h-4 rounded-md' : 'w-10 h-10 rounded-xl';
   const buttonSize = size === 'sm' ? 'w-6 h-6' : 'w-12 h-12';
   const link = SOCIAL_LINKS[type];
 
   const renderIcon = () => {
     switch (type) {
       case SocialEnum.FACEBOOK:
-        return <Facebook className={iconsSize}/>;
+        return Facebook;
       case SocialEnum.INSTAGRAM:
-        return <Instagram className={iconsSize}/>;
+        return Instagram;
       case SocialEnum.LINKEDIN:
-        return <Linkedin className={iconsSize}/>;
+        return Linkedin;
     }
   };
+
+  const Icon = renderIcon();
 
   return (
     <Button
@@ -36,10 +38,8 @@ export const SocialButton = ({ type, size }: SocialButtonProps) => {
       )}
     >
       <a href={link} target="_blank">
-        {renderIcon()}
+        <Icon className={iconsSize}/>
       </a>
     </Button>
   );
 };
-
-

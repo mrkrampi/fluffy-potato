@@ -1,8 +1,9 @@
+import { Section } from '@/components/markup/section';
 import { MENTORING_DIRECTION_BG_TEXT, MENTORING_DIRECTION_SUBTITLE, MENTORING_DIRECTIONS_LIST } from '@/app/(public)/mentoring/_consts';
 
 export const MentoringDirectionsSection = () => {
   return (
-    <section className="md:px-8 px-2 lg:px-24 mx-auto md:py-14 lg:py-24">
+    <Section>
       <h2
         className="uppercase text-5xl md:text-[104px] lg:text-[160px] xl:text-[200px] text-center text-text-bg -tracking-widest font-bold leading-[1.1] font-unbounded">
         {MENTORING_DIRECTION_BG_TEXT}
@@ -27,6 +28,6 @@ export const MentoringDirectionsSection = () => {
           </div>
         ))}
       </div>
-    </section>
+    </Section>
   );
 };

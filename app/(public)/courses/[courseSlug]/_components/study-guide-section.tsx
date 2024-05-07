@@ -4,12 +4,13 @@ import { CarouselWrapper } from '@/components/carousel-wrapper';
 import { StudyGuideInterface } from '@/interfaces/study-guide.interface';
 import { STUDY_GUIDE_LIST } from '@/app/(public)/courses/[courseSlug]/_consts';
 import { StudyGuideCard } from '@/app/(public)/courses/[courseSlug]/_components/study-guide-card';
+import { Section } from '@/components/markup/section';
 
 export const StudyGuideSection = () => {
   return (
-    <section className="lg:mx-5 md:mx-8 mx-2">
-      <Heading>Як проходить навчання</Heading>
-      <div className="w-full md:w-4/5 mx-auto md:my-24 lg:my-44">
+    <Section>
+      <Heading className="text-[40px]">Як проходить навчання</Heading>
+      <div className="w-full md:w-4/5 mx-auto md:mt-24 mt-16 lg:mt-44">
         <CarouselWrapper>
           {STUDY_GUIDE_LIST.map((item: StudyGuideInterface, index: number) =>
             (
@@ -19,6 +20,6 @@ export const StudyGuideSection = () => {
             ))}
         </CarouselWrapper>
       </div>
-    </section>
+    </Section>
   );
 };

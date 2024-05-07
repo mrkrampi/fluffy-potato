@@ -9,7 +9,7 @@ interface SectionProps {
 export const Section = ({ children, className }: PropsWithChildren<SectionProps>) => {
   return (
     <section className={cn(
-      "py-20 md:py-24 lg:py-48 px-2 md:px-8 lg:px-24 mx-auto relative z-10",
+      "py-20 md:py-[100px] lg:py-[200px] lg:px-24 mx-auto relative z-10 max-w-[calc(100vw-16px)] md:max-w-[calc(100vw-64px)]",
       className,
     )}>
       {children}

@@ -2,11 +2,11 @@ import { Section } from '@/components/markup/section';
 
 export const AboutUsSection = () => {
   return (
-    <Section className="flex flex-col md:flex-row gap-4 lg:gap-14 lg:items-center relative z-10">
-      <h2 className="uppercase text-primary-accent text-6xl md:text-[6.5rem] xl:text-[220px] leading-none font-unbounded font-medium lg:w-1/2">
+    <Section className="flex flex-col md:flex-row gap-y-8 md:gap-4 lg:gap-14 lg:items-center relative z-10">
+      <h2 className="uppercase text-primary-accent text-[104px] md:text-[6.5rem] xl:text-[220px] leading-none font-unbounded font-medium lg:w-1/2">
         Про нас
       </h2>
-      <p className="font-medium lg:text-2xl lg:w-1/2">
+      <p className="font-medium lg:text-2xl lg:w-1/2 font-medium">
         Niko IT Academy це Українсько - Канадська онлайн академія заснована у 2020 році викладачем та екпертом в IT індустрії - Наталі
         Ятшинець. Головна ціль академії - надати студентам шанс отримати цінний досвіт та створити власний проєкт, під керівництвом
         досвідченоного вчителям та успішного IT Фахівця. Ми слідкуємо за розвитком та тенденціями ринку, для випуску цінних фахівців у

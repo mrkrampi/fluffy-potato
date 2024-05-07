@@ -3,6 +3,7 @@ import { CourseInterface } from '@/interfaces/course.interface';
 import { CourseTab } from '@/app/(public)/courses/[courseSlug]/_components/course-tab';
 import { CourseOverview } from '@/app/(public)/courses/[courseSlug]/_components/course-overview';
 import { CourseInformation } from '@/app/(public)/courses/[courseSlug]/_components/course-information';
+import { Section } from '@/components/markup/section';
 
 interface CourseSelectorProps {
   activeCourse: CourseInterface;
@@ -10,8 +11,8 @@ interface CourseSelectorProps {
 
 export const CourseSelector = ({ activeCourse }: CourseSelectorProps) => {
   return (
-    <>
-      <section className="flex gap-x-6 overflow-x-auto w-screen px-8 xl:justify-center">
+    <Section className="md:py-8 lg:py-[104px] lg:pb-0">
+      <section className="flex gap-x-6 overflow-x-auto w-screen px-8 2xl:justify-center">
         {ALL_COURSES_LIST.map((course) => (
           <CourseTab
             key={course.slug}
@@ -21,10 +22,10 @@ export const CourseSelector = ({ activeCourse }: CourseSelectorProps) => {
           />
         ))}
       </section>
-      <div className="lg:my-6 lg:mx-5 md:my-12 md:mx-8 flex flex-col gap-y-6">
+      <div className="lg:mb-6 lg:mx-5 md:mt-8 lg:mt-0 md:mb-12 flex flex-col gap-y-10">
         <CourseOverview course={activeCourse}/>
         <CourseInformation/>
       </div>
-    </>
+    </Section>
   );
 };

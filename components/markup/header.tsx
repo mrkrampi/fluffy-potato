@@ -54,7 +54,7 @@ export const Header = () => {
           <Logo/>
         </Link>
         <button
-          className="md:hidden ml-3 text-gray-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg items-center area-hamburger flex justify-end"
+          className="lg:hidden ml-3 text-gray-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg items-center area-hamburger flex justify-end"
           aria-expanded={isMenuOpen}
           onClick={toggleMenu}
         >
@@ -73,14 +73,14 @@ export const Header = () => {
           // isMenuOpen && 'flex',
         )}>
           <div className="lg:w-full lg:hidden bg-primary-white lg:h-2 rounded-3xl h-full w-2"/>
-          <ul className="flex flex-col xl:flex-row text-primary-white gap-y-2 gap-x-12 lg:py-4">
+          <ul className="flex flex-col lg:flex-row text-primary-white gap-y-2 gap-x-12 lg:py-4">
             {MENU_LINKS_LIST.map(renderMenuLink)}
           </ul>
           <div className="hidden xl:block w-full bg-primary-white h-2 rounded-3xl"/>
         </nav>
         <div className="hidden md:flex area-consultation gap-x-6">
         <button
-            className="xl:hidden ml-3 text-gray-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg inline-flex items-center justify-center area-hamburger"
+            className="md:hidden ml-3 text-gray-400 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-300 rounded-lg inline-flex items-center justify-center area-hamburger"
             aria-expanded={isMenuOpen}
             onClick={toggleMenu}
           >

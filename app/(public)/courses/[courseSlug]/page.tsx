@@ -34,18 +34,12 @@ const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
   }
 
   return (
-    <div className="pt-24">
-      <div className="mt-10 mb-28 md:my-10 lg:my-28 mx-auto">
-        <CourseSelector activeCourse={activeCourse}/>
-      </div>
-      <div className="lg:pt-[244px] md:pt-[210px] lg:pb-[40px]">
-        <GoalsSection goals={activeCourse?.goals}/>
-      </div>
+    <div className="md:mt-[104px]">
+      <CourseSelector activeCourse={activeCourse}/>
+      <GoalsSection goals={activeCourse?.goals}/>
 
-      <div className="relative overflow-hidden pt-36 md:pt-0 lg:pb-48 md:pb-24">
-        <div className="lg:pt-[200px] md:pt-[210px] lg:pb-[200px] md:pb-[104px] relative z-10">
-          <StudyGuideSection/>
-        </div>
+      <div className="relative overflow-hidden">
+        <StudyGuideSection/>
 
         <Image
           src={courseProgram}
@@ -53,29 +47,12 @@ const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
           className="object-cover -rotate-90 opacity-50 md:w-3/4 absolute md:top-[1100px] md:-right-24 lg:-right-28 lg:top-[700px]"
         />
 
-        <div className="z-10 relative mt-24">
-          <CourseProgramSection course={activeCourse}/>
-        </div>
+        <CourseProgramSection course={activeCourse}/>
       </div>
 
-      <div className="lg:py-52 py-24">
-        <AboutTeacherSection/>
-      </div>
-
-      <div className="lg:py-52 md:py-24">
-        <StudyFormatsSection registerButton/>
-
-        <div className="mx-auto max-w-screen-2xl mt-12 md:mt-20 lg:my-40">
-          <div
-            className="mx-2 md:mx-8 px-4 md:px-8 text-primary-white bg-primary-blue rounded-3xl font-unbounded text-2xl lg:text-5xl py-5 md:py-8 text-center">
-            + 24 заняття з англійської мови безкоштовно для учнів групового курсу
-          </div>
-        </div>
-      </div>
-
-      <div className="lg:pt-8 pt-24">
-        <StudentsStoriesSection withoutBackground/>
-      </div>
+      <AboutTeacherSection/>
+      <StudyFormatsSection registerButton/>
+      <StudentsStoriesSection withoutBackground/>
     </div>
   );
 };

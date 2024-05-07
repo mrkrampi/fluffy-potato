@@ -23,14 +23,14 @@ const AboutUsPage = () => {
   return (
     <div className="text-primary-white pt-[86px] md:pt-[108px]">
       <Section className="flex items-center py-12 md:py-40 lg:py-52">
-        <h1 className="lg:text-6xl text-3xl md:text-5xl uppercase font-unbounded tracking-tight">
+        <h1 className="lg:text-[60px] text-[27px] md:text-[54px] uppercase font-unbounded tracking-tight">
           створюємо <span className="text-primary-accent">міцну  основу</span> для <span
           className="text-primary-accent">успішної кар&apos;єри</span> в IT, сприяючи зростанню професіоналізму <span
           className="text-primary-accent">українців</span>
         </h1>
       </Section>
 
-      <section className="h-40 md:h-56 lg:h-96 relative">
+      <section className="h-[100px] md:h-56 lg:h-96 relative">
         <Image src={aboutUsImg} alt="About us" fill className="object-cover"/>
       </section>
 
@@ -40,7 +40,7 @@ const AboutUsPage = () => {
         <Image
           src={whyUsImg}
           alt="Why Us"
-          className="object-contain opacity-50 absolute bottom-0 w-3/4 lg:w-full md:h-3/4 lg:h-full lg:top-[42%] lg:-translate-y-1/2 lg:-right-[20vw] md:-right-[35%] top-[25%] -right-[10%] md:top-0"
+          className="object-contain opacity-50 absolute bottom-0 w-3/4 lg:w-full md:h-3/4 lg:h-full lg:top-[42%] lg:-translate-y-1/2 lg:-right-[20vw] md:-right-[35%] top-[28%] -right-[10%] md:top-0"
         />
 
         <WhyUsSection/>
@@ -48,13 +48,9 @@ const AboutUsPage = () => {
         <PerksSection/>
       </div>
 
-      <div className="py-20 md:py-24 lg:py-48 px-2 md:px-8 lg:px-24 mx-auto">
-        <StudentsStoriesSection withoutBackground/>
-      </div>
+      <StudentsStoriesSection withoutBackground/>
 
-      <div className="lg:pb-64">
-        <ContactForm/>
-      </div>
+      <ContactForm/>
     </div>
   );
 };

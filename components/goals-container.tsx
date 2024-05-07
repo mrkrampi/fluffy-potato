@@ -12,13 +12,14 @@ export const GoalsContainer = ({ items, className }: GoalsContainerProps) => {
   return (
     <>
       <div className={cn(
-        "hidden w-full lg:grid lg:grid-cols-2 xl:grid-cols-3 justify-center gap-y-14 my-40 gap-x-9",
+        "hidden w-full md:grid md:grid-cols-3 justify-center md:gap-x-4 md:gap-y-10 lg:gap-y-14 lg:gap-x-8 mt-24 gap-x-9",
         className
       )}>
         {items.map((item: string, index: number) => (<GoalCard index={index} text={item} key={item}/>))}
       </div>
+
       <div className={cn(
-        "lg:hidden md:w-2/3 mx-auto mt-16 md:mt-28",
+        "md:hidden md:w-2/3 mx-auto mt-16 md:mt-28 max-w-[calc(100vw-16px)] mb-12",
         className
       )}>
         <CarouselWrapper>

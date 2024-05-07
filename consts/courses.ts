@@ -3,7 +3,7 @@ import { CourseInterface } from '@/interfaces/course.interface';
 export const COURSES_LIST: Array<CourseInterface> = [
   {
     id: 1,
-    name: 'QA Engineer ',
+    name: 'Q.A. Engineer ',
     previewImage: '/courses/qa-course.png',
     level: 'Початківцям',
     duration: '3 місяці',
