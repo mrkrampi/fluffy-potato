@@ -10,6 +10,7 @@ import { LoginSchema } from '@/schemas';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { FormError } from '@/components/form-error';
+import { signInAction } from '@/actions/sign-in-action';
 import { FormSuccess } from '@/components/form-success';
 import { CardWrapper } from '@/components/auth/card-wrapper';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -38,21 +39,12 @@ export const SignInForm = () => {
 
     startTransition(async () => {
       try {
-        // const data = await login(values);
-        //
-        // if (data?.error) {
-        //   form.reset();
-        //   setError(data?.error);
-        // }
-        //
-        // if (data?.success) {
-        //   form.reset();
-        //   setSuccess(data?.success);
-        // }
-        //
-        // if (data?.twoFactor) {
-        //   setShowTwoFactor(true);
-        // }
+        const data = await signInAction(values);
+
+        if (data?.error) {
+          form.reset();
+          setError(data?.error);
+        }
       } catch {
         setError('Something went wrong');
       }

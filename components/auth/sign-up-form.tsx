@@ -13,6 +13,7 @@ import { FormError } from '@/components/form-error';
 import { FormSuccess } from '@/components/form-success';
 import { CardWrapper } from '@/components/auth/card-wrapper';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { signUp } from '@/actions/sign-up';
 
 export const SignUpForm = () => {
   const searchParams = useSearchParams();
@@ -38,9 +39,9 @@ export const SignUpForm = () => {
     setSuccess('');
 
     startTransition(async () => {
-      // const data = await register(values);
-      // setError(data.error);
-      // setSuccess(data.success);
+      const data = await signUp(values);
+      setError(data.error);
+      setSuccess(data.success);
     });
   };
 
