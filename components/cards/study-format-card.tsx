@@ -1,5 +1,6 @@
 import { StudyFormatInterface } from '@/interfaces/study-format.interface';
-import { Button } from '@/components/ui/button';
+import { RegisterToCourseModal } from '@/components/modals/register-to-course-modal';
+import { formatNumberWithSpaces } from '@/lib/utils';
 
 interface StudyFormatCardProps {
   studyFormat: StudyFormatInterface;
@@ -7,12 +8,6 @@ interface StudyFormatCardProps {
 }
 
 export const StudyFormatCard = ({ studyFormat, registerButton }: StudyFormatCardProps) => {
-  const formatNumberWithSpaces = (value: number): string => {
-    let numStr = value.toString();
-    numStr = numStr.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-    return numStr;
-  }
-
   return (
     <div className="bg-gradient-to-b from-[#191923] to-[#5a5ad2] p-3 w-full items-center rounded-3xl text-center group cursor-pointer md:min-w-[348px] lg:min-w-[420px]">
       <div className="w-full h-full border border-[#272eb6] pt-7 py-10 px-4 lg:px-0 flex flex-col justify-between items-center rounded-3xl">
@@ -34,13 +29,7 @@ export const StudyFormatCard = ({ studyFormat, registerButton }: StudyFormatCard
         <div className="text-primary-white font-unbounded text-[32px] xl:text-4xl my-9 xl:opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out flex flex-col">
           {formatNumberWithSpaces(studyFormat.price)} ₴
 
-          {registerButton && <Button
-              size="lg"
-              variant="cta"
-              className="bg-primary-white mt-6 text-primary-accent rounded-3xl py-3 font-semibold md:w-52 font-onest"
-          >
-              Записатись
-          </Button>}
+          {registerButton && <RegisterToCourseModal studyFormat={studyFormat}/>}
         </div>
       </div>
     </div>

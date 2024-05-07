@@ -40,6 +40,7 @@ export const ContactForm = () => {
                   className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white"
                 />
               </div>
+
               <div className="md:my-6 xl:my-8">
                 <Label htmlFor="email" className="text-semibold text-base text-primary-white">
                   <span className="text-red-500 text-2xl mr-4 relative top-1.5">*</span>
@@ -53,6 +54,7 @@ export const ContactForm = () => {
                   className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white"
                 />
               </div>
+
               <div className="md:my-6 xl:my-8">
                 <Label htmlFor="phone" className="text-semibold text-base text-primary-white">
                   <span className="text-red-500 text-2xl mr-4 relative top-1.5">*</span>

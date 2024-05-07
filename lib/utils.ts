@@ -4,3 +4,9 @@ import { twMerge } from "tailwind-merge"
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs))
 }
+
+export const formatNumberWithSpaces = (value: number): string => {
+  let numStr = value.toString();
+  numStr = numStr.replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+  return numStr;
+}

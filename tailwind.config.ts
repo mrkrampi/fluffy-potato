@@ -87,7 +87,8 @@ const config = {
       backgroundImage: {
         'course-pattern': "url('/courses/course-section-background.png')",
         'contact-form': "url('/backgrounds/contact-form-bg.png')",
-        'stories-section': "url('/backgrounds/feedbacks-bg.webp')"
+        'stories-section': "url('/backgrounds/feedbacks-bg.webp')",
+        'register-modal': "url('/backgrounds/register-modal-background.webp')"
       },
     },
   },
