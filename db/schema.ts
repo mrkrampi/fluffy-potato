@@ -3,8 +3,9 @@ import {
   pgTable,
   text,
   primaryKey,
-  integer,
+  integer, json, boolean,
 } from 'drizzle-orm/pg-core';
+import { relations } from 'drizzle-orm';
 import type { AdapterAccount } from 'next-auth/adapters';
 
 export const users = pgTable('user', {
@@ -17,6 +18,10 @@ export const users = pgTable('user', {
   emailVerified: timestamp('emailVerified', { mode: 'date' }),
   image: text('image'),
 });
+
+export const usersRelations = relations(users, ({ many }) => ({
+  posts: many(posts),
+}));
 
 export const accounts = pgTable(
   'account',
@@ -62,3 +67,20 @@ export const verificationTokens = pgTable(
   }),
 );
 
+export const posts = pgTable('posts', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  content: json('content'),
+  authorId: text('author_id').notNull(),
+  title: text('title').notNull(),
+  isPublished: boolean('is_published').notNull().default(false),
+  htmlContent: text('html_content'),
+});
+
+export const articleRelations = relations(posts, ({ one }) => ({
+  author: one(users, {
+    fields: [posts.authorId],
+    references: [users.id],
+  }),
+}));
