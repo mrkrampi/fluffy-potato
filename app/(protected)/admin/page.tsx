@@ -1,6 +1,6 @@
 import { auth } from '@/auth';
 
-const DashboardPage = async () => {
+const AdminPage = async () => {
   const session = await auth();
 
   return (
@@ -13,4 +13,4 @@ const DashboardPage = async () => {
   )
 }
 
-export default DashboardPage;
+export default AdminPage;

@@ -3,7 +3,8 @@ import {
   pgTable,
   text,
   primaryKey,
-  integer, json, boolean,
+  integer,
+  boolean,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import type { AdapterAccount } from 'next-auth/adapters';
@@ -71,14 +72,16 @@ export const posts = pgTable('posts', {
   id: text('id')
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  content: json('content'),
+  content: text('content'),
   authorId: text('author_id').notNull(),
   title: text('title').notNull(),
+  slug: text('slug').notNull().unique(),
   isPublished: boolean('is_published').notNull().default(false),
-  htmlContent: text('html_content'),
+  creationDate: timestamp('creation_date').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });
 
-export const articleRelations = relations(posts, ({ one }) => ({
+export const postsRelations = relations(posts, ({ one }) => ({
   author: one(users, {
     fields: [posts.authorId],
     references: [users.id],

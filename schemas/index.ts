@@ -60,3 +60,8 @@ export const NewPasswordSchema = z.object({
     message: 'Мінімум 6 символів',
   }),
 });
+
+export const CreatePostSchema = z.object({
+  title: z.string({ message: 'Обовʼязкове поле' }),
+  slug: z.string({ message: 'Обовʼязкове поле' }),
+});

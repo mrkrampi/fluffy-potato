@@ -128,3 +128,11 @@ body,
     fill: #e6e7e8;
     stroke-width: 0;
 }
+
+.cls-1-dark {
+    stroke: #231f20;
+}
+
+.cls-2-dark {
+    fill: #231f20;
+}
