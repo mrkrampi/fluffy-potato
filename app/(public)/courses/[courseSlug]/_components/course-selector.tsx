@@ -12,7 +12,7 @@ interface CourseSelectorProps {
 export const CourseSelector = ({ activeCourse }: CourseSelectorProps) => {
   return (
     <Section className="md:py-8 lg:py-[104px] lg:pb-0">
-      <section className="flex gap-x-6 overflow-x-auto w-screen px-8 2xl:justify-center">
+      <section className="flex gap-x-6 overflow-x-auto w-screen px-8">
         {ALL_COURSES_LIST.map((course) => (
           <CourseTab
             key={course.slug}
