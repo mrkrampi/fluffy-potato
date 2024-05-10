@@ -65,3 +65,14 @@ export const CreatePostSchema = z.object({
   title: z.string({ message: 'Обовʼязкове поле' }),
   slug: z.string({ message: 'Обовʼязкове поле' }),
 });
+
+const phoneRegex = new RegExp(
+  /^([+]?[\s0-9]+)?(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/,
+);
+
+export const ContactFormSchema = z.object({
+  name: z.string({ message: 'Обовʼязкове поле' }),
+  email: z.string({ message: 'Обовʼязкове поле' }).email({ message: 'Невалідний email адрес' }),
+  phone: z.string().regex(phoneRegex, 'Невалідний номер телефону'),
+  request: z.string({ message: 'Обовʼязкове поле' }),
+});
