@@ -39,7 +39,7 @@ export const ContactForm = () => {
       const formData = new FormData();
       formData.append('name', values.name);
       formData.append('email', values.email);
-      formData.append('phone', `+380${values.phone}`);
+      formData.append('phone', values.phone);
       formData.append('request', values.request);
 
       await fetch(GOOGLE_SHEET_ADD_URL, {
