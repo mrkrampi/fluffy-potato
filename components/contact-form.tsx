@@ -2,8 +2,8 @@
 
 import * as z from 'zod';
 import { useState } from 'react';
-import InputMask from 'react-input-mask';
 import { useForm } from 'react-hook-form';
+import { PatternFormat } from 'react-number-format';
 
 import { cn } from '@/lib/utils';
 import { ContactFormSchema } from '@/schemas';
@@ -51,6 +51,23 @@ export const ContactForm = () => {
     } finally {
       setIsPending(false);
     }
+  };
+
+  const formatPhoneNumber = (phoneNumber: string) => {
+    let formattedNumber = '+380';
+
+    if (phoneNumber.length >= 2) {
+      formattedNumber += ' ' + phoneNumber.slice(3, 6);
+    }
+    if (phoneNumber.length >= 6) {
+      formattedNumber += ' ' + phoneNumber.slice(6, 8);
+    }
+    if (phoneNumber.length >= 8) {
+      formattedNumber += ' ' + phoneNumber.slice(8, 10);
+    }
+
+    console.log(formattedNumber);
+    return formattedNumber;
   };
 
   return (
@@ -141,24 +158,13 @@ export const ContactForm = () => {
                           Контактний номер
                         </FormLabel>
                         <FormControl>
-                          <InputMask mask="+380 99 999 99 99" maskChar=" " {...field}>
-                            {/*@ts-ignore*/}
-                            {(inputProps) => {
-                              return (
-                                <Input
-                                  id="phone"
-                                  placeholder="+380"
-                                  name="phone"
-                                  type="tel"
-                                  className={cn(
-                                    'bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white placeholder:text-primary-white',
-                                    isPending && 'text-muted-foreground border-b-muted-foreground',
-                                  )}
-                                  {...inputProps}
-                                />
-                              );
-                            }}
-                          </InputMask>
+                          <PatternFormat
+                            {...field}
+                            placeholder="+380"
+                            type="tel"
+                            format="+380 ## ### ## ##" allowEmptyFormatting mask="_"
+                            className="flex h-10 w-full border-input px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white"
+                          />
                         </FormControl>
                         <FormMessage/>
                       </FormItem>
