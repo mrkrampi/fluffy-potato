@@ -1,4 +1,5 @@
 import { Section } from '@/components/markup/section';
+import { BlurredParagraph } from '@/components/markup/blurred-paragraph';
 
 export const AboutUsSection = () => {
   return (
@@ -6,7 +7,7 @@ export const AboutUsSection = () => {
       <h2 className="uppercase text-primary-accent text-[104px] md:text-[6.5rem] xl:text-[220px] leading-none font-unbounded font-medium lg:w-1/2">
         Про нас
       </h2>
-      <p className="font-medium lg:text-2xl lg:w-1/2 font-medium">
+      <BlurredParagraph className="font-medium lg:text-2xl">
         Niko IT Academy це Українсько - Канадська онлайн академія заснована у 2020 році викладачем та екпертом в IT індустрії - Наталі
         Ятшинець. Головна ціль академії - надати студентам шанс отримати цінний досвіт та створити власний проєкт, під керівництвом
         досвідченоного вчителям та успішного IT Фахівця. Ми слідкуємо за розвитком та тенденціями ринку, для випуску цінних фахівців у
@@ -16,7 +17,7 @@ export const AboutUsSection = () => {
         В умовах постійних змін та викликів ми забезпечуємо нашим студентам стійкість та гнучкість, необхідні для успіху у сучасній
         IT-сфері. Наша школа відмінно справляється з поставленною задачею, адже 90% студентів отримують роботу у накоротший час. Ми
         підтримуємо наших студентів, допомагаємо досягти успіху та випускаємо на ринок праці професіоналів.
-      </p>
+      </BlurredParagraph>
     </Section>
   );
 };

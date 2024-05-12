@@ -1,10 +1,14 @@
 import { PropsWithChildren } from 'react';
 
+import { EdgeStoreProvider } from '@/lib/edgestore';
+
 const ProtectedLayout = ({ children }: Readonly<PropsWithChildren>) => {
   return (
-    <div className="h-full bg-white">
-      {children}
-    </div>
+    <EdgeStoreProvider>
+      <div className="h-full bg-white">
+        {children}
+      </div>
+    </EdgeStoreProvider>
   );
 };
 

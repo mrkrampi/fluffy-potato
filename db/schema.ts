@@ -76,6 +76,7 @@ export const posts = pgTable('posts', {
   authorId: text('author_id').notNull(),
   title: text('title').notNull(),
   slug: text('slug').notNull().unique(),
+  metadata: text('metadata'),
   isPublished: boolean('is_published').notNull().default(false),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),

@@ -113,7 +113,7 @@ export const ContactForm = () => {
                             placeholder="Імʼя"
                             type="text"
                             disabled={isPending}
-                            className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white"
+                            className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none caret-primary-blue hover:border-b-primary-accent placeholder-shown:hover:border-b-primary-blue placeholder-shown:hover:text-primary-blue text-primary-blue hover:text-primary-accent"
                           />
                         </FormControl>
                         <FormMessage/>
@@ -138,7 +138,7 @@ export const ContactForm = () => {
                             placeholder="Email"
                             type="email"
                             disabled={isPending}
-                            className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white"
+                            className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none caret-primary-blue hover:border-b-primary-accent placeholder-shown:hover:border-b-primary-blue placeholder-shown:hover:text-primary-blue text-primary-blue hover:text-primary-accent"
                           />
                         </FormControl>
                         <FormMessage/>
@@ -163,7 +163,7 @@ export const ContactForm = () => {
                             placeholder="+380"
                             type="tel"
                             format="+380 ## ### ## ##" allowEmptyFormatting mask="_"
-                            className="flex h-10 w-full border-input px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white"
+                            className="flex h-10 w-full border-input px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:ring-5 bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none caret-primary-blue hover:border-b-primary-accent placeholder-shown:hover:border-b-primary-blue placeholder-shown:hover:text-primary-blue text-primary-blue hover:text-primary-accent"
                           />
                         </FormControl>
                         <FormMessage/>
@@ -188,7 +188,7 @@ export const ContactForm = () => {
                             placeholder="Ваш запит"
                             type="text"
                             disabled={isPending}
-                            className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none text-primary-white"
+                            className="bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none caret-primary-blue hover:border-b-primary-accent placeholder-shown:hover:border-b-primary-blue placeholder-shown:hover:text-primary-blue text-primary-blue hover:text-primary-accent"
                           />
                         </FormControl>
                         <FormMessage/>

@@ -1,57 +1,51 @@
-'use client';
-
 import * as z from 'zod';
 import { toast } from 'sonner';
+import { Loader } from 'lucide-react';
 import { useForm } from 'react-hook-form';
-import { useRouter } from 'next/navigation';
 import { useState, useTransition } from 'react';
-import { Loader, PlusCircle } from 'lucide-react';
+import { zodResolver } from '@hookform/resolvers/zod';
 
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from '@/components/ui/dialog';
-import { CreatePostSchema } from '@/schemas';
+import { posts } from '@/db/schema';
+import { UpdatePostSchema } from '@/schemas';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
-import { createPost } from '@/actions/create-post';
 import { FormError } from '@/components/form-error';
-import { zodResolver } from '@hookform/resolvers/zod';
+import { updatePostData } from '@/actions/update-post';
 import { FormSuccess } from '@/components/form-success';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
 
-export const CreatePostModal = () => {
-  const router = useRouter();
-  const [pending, startTransition] = useTransition();
+type Props = {
+  post: typeof posts.$inferSelect;
+}
+
+export const EditPostMetadataModal = ({ post }: Readonly<Props>) => {
+  const [isPending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>('');
   const [success, setSuccess] = useState<string | undefined>('');
+  const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const form = useForm<z.infer<typeof CreatePostSchema>>({
-    resolver: zodResolver(CreatePostSchema),
+  const form = useForm<z.infer<typeof UpdatePostSchema>>({
+    resolver: zodResolver(UpdatePostSchema),
     defaultValues: {
-      title: '',
-      slug: '',
+      title: post.title,
+      slug: post.slug,
+      metadata: '',
     },
   });
 
-  const onSubmit = (values: z.infer<typeof CreatePostSchema>) => {
+  const onSubmit = (values: z.infer<typeof UpdatePostSchema>) => {
     setError('');
     setSuccess('');
 
     startTransition(async () => {
       try {
-        const data = await createPost(values);
+        const data = await updatePostData(post.id, values);
 
         if (data.success) {
           toast.success(data.success);
+          setIsOpen(false);
         }
-
-        router.push(`/admin/blog/editor/${values.slug}`);
       } catch (error: any) {
         form.reset();
         setError(error.message);
@@ -60,24 +54,16 @@ export const CreatePostModal = () => {
   };
 
   return (
-    <Dialog>
+    <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
-        <Button size="sm" className="h-8 gap-1">
-          <PlusCircle className="h-3.5 w-3.5"/>
-          <span
-            className="sr-only sm:not-sr-only sm:whitespace-nowrap"
-          >
-            Додати пост
-          </span>
+        <Button>
+          Налаштування
         </Button>
       </DialogTrigger>
 
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Створити пост</DialogTitle>
-          <DialogDescription>
-            Придумайте заголовок та слаг для статті
-          </DialogDescription>
+          <DialogTitle>Налаштування</DialogTitle>
         </DialogHeader>
 
         <Form {...form}>
@@ -97,7 +83,7 @@ export const CreatePostModal = () => {
                         {...field}
                         placeholder="Lorem ipsum..."
                         type="text"
-                        disabled={pending}
+                        disabled={isPending}
                       />
                     </FormControl>
                     <FormMessage/>
@@ -116,7 +102,26 @@ export const CreatePostModal = () => {
                         {...field}
                         placeholder="lorem-ipsum"
                         type="text"
-                        disabled={pending}
+                        disabled={isPending}
+                      />
+                    </FormControl>
+                    <FormMessage/>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                name="metadata"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Metadata</FormLabel>
+                    <FormControl>
+                      <Input
+                        {...field}
+                        placeholder="Metadata..."
+                        type="text"
+                        disabled={isPending}
                       />
                     </FormControl>
                     <FormMessage/>
@@ -134,12 +139,9 @@ export const CreatePostModal = () => {
                   Скасувати
                 </Button>
               </DialogClose>
-              <Button
-                disabled={pending}
-                onClick={form.handleSubmit(onSubmit)}
-              >
-                {pending && <Loader className="h-4 w-4 mr-2 animate-spin"/>}
-                Створити
+              <Button disabled={isPending} onClick={form.handleSubmit(onSubmit)}>
+                {isPending && <Loader className="h-4 w-4 mr-2 animate-spin"/>}
+                Оновити
               </Button>
             </div>
           </form>

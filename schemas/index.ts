@@ -8,21 +8,17 @@ export const SettingsSchema = z.object({
   newPassword: z.optional(z.string().min(6)),
 })
   .refine((data) => {
-    if (data.password && !data.newPassword) {
-      return false;
-    }
+    return !(data.password && !data.newPassword);
 
-    return true;
+
   }, {
     message: 'Новий пароль обовʼязкове поле!',
     path: ['newPassword'],
   })
   .refine((data) => {
-    if (data.newPassword && !data.password) {
-      return false;
-    }
+    return !(data.newPassword && !data.password);
 
-    return true;
+
   }, {
     message: 'Пароль обовʼязкове поле!',
     path: ['newPassword'],
@@ -62,8 +58,14 @@ export const NewPasswordSchema = z.object({
 });
 
 export const CreatePostSchema = z.object({
-  title: z.string({ message: 'Обовʼязкове поле' }),
-  slug: z.string({ message: 'Обовʼязкове поле' }),
+  title: z.string().min(1, { message: 'Обовʼязкове поле' }).min(1),
+  slug: z.string().min(1, { message: 'Обовʼязкове поле' }).regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/, { message: 'Невалідне значення' }),
+});
+
+export const UpdatePostSchema = z.object({
+  title: z.string(),
+  metadata: z.string(),
+  slug: z.string(),
 });
 
 const phoneRegex = new RegExp(

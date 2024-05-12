@@ -34,7 +34,7 @@ export const getPublishedPostBySlug = cache(async (slug: string) => {
 });
 
 export const getPostById = cache(async (id: string) => {
-  return db.query.posts.findMany({
+  return db.query.posts.findFirst({
     where: eq(posts.id, id),
   });
 });
