@@ -130,7 +130,7 @@ export const Footer = () => {
 
         <div className="flex gap-x-4">
           <a href="/offert" className="text-sm lg:text-xl text-primary-gray underline">Договір оферти</a>
-          <a href="/" className="text-sm lg:text-xl text-primary-gray underline">Політика конфіденційності</a>
+          <a href="/policy" className="text-sm lg:text-xl text-primary-gray underline">Політика конфіденційності</a>
         </div>
 
         <div className="hidden xl:flex gap-x-6">

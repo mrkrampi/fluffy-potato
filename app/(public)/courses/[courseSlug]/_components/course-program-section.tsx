@@ -4,6 +4,7 @@ import { Heading } from '@/components/markup/heading';
 import { Section } from '@/components/markup/section';
 import { CourseInterface, CourseProgram } from '@/interfaces/course.interface';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { BlurredParagraph } from '@/components/markup/blurred-paragraph';
 
 interface CourseProgramSectionProps {
   course: CourseInterface;
@@ -16,10 +17,10 @@ export const CourseProgramSection = ({ course: { courseProgram } }: CourseProgra
         Програма курсу
       </Heading>
 
-      <p className="mt-8 lg:mt-24 lg:w-3/4 font-medium tracking-tight text-primary-gray lg:text-2xl md:px-8 lg:px-6">
+      <BlurredParagraph className="mt-8 lg:mt-24 lg:w-3/4 font-medium tracking-tight text-primary-gray lg:text-2xl md:px-8 lg:px-6">
         За 3 місяці ти отримаєш затребувану професію Junior QC/QA Engineer та зможеш працевлаштуватися в ІТ компанію з зарплатою і працювати
         з любої країни світу.
-      </p>
+      </BlurredParagraph>
 
       <div className="mt-20 lg:mt-40">
         <Accordion type="multiple" className="w-full border-none">
