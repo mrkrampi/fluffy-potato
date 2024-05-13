@@ -29,30 +29,6 @@ const BlogPage = async () => {
       </div>
 
       <div className="ml-auto flex items-center gap-2">
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="outline" size="sm" className="h-8 gap-1">
-              <ListFilter className="h-3.5 w-3.5"/>
-              <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-                        Філтр
-                      </span>
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Фільтр за</DropdownMenuLabel>
-            <DropdownMenuSeparator/>
-            <DropdownMenuCheckboxItem checked>
-              Усі
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem>
-              Опубліковані
-            </DropdownMenuCheckboxItem>
-            <DropdownMenuCheckboxItem>
-              Чернетки
-            </DropdownMenuCheckboxItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
-
         <CreatePostModal/>
       </div>
 

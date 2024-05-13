@@ -5,7 +5,7 @@ import { EdgeStoreProvider } from '@/lib/edgestore';
 const ProtectedLayout = ({ children }: Readonly<PropsWithChildren>) => {
   return (
     <EdgeStoreProvider>
-      <div className="h-full bg-white">
+      <div className="h-full w-full">
         {children}
       </div>
     </EdgeStoreProvider>

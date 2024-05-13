@@ -1,9 +1,7 @@
+import { redirect } from 'next/navigation';
+
 const EditorPage = () => {
-  return (
-    <div>
-      Editor
-    </div>
-  );
+  redirect('/admin/blog');
 };
 
 export default EditorPage;

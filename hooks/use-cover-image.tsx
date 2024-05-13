@@ -2,15 +2,17 @@ import { create } from 'zustand';
 
 type CoverImageStore = {
   url?: string;
+  postId?: string;
   isOpen: boolean;
-  onOpen: () => void;
+  onOpen: (postId: string) => void;
   onClose: () => void;
-  onReplace: (url: string) => void;
+  onReplace: (postId: string, url: string) => void;
 }
 
 export const useCoverImage = create<CoverImageStore>((set) => ({
   isOpen: false,
-  onOpen: () => set({ isOpen: true, url: undefined }),
+  postId: undefined,
+  onOpen: (postId) => set({ isOpen: true, url: undefined, postId }),
   onClose: () => set({ isOpen: false, url: undefined }),
-  onReplace: (url: string) => set({ isOpen: true, url }),
+  onReplace: (postId: string, url: string) => set({ isOpen: true, url, postId }),
 }));

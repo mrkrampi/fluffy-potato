@@ -1,32 +1,36 @@
 'use client';
 
-import { cn } from '@/lib/utils';
 import Image from 'next/image';
-import { Button } from '@/components/ui/button';
 import { ImageIcon, X } from 'lucide-react';
+
+import { cn } from '@/lib/utils';
+import { useEdgeStore } from '@/lib/edgestore';
+import { Button } from '@/components/ui/button';
+import { Skeleton } from '@/components/ui/skeleton';
 import { useCoverImage } from '@/hooks/use-cover-image';
-import { useParams } from 'next/navigation';
+import { updatePostData } from '@/actions/update-post';
 
 interface CoverProps {
-  url?: string;
-  preview?: boolean;
+  postId: string;
+  url: string | null;
 }
 
-export const Cover = ({ preview, url }: CoverProps) => {
+export const Cover = ({ url, postId }: CoverProps) => {
+  const { edgestore } = useEdgeStore();
+
   const coverImage = useCoverImage();
-  const params = useParams();
 
   const onRemoveCover = async () => {
     if (url) {
-      // await edgestore.publicFiles.delete({ url });
+      await edgestore.publicFiles.delete({ url });
+      await updatePostData(postId, { coverImageUrl: null });
     }
-    // await removeCover({ id: params.documentId as Id<'documents'> });
   };
 
   return (
     <div className={cn(
       'w-full relative h-[35vh] group',
-      !url && 'h-[12vh]',
+      !url && 'h-0',
       url && 'bg-muted',
     )}>
       {
@@ -40,16 +44,16 @@ export const Cover = ({ preview, url }: CoverProps) => {
         )
       }
       {
-        url && !preview && (
+        url && (
           <div className="opacity-0 group-hover:opacity-100 transition absolute bottom-5 right-5 flex items-center gap-x-2">
             <Button
               className="text-muted-foreground text-xs"
               variant="outline"
               size="sm"
-              onClick={() => coverImage.onReplace(url)}
+              onClick={() => coverImage.onReplace(postId, url)}
             >
               <ImageIcon className="h-4 w-4 mr-2"/>
-              Change cover
+              Змінити зображення
             </Button>
             <Button
               className="text-muted-foreground text-xs"
@@ -58,7 +62,7 @@ export const Cover = ({ preview, url }: CoverProps) => {
               onClick={onRemoveCover}
             >
               <X className="h-4 w-4 mr-2"/>
-              Remove
+              Видалити
             </Button>
           </div>
         )
@@ -67,8 +71,8 @@ export const Cover = ({ preview, url }: CoverProps) => {
   );
 };
 
-// Cover.Skeleton = function CoverSkeleton() {
-//   return (
-//     <Skeleton className="w-full h-[12vh]"/>
-//   )
-// }
+Cover.Skeleton = function CoverSkeleton() {
+  return (
+    <Skeleton className="w-full h-[12vh]"/>
+  );
+};

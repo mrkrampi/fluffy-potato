@@ -6,10 +6,11 @@ import { Loader } from 'lucide-react';
 import { useMemo, useState, useTransition } from 'react';
 
 import { posts } from '@/db/schema';
+import { Cover } from '@/components/cover';
 import { PartialBlock } from '@blocknote/core';
 import { useEdgeStore } from '@/lib/edgestore';
 import { updatePostData } from '@/actions/update-post';
-import { TopPanel } from '@/app/(protected)/admin/blog/editor/_components/top-panel';
+import { Toolbar } from '@/app/(protected)/admin/blog/editor/_components/toolbar';
 
 type Props = {
   post: typeof posts.$inferSelect;
@@ -91,13 +92,15 @@ export const PostEditor = ({ post }: Readonly<Props>) => {
 
   return (
     <>
-      <TopPanel
+      <Toolbar
         post={post}
         isPending={pending}
         onSaveClick={onSaveClick}
       />
 
-      <div className="m-5">
+      <Cover postId={post.id} url={post.coverImageUrl}/>
+
+      <div className="p-5 bg-white">
         <Editor
           initialContent={post.content ?? undefined}
           editable={!pending}

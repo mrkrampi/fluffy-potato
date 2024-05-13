@@ -2,9 +2,9 @@ import {
   timestamp,
   pgTable,
   text,
-  primaryKey,
   integer,
   boolean,
+  primaryKey,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import type { AdapterAccount } from 'next-auth/adapters';
@@ -77,6 +77,7 @@ export const posts = pgTable('posts', {
   title: text('title').notNull(),
   slug: text('slug').notNull().unique(),
   metadata: text('metadata'),
+  coverImageUrl: text('cover_image_url'),
   isPublished: boolean('is_published').notNull().default(false),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
@@ -88,3 +89,19 @@ export const postsRelations = relations(posts, ({ one }) => ({
     references: [users.id],
   }),
 }));
+
+export const courses = pgTable('courses', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  slug: text('slug').notNull().unique(),
+  name: text('name').notNull(),
+  level: text('level').notNull(),
+  duration: text('duration').notNull(),
+  countOfModules: integer('count_of_modules').notNull(),
+  previewImageUrl: text('preview_image_url').notNull(),
+  overview: text('overview').notNull().array(),
+  goals: text('goals').notNull().array(),
+  overviewImageUrl: text('overview_image_url').notNull(),
+  description: text('description').notNull(),
+})

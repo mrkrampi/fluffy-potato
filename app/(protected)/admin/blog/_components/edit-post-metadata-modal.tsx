@@ -1,6 +1,6 @@
 import * as z from 'zod';
 import { toast } from 'sonner';
-import { Loader } from 'lucide-react';
+import { Loader, SettingsIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useState, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -57,6 +57,7 @@ export const EditPostMetadataModal = ({ post }: Readonly<Props>) => {
     <Dialog onOpenChange={setIsOpen} open={isOpen}>
       <DialogTrigger asChild>
         <Button>
+          <SettingsIcon className="h-4 w-4 mr-2"/>
           Налаштування
         </Button>
       </DialogTrigger>
