@@ -18,7 +18,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 
 const GOOGLE_SHEET_ADD_URL = 'https://script.google.com/macros/s/AKfycbwNPRn0gfMPl-2MSpiINTpr6WRFfASnnkuKOiojXRlwn9g1RPwfYkNSEOKXZXYCReBe/exec';
 
-export const ContactForm = () => {
+type Props = {
+  isModalMode?: boolean;
+}
+
+export const ContactForm = ({ isModalMode }: Readonly<Props>) => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
 
@@ -53,46 +57,44 @@ export const ContactForm = () => {
     }
   };
 
-  const formatPhoneNumber = (phoneNumber: string) => {
-    let formattedNumber = '+380';
-
-    if (phoneNumber.length >= 2) {
-      formattedNumber += ' ' + phoneNumber.slice(3, 6);
-    }
-    if (phoneNumber.length >= 6) {
-      formattedNumber += ' ' + phoneNumber.slice(6, 8);
-    }
-    if (phoneNumber.length >= 8) {
-      formattedNumber += ' ' + phoneNumber.slice(8, 10);
-    }
-
-    console.log(formattedNumber);
-    return formattedNumber;
-  };
-
   return (
-    <Section>
+    <Section className={cn(isModalMode && 'p-0 md:p-0 lg:p-0 xl:p-0 md:w-[90vw] xl:w-[75vw]')}>
       <div
-        className="bg-contact-form bg-cover bg-center rounded-3xl shadow-sm shadow-primary-accent px-4 lg:px-10 py-20 lg:py-24 relative">
+        className={cn(
+          "bg-contact-form bg-cover bg-center rounded-3xl shadow-sm shadow-primary-accent px-4 lg:px-10 py-20 lg:py-24 relative",
+          isModalMode && 'lg:px-5'
+        )}>
         <div className={cn(
           'top-1/2 -translate-y-1/2 flex items-center justify-center absolute',
           !isSubmitted && 'invisible',
         )}>
-          <div className="text-primary-white font-unbounded uppercase text-3xl md:text-[48px] lg:text-[64px] leading-[1.1] text-center lg:w-3/4">
+          <div
+            className="text-primary-white font-unbounded uppercase text-3xl md:text-[48px] lg:text-[64px] leading-[1.1] text-center lg:w-3/4">
             Ваш запит прийнято в обробку
           </div>
         </div>
 
-        <div className={isSubmitted ? 'invisible' : ''}>
-          <Heading level={4} className="text-center text-[32px]">
-            Звʼязатись з нами
-          </Heading>
+        <div className={cn(
+          isSubmitted ? 'invisible' : '',
+          isModalMode && 'lg:grid grid-cols-2 items-center gap-10'
+        )}>
+          <div>
+            <Heading level={4} className={cn(
+              "text-center text-[32px]",
+              isModalMode && 'lg:text-[64px] leading-[1.1]'
+            )}>
+              Звʼязатись з нами
+            </Heading>
 
-          <p className="xl:w-1/2 text-center xl:text-left xl:text-xl text-primary-white tracking-tighter mb-12 mt-8 xl:my-16">
-            Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором курсу? Заповніть форму зворотнього звʼязку, і
-            наш
-            менеджер звʼяжеться з вами протягом доби
-          </p>
+            <p className={cn(
+              "xl:w-1/2 text-center xl:text-left xl:text-xl text-primary-white tracking-tighter mb-12 mt-8 xl:my-16",
+              isModalMode && 'xl:w-full xl:text-center xl:my-5',
+            )}>
+              Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором курсу? Заповніть форму зворотнього звʼязку, і
+              наш
+              менеджер звʼяжеться з вами протягом доби
+            </p>
+          </div>
 
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)}>

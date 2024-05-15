@@ -34,7 +34,7 @@ export const StudyFormatsSection = ({ registerButton }: StudyFormatCardProps) =>
           <div className="mx-auto max-w-screen-2xl mt-12 md:mt-20 lg:my-40">
             <div
               className="mx-2 md:mx-8 px-4 md:px-8 text-primary-white bg-primary-blue rounded-3xl font-unbounded text-2xl lg:text-5xl py-5 md:py-8 text-center">
-              + 24 заняття з англійської мови безкоштовно для учнів групового курсу
+              + 8 заняття з англійської мови безкоштовно для учнів групового курсу
             </div>
           </div>
         )

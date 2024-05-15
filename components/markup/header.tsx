@@ -11,6 +11,7 @@ import { Button } from '@/components/ui/button';
 import { Logo } from '@/components/drawings/logo';
 import { MENU_LINKS_LIST } from '@/consts/menu-links';
 import { MenuLinkInterface } from '@/interfaces/menu-link.interface';
+import { ConsultationModal } from '@/components/modals/consultation-modal';
 
 export const Header = () => {
   const [isMenuOpen, toggleMenu] = useToggle(false);
@@ -47,7 +48,7 @@ export const Header = () => {
     <header
       className={cn(
         "w-full bg-[#04030933] backdrop-blur-2xl py-3 px-6 lg:px-12 flex justify-center fixed top-0 z-40 right-0 left-0 max-h-20 md:max-h-[104px] transition-all ease-in-out duration-200 overflow-hidden",
-        isMenuOpen && "max-h-[480px] md:max-h-[504px]"
+        isMenuOpen && "max-h-[550px] md:max-h-[504px]"
       )}>
       <div className="max-w-screen-2xl w-full px-5 py-2 grid lg:flex justify-between items-center header-areas">
         <Link href="/" aria-label="Головна сторінка" className="area-logo relative w-24 h-10 md:w-36 md:h-16">
@@ -69,14 +70,21 @@ export const Header = () => {
           )}/>
         </button>
         <nav className={cn(
-          'flex xl:block w-full md:w-auto lg:text-left area-navigation flex-row h-full gap-6 pt-6 lg:pt-0',
+          'flex xl:block w-full md:w-auto lg:text-left area-navigation flex-col h-full gap-6 pt-6 lg:pt-0',
           // isMenuOpen && 'flex',
         )}>
-          <div className="lg:w-full lg:hidden bg-primary-white lg:h-2 rounded-3xl h-full w-2"/>
-          <ul className="flex flex-col lg:flex-row text-primary-white gap-y-2 gap-x-12 lg:py-4">
-            {MENU_LINKS_LIST.map(renderMenuLink)}
-          </ul>
+          <div className="flex gap-6">
+            <div className="lg:w-full lg:hidden bg-primary-white lg:h-2 rounded-3xl h-full w-2"/>
+            <ul className="flex flex-col lg:flex-row text-primary-white gap-y-2 gap-x-12 lg:py-4">
+              {MENU_LINKS_LIST.map(renderMenuLink)}
+            </ul>
+          </div>
+
           <div className="hidden xl:block w-full bg-primary-white h-2 rounded-3xl"/>
+
+          <div className="md:hidden mx-auto">
+            <ConsultationModal/>
+          </div>
         </nav>
         <div className="hidden md:flex area-consultation gap-x-6">
         <button
@@ -94,13 +102,10 @@ export const Header = () => {
               !isMenuOpen && 'hidden',
             )}/>
           </button>
-          <Button
-            size="xlg"
-            variant="cta"
-            className="hidden md:flex text-primary-accent bg-primary-white"
-          >
-            Консультація
-          </Button>
+
+          <div className="hidden md:flex">
+            <ConsultationModal/>
+          </div>
         </div>
       </div>
     </header>
