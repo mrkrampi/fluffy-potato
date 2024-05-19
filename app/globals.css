@@ -137,6 +137,13 @@ body,
     fill: #231f20;
 }
 
-.hero-bg {
-    background: linear-gradient(to top right, #fff 0%, #0000ff 8%, #000000 40%, #0000ff 75%, #fff 100%);
+.hack {
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99vw;
+    height: 99vh;
+    max-width: 99vw;
+    max-height: 99vh;
 }
