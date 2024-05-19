@@ -11,6 +11,7 @@ import { StudyGuideSection } from '@/app/(public)/courses/[courseSlug]/_componen
 import { CourseProgramSection } from '@/app/(public)/courses/[courseSlug]/_components/course-program-section';
 
 import courseProgram from '@/public/courses/course-program.webp';
+import { JsonLd } from '@/components/json-ld';
 
 interface CourseSlugPageProps {
   params: {
@@ -38,26 +39,30 @@ const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
   }
 
   return (
-    <div className="md:mt-[104px]">
-      <CourseSelector activeCourse={activeCourse}/>
-      <GoalsSection goals={activeCourse?.goals}/>
+    <>
+      <div className="md:mt-[104px]">
+        <CourseSelector activeCourse={activeCourse}/>
+        <GoalsSection goals={activeCourse?.goals}/>
 
-      <div className="relative overflow-hidden">
-        <StudyGuideSection/>
+        <div className="relative overflow-hidden">
+          <StudyGuideSection/>
 
-        <Image
-          src={courseProgram}
-          alt="Course Program"
-          className="object-cover -rotate-90 opacity-50 md:w-3/4 absolute md:top-[1100px] md:-right-24 lg:-right-28 lg:top-[700px]"
-        />
+          <Image
+            src={courseProgram}
+            alt="Course Program"
+            className="object-cover -rotate-90 opacity-50 md:w-3/4 absolute md:top-[1100px] md:-right-24 lg:-right-28 lg:top-[700px]"
+          />
 
-        <CourseProgramSection course={activeCourse}/>
+          <CourseProgramSection course={activeCourse}/>
+        </div>
+
+        <AboutTeacherSection/>
+        <StudyFormatsSection registerButton/>
+        <StudentsStoriesSection withoutBackground/>
       </div>
 
-      <AboutTeacherSection/>
-      <StudyFormatsSection registerButton/>
-      <StudentsStoriesSection withoutBackground/>
-    </div>
+      {activeCourse.microdata ? <JsonLd data={activeCourse.microdata}/> : null}
+    </>
   );
 };
 

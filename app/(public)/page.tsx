@@ -7,6 +7,8 @@ import { InformationSection } from '@/components/sections/information-section';
 import { StudyFormatsSection } from '@/components/sections/study-formats-section';
 import { StudentsBenefitsSection } from '@/components/sections/students-benefits-section';
 import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
+import { JsonLd } from '@/components/json-ld';
+import { FAQ_MICRODATA, ORGANIZATION_MICRODATA } from '@/consts/microdata';
 
 export default function Home() {
   return (
@@ -20,6 +22,9 @@ export default function Home() {
       <StudentsStoriesSection/>
       <FaqSection/>
       <ContactForm/>
+
+      <JsonLd data={ORGANIZATION_MICRODATA}/>
+      <JsonLd data={FAQ_MICRODATA}/>
     </>
   );
 }

@@ -1,3 +1,5 @@
+import { Event, WithContext } from 'schema-dts';
+
 export interface CourseInterface {
   id: number;
   name: string;
@@ -12,6 +14,7 @@ export interface CourseInterface {
   courseProgram: Array<CourseProgram>;
   courseTitle: string;
   courseDescription: string;
+  microdata: WithContext<Event>;
 }
 
 export interface CourseProgram {
