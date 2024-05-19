@@ -136,3 +136,7 @@ body,
 .cls-2-dark {
     fill: #231f20;
 }
+
+.hero-bg {
+    background: linear-gradient(to top right, #fff 0%, #0000ff 8%, #000000 40%, #0000ff 75%, #fff 100%);
+}

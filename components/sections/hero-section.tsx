@@ -2,17 +2,11 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import Image from 'next/image';
 
-import heroBackground from '@/public/backgrounds/hero-background.webp';
+// import heroBackground from '@/public/backgrounds/hero-background.webp';
 
 export const HeroSection = () => {
   return (
-    <section className="h-[623px] md:h-[887px] lg:h-[1098px] pt-20 md:pt-[104px] mx-auto bg-no-repeat flex flex-col justify-center rounded-3xl overflow-hidden relative w-[calc(100vw-16px)]">
-      <Image
-        src={heroBackground}
-        alt="Background"
-        fill
-      />
-
+    <section className="h-[623px] md:h-[887px] lg:h-[1098px] pt-20 md:pt-[104px] mx-auto bg-no-repeat flex flex-col justify-center rounded-3xl overflow-hidden relative w-[calc(100vw-16px)] hero-bg">
       <div className="max-w-screen-[1600px] px-4 md:px-8 mx-auto w-full h-full my-auto z-10">
         <div className="max-h-[860px] max-w-5xl h-full flex flex-col justify-center">
           <p className="text-primary-white md:text-2xl xl:text-4xl font-semibold">

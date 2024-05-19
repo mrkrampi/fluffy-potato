@@ -162,9 +162,9 @@ export const ContactForm = ({ isModalMode }: Readonly<Props>) => {
                         <FormControl>
                           <PatternFormat
                             {...field}
-                            placeholder="+380"
+                            placeholder="Контактник номер"
                             type="tel"
-                            format="+380 ## ### ## ##" allowEmptyFormatting mask="_"
+                            format="+### ## ### ## ##" allowEmptyFormatting mask="_"
                             className="flex h-10 w-full border-input px-3 py-2 text-sm file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-50 focus-visible:ring-5 bg-transparent border-0 border-b-2 focus-visible:ring-5 rounded-none caret-primary-blue hover:border-b-primary-accent placeholder-shown:hover:border-b-primary-blue placeholder-shown:hover:text-primary-blue text-primary-blue hover:text-primary-accent"
                           />
                         </FormControl>
