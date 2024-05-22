@@ -7,6 +7,7 @@ import { siteConfig } from '@/config/site';
 import { Toaster } from '@/components/ui/sonner';
 
 import './globals.css';
+import { EdgeStoreProvider } from '@/lib/edgestore';
 
 const onest = Onest({ subsets: ['latin', 'cyrillic'], variable: '--font-onest', adjustFontFallback: false });
 const unbounded = Unbounded({ subsets: ['latin', 'cyrillic'], variable: '--font-unbounded', adjustFontFallback: false });
@@ -25,20 +26,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
 
-
   return (
-    <html lang="uk" className="scroll-smooth">
-    <body className={cn(
-      'bg-primary-black h-full',
-      onest.className,
-      `${onest.variable} ${unbounded.variable}`,
-    )}>
-    {children}
-    <Toaster />
+    <EdgeStoreProvider>
+      <html lang="uk" className="scroll-smooth">
+      <body className={cn(
+        'bg-primary-black h-full',
+        onest.className,
+        `${onest.variable} ${unbounded.variable}`,
+      )}>
+      {children}
+      <Toaster/>
 
-    {process.env.NODE_ENV === 'production' && (<GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}/>)}
-    {process.env.NODE_ENV === 'production' && (<GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!}/>)}
-    </body>
-    </html>
+      {process.env.NODE_ENV === 'production' && (<GoogleTagManager gtmId={process.env.NEXT_PUBLIC_GOOGLE_TAG_MANAGER_ID!}/>)}
+      {process.env.NODE_ENV === 'production' && (<GoogleAnalytics gaId={process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID!}/>)}
+      </body>
+      </html>
+    </EdgeStoreProvider>
   );
 }

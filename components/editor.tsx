@@ -10,10 +10,11 @@ import { useEdgeStore } from '@/lib/edgestore';
 type Props = {
   editable: boolean;
   initialContent?: string;
-  onChange: (value: string) => void;
+  theme: 'light' | 'dark';
+  onChange?: (value: string) => void;
 }
 
-const Editor = ({ initialContent, editable, onChange }: Readonly<Props>) => {
+const Editor = ({ initialContent, editable, onChange, theme = 'light' }: Readonly<Props>) => {
   const { edgestore } = useEdgeStore();
 
   const handleUpload = async (file: File) => {
@@ -27,13 +28,13 @@ const Editor = ({ initialContent, editable, onChange }: Readonly<Props>) => {
   });
 
   const handleChange = () => {
-    onChange(JSON.stringify(editor.document, null, 2));
+    onChange?.(JSON.stringify(editor.document, null, 2));
   };
 
   return (
     <BlockNoteView
       editor={editor}
-      theme="light"
+      theme={theme}
       editable={editable}
       onChange={handleChange}
     />

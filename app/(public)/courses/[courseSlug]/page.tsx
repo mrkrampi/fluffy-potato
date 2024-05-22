@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { Metadata } from 'next';
 
+import { JsonLd } from '@/components/json-ld';
 import { ALL_COURSES_LIST } from '@/consts/courses';
 import { StudyFormatsSection } from '@/components/sections/study-formats-section';
 import { AboutTeacherSection } from '@/components/sections/about-teacher-section';
@@ -11,7 +12,6 @@ import { StudyGuideSection } from '@/app/(public)/courses/[courseSlug]/_componen
 import { CourseProgramSection } from '@/app/(public)/courses/[courseSlug]/_components/course-program-section';
 
 import courseProgram from '@/public/courses/course-program.webp';
-import { JsonLd } from '@/components/json-ld';
 
 interface CourseSlugPageProps {
   params: {

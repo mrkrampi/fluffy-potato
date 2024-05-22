@@ -25,7 +25,7 @@ export const getPostBySlug = cache(async (slug: string) => {
 });
 
 export const getPublishedPostBySlug = cache(async (slug: string) => {
-  return db.query.posts.findMany({
+  return db.query.posts.findFirst({
     where: and(
       eq(posts.isPublished, true),
       eq(posts.slug, slug),
