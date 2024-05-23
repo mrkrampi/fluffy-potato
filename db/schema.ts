@@ -73,7 +73,9 @@ export const posts = pgTable('posts', {
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   content: text('content'),
+  htmlContent: text('html_content'),
   authorId: text('author_id').notNull(),
+  fakeAuthorId: text('fake_author_id'),
   title: text('title').notNull(),
   slug: text('slug').notNull().unique(),
   metadata: text('metadata'),
@@ -81,12 +83,26 @@ export const posts = pgTable('posts', {
   isPublished: boolean('is_published').notNull().default(false),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
+  timeToRead: text('time_to_read').notNull(),
+});
+
+export const fakeAuthors = pgTable('fake_authors', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  name: text('name').notNull(),
+  position: text('position').notNull(),
+  imageUrl: text('image_url').notNull(),
 });
 
 export const postsRelations = relations(posts, ({ one }) => ({
   author: one(users, {
     fields: [posts.authorId],
     references: [users.id],
+  }),
+  fakeAuthor: one(fakeAuthors, {
+    fields: [posts.fakeAuthorId],
+    references: [fakeAuthors.id],
   }),
 }));
 
@@ -104,4 +120,4 @@ export const courses = pgTable('courses', {
   goals: text('goals').notNull().array(),
   overviewImageUrl: text('overview_image_url').notNull(),
   description: text('description').notNull(),
-})
+});

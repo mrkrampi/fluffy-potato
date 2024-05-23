@@ -25,7 +25,7 @@ export const ArticleCard = ({ article }: Readonly<Props>) => {
       </div>
 
       <div className="flex justify-between text-primary-gray lg:my-8">
-        <p>4 minutes read</p>
+        <p>{article.timeToRead}</p>
         <p>{creationDate.format('D MMMM YYYY')}</p>
       </div>
 

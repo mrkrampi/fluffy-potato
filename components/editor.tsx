@@ -8,12 +8,13 @@ import '@/public/blocknote-styles.css';
 
 import { useEdgeStore } from '@/lib/edgestore';
 import { ChooseCourseBlock } from '@/components/blocknote/choose-course-block';
+import { useEffect, useState } from 'react';
 
 type Props = {
   editable: boolean;
   initialContent?: string;
-  theme: 'light' | 'dark';
-  onChange?: (value: string) => void;
+  theme?: 'light' | 'dark';
+  onChange?: (value: string, html: string) => void;
 }
 
 const schema = BlockNoteSchema.create({
@@ -33,7 +34,13 @@ const insertChooseBlock = (editor: typeof schema.BlockNoteEditor) => ({
   group: "Other",
 });
 
-const Editor = ({ initialContent, editable, onChange, theme = 'light' }: Readonly<Props>) => {
+const Editor = ({ initialContent, editable = false, onChange, theme = 'light' }: Readonly<Props>) => {
+  const [isInited, setIsInited] = useState(false);
+
+  useEffect(() => {
+    setIsInited(true);
+  }, []);
+
   const { edgestore } = useEdgeStore();
 
   const handleUpload = async (file: File) => {
@@ -47,9 +54,18 @@ const Editor = ({ initialContent, editable, onChange, theme = 'light' }: Readonl
     uploadFile: handleUpload,
   });
 
-  const handleChange = () => {
-    onChange?.(JSON.stringify(editor.document, null, 2));
+  const handleChange = async () => {
+    if (!editable) {
+      return;
+    }
+
+    const html = await editor.blocksToHTMLLossy();
+    onChange?.(JSON.stringify(editor.document, null, 2), html);
   };
+
+  if (!isInited) {
+    return null;
+  }
 
   return (
     <BlockNoteView

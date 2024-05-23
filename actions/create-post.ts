@@ -35,6 +35,7 @@ export const createPost = async (values: z.infer<typeof CreatePostSchema>) => {
     slug,
     content: '',
     authorId: session?.user?.id ?? '',
+    timeToRead: '',
   });
 
   revalidatePath('/admin/blog');

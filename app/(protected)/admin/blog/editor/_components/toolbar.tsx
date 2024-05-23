@@ -1,4 +1,4 @@
-import { posts } from '@/db/schema';
+import { fakeAuthors, posts } from '@/db/schema';
 import { Button } from '@/components/ui/button';
 import { Publish } from '@/app/(protected)/admin/blog/_components/publish';
 import { ArrowLeft, ImageIcon, Loader, SaveIcon } from 'lucide-react';
@@ -10,9 +10,10 @@ type Props = {
   post: typeof posts.$inferSelect;
   onSaveClick: () => void;
   isPending: boolean;
+  authors: Array<typeof fakeAuthors.$inferSelect>,
 }
 
-export const Toolbar = ({ onSaveClick, post, isPending }: Readonly<Props>) => {
+export const Toolbar = ({ onSaveClick, post, isPending, authors }: Readonly<Props>) => {
   const router = useRouter();
   const coverImage = useCoverImage();
 
@@ -51,7 +52,7 @@ export const Toolbar = ({ onSaveClick, post, isPending }: Readonly<Props>) => {
           )
         }
 
-        <EditPostMetadataModal post={post}/>
+        <EditPostMetadataModal post={post} authors={authors}/>
 
         <Publish post={post}/>
 

@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import { Loader } from 'lucide-react';
 import { useMemo, useState, useTransition } from 'react';
 
-import { posts } from '@/db/schema';
+import { fakeAuthors, posts } from '@/db/schema';
 import { Cover } from '@/components/cover';
 import { PartialBlock } from '@blocknote/core';
 import { useEdgeStore } from '@/lib/edgestore';
@@ -14,9 +14,10 @@ import { Toolbar } from '@/app/(protected)/admin/blog/editor/_components/toolbar
 
 type Props = {
   post: typeof posts.$inferSelect;
+  authors: Array<typeof fakeAuthors.$inferSelect>;
 }
 
-export const PostEditor = ({ post }: Readonly<Props>) => {
+export const PostEditor = ({ post, authors }: Readonly<Props>) => {
   const Editor = useMemo(
     () => dynamic(() => import('@/components/editor'),
       {
@@ -31,6 +32,7 @@ export const PostEditor = ({ post }: Readonly<Props>) => {
 
   const [pending, startTransition] = useTransition();
   const [content, setContent] = useState<string>(post.content ?? '');
+  const [htmlContent, setHtmlContent] = useState<string>(post.htmlContent ?? '');
 
   const { edgestore } = useEdgeStore();
 
@@ -41,6 +43,7 @@ export const PostEditor = ({ post }: Readonly<Props>) => {
 
         const response = await updatePostData(post.id, {
           content,
+          htmlContent,
         });
 
         if (response.success) {
@@ -86,27 +89,29 @@ export const PostEditor = ({ post }: Readonly<Props>) => {
     return urls;
   };
 
-  const handleChange = (content: string) => {
+  const handleChange = (content: string, htmlContent: string) => {
     setContent(content);
+    setHtmlContent(htmlContent);
   };
 
   return (
-    <>
+    <div className="h-full bg-white pb-80">
       <Toolbar
         post={post}
         isPending={pending}
         onSaveClick={onSaveClick}
+        authors={authors}
       />
 
       <Cover postId={post.id} url={post.coverImageUrl}/>
 
-      <div className="p-5 bg-white">
+      <div className="p-5 bg-white max-w-[850px] mx-auto">
         <Editor
           initialContent={post.content ?? undefined}
           editable={!pending}
           onChange={handleChange}
         />
       </div>
-    </>
+    </div>
   );
 };

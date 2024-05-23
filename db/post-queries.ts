@@ -30,6 +30,9 @@ export const getPublishedPostBySlug = cache(async (slug: string) => {
       eq(posts.isPublished, true),
       eq(posts.slug, slug),
     ),
+    with: {
+      fakeAuthor: true,
+    }
   });
 });
 

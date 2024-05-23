@@ -25,6 +25,8 @@ export const updatePostData = async (id: string, post: Partial<typeof posts.$inf
     .where(eq(posts.id, id));
 
   revalidatePath('/admin/blog');
+  revalidatePath('/blog');
+  revalidatePath(`/blog/${post.slug}`);
   revalidatePath(`/admin/blog/editor/${id}`);
 
   return {
