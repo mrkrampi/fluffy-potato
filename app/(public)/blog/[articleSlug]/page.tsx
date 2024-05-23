@@ -8,6 +8,8 @@ import { Article } from '@/app/(public)/blog/[articleSlug]/_components/article';
 import { ArticleBreadcrumbs } from '@/app/(public)/blog/[articleSlug]/_components/article-breadcrumbs';
 import { fakeAuthors } from '@/db/schema';
 
+export const fetchCache = 'force-no-store';
+
 type Props = {
   params: {
     articleSlug: string;
