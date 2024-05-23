@@ -20,9 +20,10 @@ const GOOGLE_SHEET_ADD_URL = 'https://script.google.com/macros/s/AKfycbwNPRn0gfM
 
 type Props = {
   isModalMode?: boolean;
+  isBlogMode?: boolean;
 }
 
-export const ContactForm = ({ isModalMode }: Readonly<Props>) => {
+export const ContactForm = ({ isModalMode, isBlogMode }: Readonly<Props>) => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
 
@@ -58,7 +59,10 @@ export const ContactForm = ({ isModalMode }: Readonly<Props>) => {
   };
 
   return (
-    <Section className={cn(isModalMode && 'p-0 md:p-0 lg:p-0 xl:p-0 md:w-[90vw] xl:w-[75vw]')}>
+    <Section className={cn(
+      isModalMode && 'p-0 md:p-0 lg:p-0 xl:p-0 md:w-[90vw] xl:w-[75vw]',
+      isBlogMode && 'px-0 md:px-0 lg:px-0 xl:px-0 lg:py-16 xl:py-16'
+    )}>
       <div
         className={cn(
           "bg-contact-form bg-cover bg-center rounded-3xl shadow-sm shadow-primary-accent px-4 lg:px-10 py-20 lg:py-24 relative",
@@ -81,7 +85,8 @@ export const ContactForm = ({ isModalMode }: Readonly<Props>) => {
           <div>
             <Heading level={4} className={cn(
               "text-center text-[32px]",
-              isModalMode && 'lg:text-[64px] leading-[1.1]'
+              isModalMode && 'lg:text-[64px] leading-[1.1]',
+              isBlogMode && 'lg:text-[64px] leading-[1.1]'
             )}>
               Звʼязатись з нами
             </Heading>
@@ -89,6 +94,7 @@ export const ContactForm = ({ isModalMode }: Readonly<Props>) => {
             <p className={cn(
               "xl:w-1/2 text-center xl:text-left xl:text-xl text-primary-white tracking-tighter mb-12 mt-8 xl:my-16",
               isModalMode && 'xl:w-full xl:text-center xl:my-5',
+              isBlogMode && 'xl:w-full xl:text-center'
             )}>
               Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором курсу? Заповніть форму зворотнього звʼязку, і
               наш
@@ -97,7 +103,12 @@ export const ContactForm = ({ isModalMode }: Readonly<Props>) => {
           </div>
 
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className={cn(
+                isBlogMode && 'w-fit mx-auto'
+              )}
+            >
               <div className="my-12 max-w-sm w-full mx-auto lg:mx-0">
                 <div className="md:my-6 xl:my-8">
                   <FormField

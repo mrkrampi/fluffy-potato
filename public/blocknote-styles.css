@@ -1,0 +1,9 @@
+.bn-container[data-theming-css-demo] .bn-editor *:has(.skip) {
+    @apply text-primary-white;
+    @apply bg-primary-black;
+    @apply font-onest;
+}
+
+.bn-container[data-theming-css-demo] .bn-editor {
+    padding: 0;
+}
