@@ -26,9 +26,8 @@ export const updatePostData = async (id: string, post: Partial<typeof posts.$inf
 
   revalidatePath('/admin/blog');
   revalidatePath('/blog');
-  revalidatePath(`/blog/${post.slug}`);
+  revalidatePath(`/blog/${post.slug}`, 'page');
   revalidatePath(`/admin/blog/editor/${id}`);
-  console.log(`/blog/${postFromDb.slug}`);
 
   return {
     success: 'Пост оновлено',
