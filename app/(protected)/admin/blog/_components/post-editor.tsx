@@ -108,7 +108,7 @@ export const PostEditor = ({ post, authors }: Readonly<Props>) => {
       <div className="p-5 bg-white max-w-[850px] mx-auto">
         <Editor
           initialContent={post.content ?? undefined}
-          editable={!pending}
+          editable
           onChange={handleChange}
         />
       </div>

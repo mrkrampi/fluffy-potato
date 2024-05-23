@@ -1,6 +1,7 @@
-import { BlockNoteSchema, defaultBlockSpecs, filterSuggestionItems, insertOrUpdateBlock, PartialBlock } from '@blocknote/core';
+import { useEffect, useState } from 'react';
 import { BlockNoteView } from '@blocknote/mantine';
 import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlockNote } from '@blocknote/react';
+import { BlockNoteSchema, defaultBlockSpecs, filterSuggestionItems, insertOrUpdateBlock, PartialBlock } from '@blocknote/core';
 
 import '@blocknote/mantine/style.css';
 import '@blocknote/core/fonts/inter.css';
@@ -8,7 +9,6 @@ import '@/public/blocknote-styles.css';
 
 import { useEdgeStore } from '@/lib/edgestore';
 import { ChooseCourseBlock } from '@/components/blocknote/choose-course-block';
-import { useEffect, useState } from 'react';
 
 type Props = {
   editable: boolean;
@@ -59,8 +59,12 @@ const Editor = ({ initialContent, editable = false, onChange, theme = 'light' }:
       return;
     }
 
-    const html = await editor.blocksToHTMLLossy();
-    onChange?.(JSON.stringify(editor.document, null, 2), html);
+    try {
+      const html = await editor.blocksToHTMLLossy();
+      onChange?.(JSON.stringify(editor.document, null, 2), html);
+    } catch (e) {
+      console.log(e);
+    }
   };
 
   if (!isInited) {
