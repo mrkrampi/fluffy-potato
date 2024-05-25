@@ -84,6 +84,7 @@ export const posts = pgTable('posts', {
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
   timeToRead: text('time_to_read').notNull(),
+  publishDate: timestamp('publish_date').notNull().defaultNow(),
 });
 
 export const fakeAuthors = pgTable('fake_authors', {
@@ -120,4 +121,11 @@ export const courses = pgTable('courses', {
   goals: text('goals').notNull().array(),
   overviewImageUrl: text('overview_image_url').notNull(),
   description: text('description').notNull(),
+});
+
+export const allowedEmails = pgTable('allowed_emails', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  email: text('email').notNull().unique(),
 });

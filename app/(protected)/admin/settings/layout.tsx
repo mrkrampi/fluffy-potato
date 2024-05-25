@@ -15,7 +15,7 @@ const SettingsLayout = ({ children }: Readonly<PropsWithChildren>) => {
             Загальні
           </Link>
           <Link href="/admin/settings/fake-authors">Автори для блогу</Link>
-          <Link href="#">Дозволені Email</Link>
+          <Link href="/admin/settings/allowed-emails">Дозволені Email</Link>
         </nav>
         <div className="grid gap-6">
           {children}

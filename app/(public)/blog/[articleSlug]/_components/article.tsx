@@ -34,7 +34,7 @@ export const Article = ({ article }: Readonly<Props>) => {
           position={article.fakeAuthor?.position ?? ''}
           author={article.fakeAuthor?.name ?? ''}
           authorImgUrl={article.fakeAuthor?.imageUrl ?? ''}
-          creationDate={article.creationDate}
+          publishDate={article.publishDate}
           timeToRead={article.timeToRead}
         />
       </div>

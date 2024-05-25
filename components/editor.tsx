@@ -9,6 +9,7 @@ import '@/public/blocknote-styles.css';
 
 import { useEdgeStore } from '@/lib/edgestore';
 import { ChooseCourseBlock } from '@/components/blocknote/choose-course-block';
+import Link from '@tiptap/extension-link';
 
 type Props = {
   editable: boolean;
@@ -35,6 +36,8 @@ const insertChooseBlock = (editor: typeof schema.BlockNoteEditor) => ({
 });
 
 const Editor = ({ initialContent, editable = false, onChange, theme = 'light' }: Readonly<Props>) => {
+  Link.options.HTMLAttributes.rel = null;
+
   const [isInited, setIsInited] = useState(false);
 
   useEffect(() => {
@@ -81,11 +84,11 @@ const Editor = ({ initialContent, editable = false, onChange, theme = 'light' }:
       {...(theme === 'dark' && { 'data-theming-css-demo': true })}
     >
       <SuggestionMenuController
-        triggerCharacter={"/"}
+        triggerCharacter={'/'}
         getItems={async (query: string) =>
           filterSuggestionItems(
             [...getDefaultReactSlashMenuItems(editor), insertChooseBlock(editor)],
-            query
+            query,
           )
         }
       />

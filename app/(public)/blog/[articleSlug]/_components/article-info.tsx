@@ -2,18 +2,17 @@ import 'moment/locale/uk'
 import moment from "moment";
 import Image from 'next/image';
 import { Dot } from 'lucide-react';
+import { formatDate } from '@/lib/utils';
 
 type Props = {
-  creationDate: Date;
+  publishDate: Date;
   timeToRead: string;
   authorImgUrl: string;
   author: string;
   position: string;
 }
 
-export const ArticleInfo = ({ author, authorImgUrl, position, timeToRead, creationDate }: Readonly<Props>) => {
-  const formattedCreationDate = moment(creationDate).locale('urk').format('D MMMM YYYY');
-
+export const ArticleInfo = ({ author, authorImgUrl, position, timeToRead, publishDate }: Readonly<Props>) => {
   return (
     <div className="py-3 flex justify-between items-center">
       <div className="flex items-center gap-[10px]">
@@ -35,7 +34,7 @@ export const ArticleInfo = ({ author, authorImgUrl, position, timeToRead, creati
       <div className="flex items-center text-primary-gray">
         <div>{timeToRead}</div>
         <Dot className="w-8 h-8"/>
-        <div>{formattedCreationDate}</div>
+        <div>{formatDate(publishDate)}</div>
       </div>
     </div>
   );

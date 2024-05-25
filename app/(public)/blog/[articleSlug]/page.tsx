@@ -45,8 +45,8 @@ const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => 
   }
 
   return (
-    <Section className="lg:max-w-[750px] lg:px-0 mx-auto">
-      <div>
+    <Section>
+      <div  className="lg:max-w-[750px] lg:px-0 mx-auto">
         <ArticleBreadcrumbs articleTitle={article.title}/>
 
         <div className="mt-16">
@@ -54,7 +54,7 @@ const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => 
         </div>
       </div>
 
-      <ContactForm isBlogMode/>
+      <ContactForm/>
     </Section>
   );
 };

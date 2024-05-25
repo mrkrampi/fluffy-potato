@@ -36,7 +36,6 @@ const SettingsPage = () => {
   });
 
   const onSubmit = (values: z.infer<typeof UpdateUserSchema>) => {
-    console.log(values);
     setError('');
     setSuccess('');
 

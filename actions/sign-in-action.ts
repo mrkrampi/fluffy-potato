@@ -7,6 +7,7 @@ import { signIn } from '@/auth';
 import { LoginSchema } from '@/schemas';
 import { getUserByEmail } from '@/db/queries';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
+import { checkIfEmailAllowed } from '@/db/allowed-emails-quesries';
 
 export const signInAction = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);
@@ -18,6 +19,14 @@ export const signInAction = async (values: z.infer<typeof LoginSchema>) => {
   }
 
   const { email, password } = validatedFields.data;
+
+  const isAllowed = await checkIfEmailAllowed(email);
+
+  if (!isAllowed) {
+    return {
+      error: 'Щось пішло не так',
+    };
+  }
 
   const exisingUser = await getUserByEmail(email);
 
@@ -49,4 +58,4 @@ export const signInAction = async (values: z.infer<typeof LoginSchema>) => {
 
     throw error;
   }
-}
+};

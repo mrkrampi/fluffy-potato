@@ -66,6 +66,7 @@ export const UpdatePostSchema = z.object({
   slug: z.string(),
   timeToRead: z.string(),
   fakeAuthorId: z.optional(z.string()),
+  publishDate: z.date(),
 });
 
 const phoneRegex = new RegExp(
@@ -88,4 +89,8 @@ export const UpsertAuthor = z.object({
 
 export const UpdateUserSchema = z.object({
   name: z.string({ message: 'Імʼя обовʼзякове' }),
+});
+
+export const CreateAllowedEmail = z.object({
+  email: z.string().email({ message: 'Невалідна адреса' }),
 });

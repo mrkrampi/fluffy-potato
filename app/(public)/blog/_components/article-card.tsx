@@ -4,15 +4,13 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { posts } from '@/db/schema';
+import { formatDate } from '@/lib/utils';
 
 type Props = {
   article: typeof posts.$inferSelect;
 }
 
 export const ArticleCard = ({ article }: Readonly<Props>) => {
-  const creationDate = moment(article.creationDate);
-  creationDate.locale('uk');
-
   return (
     <Link href={`/blog/${article.slug}`}>
       <div className="relative w-full lg:max-w-[470px] lg:h-[270px]">
@@ -26,7 +24,7 @@ export const ArticleCard = ({ article }: Readonly<Props>) => {
 
       <div className="flex justify-between text-primary-gray lg:my-8">
         <p>{article.timeToRead}</p>
-        <p>{creationDate.format('D MMMM YYYY')}</p>
+        <p>{formatDate(article.publishDate)}</p>
       </div>
 
       <p className="text-primary-white font-medium lg:text-3xl mb-2">

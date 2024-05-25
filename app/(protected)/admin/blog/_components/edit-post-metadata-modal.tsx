@@ -1,6 +1,6 @@
 import * as z from 'zod';
 import { toast } from 'sonner';
-import { Loader, SettingsIcon } from 'lucide-react';
+import { CalendarIcon, Loader, SettingsIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useState, useTransition } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -10,6 +10,7 @@ import { UpdatePostSchema } from '@/schemas';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { FormError } from '@/components/form-error';
+import { DatePicker } from '@/components/date-picker';
 import { updatePostData } from '@/actions/update-post';
 import { FormSuccess } from '@/components/form-success';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
@@ -20,7 +21,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select"
+} from '@/components/ui/select';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
 
 type Props = {
@@ -42,6 +43,7 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
       metadata: post.metadata ?? '',
       timeToRead: post.timeToRead,
       fakeAuthorId: post.fakeAuthorId ?? undefined,
+      publishDate: post.publishDate,
     },
   });
 
@@ -161,6 +163,23 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
               />
 
               <FormField
+                name="publishDate"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem >
+                    <FormLabel>Дата публікації</FormLabel>
+                    <FormControl>
+                      <DatePicker
+                        selected={field.value}
+                        onSelect={field.onChange}
+                      />
+                    </FormControl>
+                    <FormMessage/>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
                 name="fakeAuthorId"
                 control={form.control}
                 render={({ field }) => (
@@ -172,7 +191,7 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
                           id="model"
                           className="items-start [&_[data-description]]:hidden"
                         >
-                          <SelectValue placeholder="Select a model" />
+                          <SelectValue placeholder="Select a model"/>
                         </SelectTrigger>
                         <SelectContent>
                           {

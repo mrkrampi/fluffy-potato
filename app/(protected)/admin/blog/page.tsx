@@ -1,14 +1,3 @@
-import { ListFilter } from 'lucide-react';
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuTrigger,
-  DropdownMenuSeparator,
-  DropdownMenuLabel,
-  DropdownMenuCheckboxItem,
-} from '@/components/ui/dropdown-menu';
-import { Button } from '@/components/ui/button';
 import { getAllPosts } from '@/db/post-queries';
 import { PostsTable } from '@/app/(protected)/admin/blog/_components/posts-table';
 import { CreatePostModal } from '@/app/(protected)/admin/blog/_components/create-post-modal';

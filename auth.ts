@@ -4,6 +4,8 @@ import { DrizzleAdapter } from '@auth/drizzle-adapter';
 import db from '@/db/drizzle';
 import authConfig from '@/auth.config';
 import { getUserById } from '@/db/queries';
+import { NextResponse } from 'next/server';
+import { checkIfEmailAllowed } from '@/db/allowed-emails-quesries';
 
 export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
   pages: {
@@ -33,6 +35,28 @@ export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
       }
 
       return session;
+    },
+    jwt: async ({ token }) => {
+      if (!token.sub) {
+        return token;
+      }
+
+      const existingUser = await getUserById(token.sub);
+
+      if (!existingUser) {
+        return token;
+      }
+
+      const isEmailAllowed = await checkIfEmailAllowed(existingUser.email);
+
+      if (!isEmailAllowed) {
+        throw new Error('Цей email недозволений');
+      }
+
+      token.name = existingUser.name;
+      token.email = existingUser.email;
+
+      return token;
     },
   },
   session: { strategy: 'jwt' },
