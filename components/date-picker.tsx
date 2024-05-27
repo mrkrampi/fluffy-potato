@@ -8,6 +8,7 @@ import { cn, formatDate } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 import { Calendar } from '@/components/ui/calendar';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import moment from 'moment';
 
 type Props = {
   selected?: Date;
@@ -18,7 +19,7 @@ export const DatePicker = ({ selected, onSelect }: Readonly<Props>) => {
   const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const handleOnSelect: SelectSingleEventHandler = (date?: Date) => {
-    onSelect?.(date);
+    onSelect?.(moment(date).utc(true).toDate());
     setIsPopoverOpen(false);
   };
 
