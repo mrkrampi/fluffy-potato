@@ -1,8 +1,8 @@
 import * as z from 'zod';
 import { toast } from 'sonner';
-import { CalendarIcon, Loader, SettingsIcon } from 'lucide-react';
 import { useForm } from 'react-hook-form';
 import { useState, useTransition } from 'react';
+import { Loader, SettingsIcon } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
 import { fakeAuthors, posts } from '@/db/schema';
@@ -205,7 +205,7 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
                                     <p>
                                       {author.name}
                                     </p>
-                                    <p className="text-xs" data-description>
+                                    <p className="text-xs" data-description={true}>
                                       {author.position}
                                     </p>
                                   </div>
