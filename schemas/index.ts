@@ -67,6 +67,7 @@ export const UpdatePostSchema = z.object({
   timeToRead: z.string(),
   fakeAuthorId: z.optional(z.string()),
   publishDate: z.date(),
+  microdata: z.optional(z.string()),
 });
 
 const phoneRegex = new RegExp(

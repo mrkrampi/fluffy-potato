@@ -7,6 +7,7 @@ import { getPublishedPostBySlug } from '@/db/post-queries';
 import { Article } from '@/app/(public)/blog/[articleSlug]/_components/article';
 import { ArticleBreadcrumbs } from '@/app/(public)/blog/[articleSlug]/_components/article-breadcrumbs';
 import { fakeAuthors } from '@/db/schema';
+import { JsonLd } from '@/components/json-ld';
 
 export const fetchCache = 'force-no-store';
 
@@ -45,17 +46,21 @@ const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => 
   }
 
   return (
-    <Section>
-      <div  className="lg:max-w-[750px] lg:px-0 mx-auto">
-        <ArticleBreadcrumbs articleTitle={article.title}/>
+    <>
+      <Section>
+        <div className="lg:max-w-[750px] lg:px-0 mx-auto">
+          <ArticleBreadcrumbs articleTitle={article.title}/>
 
-        <div className="mt-16">
-          <Article article={article}/>
+          <div className="mt-16">
+            <Article article={article}/>
+          </div>
         </div>
-      </div>
 
-      <ContactForm/>
-    </Section>
+        <ContactForm/>
+      </Section>
+
+      {!!article.microdata && <JsonLd data={JSON.parse(article.microdata)}/>}
+    </>
   );
 };
 

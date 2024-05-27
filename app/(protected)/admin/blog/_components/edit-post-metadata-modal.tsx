@@ -23,6 +23,7 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Avatar, AvatarImage } from '@/components/ui/avatar';
+import { Textarea } from '@/components/ui/textarea';
 
 type Props = {
   post: typeof posts.$inferSelect;
@@ -44,6 +45,7 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
       timeToRead: post.timeToRead,
       fakeAuthorId: post.fakeAuthorId ?? undefined,
       publishDate: post.publishDate,
+      microdata: post.microdata ?? '',
     },
   });
 
@@ -180,6 +182,24 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
               />
 
               <FormField
+                name="microdata"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem >
+                    <FormLabel>Мікророзмітка</FormLabel>
+                    <FormControl>
+                      <Textarea
+                        placeholder="Додайте мікророзмітку"
+                        className="resize-none"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage/>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
                 name="fakeAuthorId"
                 control={form.control}
                 render={({ field }) => (
@@ -197,7 +217,7 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
                           {
                             authors.map((author) => ((
                               <SelectItem key={author.id} value={author.id}>
-                                <div className="flex items-start gap-3 text-muted-foreground">
+                                <div className="flex items-center gap-3 text-muted-foreground">
                                   <Avatar className="h-6 w-6 my-auto rounded-full">
                                     <AvatarImage src={author.imageUrl}/>
                                   </Avatar>

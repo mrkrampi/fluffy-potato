@@ -85,6 +85,7 @@ export const posts = pgTable('posts', {
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
   timeToRead: text('time_to_read').notNull(),
   publishDate: timestamp('publish_date').notNull().defaultNow(),
+  microdata: text('microdata'),
 });
 
 export const fakeAuthors = pgTable('fake_authors', {
