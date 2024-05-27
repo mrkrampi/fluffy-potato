@@ -18,5 +18,5 @@ export function formatTimestamp(time: Date): string {
 }
 
 export function formatDate(date: Date): string {
-  return moment(date).locale('urk').format('D MMMM YYYY');
+  return moment(date).locale('urk').utc().format('D MMMM YYYY');
 }
