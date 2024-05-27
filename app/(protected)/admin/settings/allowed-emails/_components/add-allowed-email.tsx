@@ -39,6 +39,7 @@ export const AddAllowedEmail = () => {
 
         if (response.success) {
           toast.success(response.success);
+          form.reset();
           setOpen(false);
         }
       } catch (e: any) {

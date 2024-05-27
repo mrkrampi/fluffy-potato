@@ -15,12 +15,13 @@ export const getAllPosts = cache(async () => {
 export const getPublishedPosts = cache(async () => {
   return db.query.posts.findMany({
     where: eq(posts.isPublished, true),
+    orderBy: (posts, { desc }) => [desc(posts.publishDate)],
   });
 });
 
 export const getPostBySlug = cache(async (slug: string) => {
   return db.query.posts.findFirst({
-    where: eq(posts.slug, slug)
+    where: eq(posts.slug, slug),
   });
 });
 
@@ -32,7 +33,7 @@ export const getPublishedPostBySlug = cache(async (slug: string) => {
     ),
     with: {
       fakeAuthor: true,
-    }
+    },
   });
 });
 
