@@ -53,7 +53,7 @@ const AboutUsPage = () => {
 
         <StudentsStoriesSection withoutBackground/>
 
-        <ContactForm/>
+        <ContactForm withCoursesLink/>
       </div>
 
       <JsonLd data={ABOUT_US_WEBPAGE_MICRODATA}/>

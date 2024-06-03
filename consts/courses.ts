@@ -112,10 +112,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
         '@type': 'Person',
         'name': 'Наталія Яцишинець',
       },
-      "location": {
-        "@type": "VirtualLocation",
-        "name": "Online"
-      },
+      "location": "online",
     },
   },
   {
@@ -224,10 +221,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
         '@type': 'Person',
         'name': 'Наталія Яцишинець',
       },
-      "location": {
-        "@type": "VirtualLocation",
-        "name": "Online"
-      },
+      "location": "online",
     },
   },
   {
@@ -346,10 +340,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
         '@type': 'Person',
         'name': 'Наталія Яцишинець',
       },
-      "location": {
-        "@type": "VirtualLocation",
-        "name": "Online"
-      },
+      "location": "online",
     },
   },
 ];

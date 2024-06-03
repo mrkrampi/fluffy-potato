@@ -3,4 +3,5 @@ export interface StudentStoryInterface {
   name: string;
   story: string;
   image: string;
+  alt: string;
 }

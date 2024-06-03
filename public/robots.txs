@@ -4,3 +4,5 @@ Disallow: /auth/sign-up
 Disallow: /auth/sign-in
 
 Allow: /
+
+Sitemap:https://www.nikoit-academy.com/sitemap.xml

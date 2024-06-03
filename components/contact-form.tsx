@@ -1,6 +1,7 @@
 'use client';
 
 import * as z from 'zod';
+import Link from 'next/link';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { PatternFormat } from 'react-number-format';
@@ -21,9 +22,10 @@ const GOOGLE_SHEET_ADD_URL = 'https://script.google.com/macros/s/AKfycbwNPRn0gfM
 type Props = {
   isModalMode?: boolean;
   isBlogMode?: boolean;
+  withCoursesLink?: boolean;
 }
 
-export const ContactForm = ({ isModalMode, isBlogMode }: Readonly<Props>) => {
+export const ContactForm = ({ isModalMode, isBlogMode, withCoursesLink }: Readonly<Props>) => {
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [isPending, setIsPending] = useState<boolean>(false);
 
@@ -96,7 +98,7 @@ export const ContactForm = ({ isModalMode, isBlogMode }: Readonly<Props>) => {
               isModalMode && 'xl:w-full xl:text-center xl:my-5',
               isBlogMode && 'xl:w-full xl:text-center'
             )}>
-              Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором курсу? Заповніть форму зворотнього звʼязку, і
+              Залишилися до нас питання, або потрібна наша консультація чи допомога з вибором {withCoursesLink ? <Link href="/courses">курсу</Link> : 'курсу'}? Заповніть форму зворотнього звʼязку, і
               наш
               менеджер звʼяжеться з вами протягом доби
             </p>

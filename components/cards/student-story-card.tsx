@@ -14,7 +14,7 @@ export const StudentStoryCard = ({ story }: StudentStoryCardProps) => {
       <div className="rounded-full border-2 border-primary-blue lg:group-hover:border-primary-white relative w-28 h-28">
         <Image
           src={story.image}
-          alt=""
+          alt={story.alt}
           fill
           className="object-cover object-center rounded-full"
         />
