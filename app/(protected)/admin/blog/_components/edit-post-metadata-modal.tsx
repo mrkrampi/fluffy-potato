@@ -5,10 +5,10 @@ import { useState, useTransition } from 'react';
 import { Loader, SettingsIcon } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import { fakeAuthors, posts } from '@/db/schema';
 import { UpdatePostSchema } from '@/schemas';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
+import { fakeAuthors, posts } from '@/db/schema';
 import { FormError } from '@/components/form-error';
 import { DatePicker } from '@/components/date-picker';
 import { updatePostData } from '@/actions/update-post';
@@ -168,7 +168,7 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
                 name="publishDate"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem >
+                  <FormItem>
                     <FormLabel>Дата публікації</FormLabel>
                     <FormControl>
                       <DatePicker
@@ -185,7 +185,7 @@ export const EditPostMetadataModal = ({ post, authors }: Readonly<Props>) => {
                 name="microdata"
                 control={form.control}
                 render={({ field }) => (
-                  <FormItem >
+                  <FormItem>
                     <FormLabel>Мікророзмітка</FormLabel>
                     <FormControl>
                       <Textarea

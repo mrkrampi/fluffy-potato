@@ -27,7 +27,7 @@ export const Article = ({ article }: Readonly<Props>) => {
 
   return (
     <div>
-      <Heading level={1} className="lg:text-[40px]">{article.title}</Heading>
+      <Heading level={1} className="text-[32px] leading-[1.1] lg:text-[40px]">{article.title}</Heading>
 
       <div className="my-8">
         <ArticleInfo

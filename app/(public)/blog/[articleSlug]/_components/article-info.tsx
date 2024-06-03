@@ -14,7 +14,7 @@ type Props = {
 
 export const ArticleInfo = ({ author, authorImgUrl, position, timeToRead, publishDate }: Readonly<Props>) => {
   return (
-    <div className="py-3 flex justify-between items-center">
+    <div className="py-3 flex flex-col-reverse md:flex-row justify-between md:items-center gap-y-5">
       <div className="flex items-center gap-[10px]">
         <div className="relative w-20 h-20">
           <Image

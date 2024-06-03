@@ -172,7 +172,7 @@ export const ContactForm = ({ isModalMode, isBlogMode }: Readonly<Props>) => {
                         </FormLabel>
                         <FormControl>
                           <PatternFormat
-                            {...field}
+                            onChange={field.onChange}
                             placeholder="Контактник номер"
                             type="tel"
                             format="+### ## ### ## ##" allowEmptyFormatting mask="_"

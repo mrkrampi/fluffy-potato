@@ -8,6 +8,7 @@ import { Article } from '@/app/(public)/blog/[articleSlug]/_components/article';
 import { ArticleBreadcrumbs } from '@/app/(public)/blog/[articleSlug]/_components/article-breadcrumbs';
 import { fakeAuthors } from '@/db/schema';
 import { JsonLd } from '@/components/json-ld';
+import { BlogHeaderSection } from '@/app/(public)/blog/_components/blog-header-section';
 
 export const fetchCache = 'force-no-store';
 
@@ -47,7 +48,11 @@ const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => 
 
   return (
     <>
-      <Section>
+      <div className="lg:hidden">
+        <BlogHeaderSection/>
+      </div>
+
+      <Section className="overflow-hidden">
         <div className="lg:max-w-[750px] lg:px-0 mx-auto">
           <ArticleBreadcrumbs articleTitle={article.title}/>
 
