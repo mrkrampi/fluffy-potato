@@ -19,7 +19,7 @@ export default function Home() {
       <MiniCourseSection/>
       <StudyFormatsSection/>
       <StudentsBenefitsSection/>
-      <div className="bg-stories-section relative">
+      <div className="bg-stories-section relative bg-no-repeat">
         <StudentsStoriesSection/>
         <FaqSection/>
       </div>

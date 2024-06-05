@@ -37,7 +37,7 @@ export const HeroSection = () => {
               asChild
               size="5xl"
               variant="outline"
-              className="bg-primary-accent border-0 hover:text-primary-white text-primary-white text-base md:text-xl xl:text-3xl font-bold md:h-[72px] py-3 px-6 md:py-6 md:px-16 xl:h-20 rounded-full xl:px-14 xl:py-12"
+              className="bg-primary-accent border-0 text-primary-white text-base md:text-xl xl:text-[32px] font-bold md:h-[72px] py-3 px-6 md:py-6 md:px-16 xl:h-20 rounded-full xl:px-14 xl:py-12 hover:bg-primary-white hover:text-primary-accent active:bg-primary-blue-pressed active:text-primary-white"
             >
               <Link href="/courses">Обрати курс</Link>
             </Button>
