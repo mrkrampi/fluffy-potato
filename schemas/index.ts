@@ -63,7 +63,7 @@ export const CreatePostSchema = z.object({
 export const UpdatePostSchema = z.object({
   title: z.string(),
   metadata: z.string(),
-  slug: z.string(),
+  slug: z.string().min(1, { message: 'Обовʼязкове поле' }).regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/, { message: 'Невалідне значення' }),
   timeToRead: z.string(),
   fakeAuthorId: z.optional(z.string()),
   publishDate: z.date(),
@@ -94,4 +94,28 @@ export const UpdateUserSchema = z.object({
 
 export const CreateAllowedEmail = z.object({
   email: z.string().email({ message: 'Невалідна адреса' }),
+});
+
+export const CourseSchema = z.object({
+  slug: z.string().min(1, { message: 'Обовʼязкове поле' }).regex(/^[A-Za-z0-9]+(?:-[A-Za-z0-9]+)*$/, { message: 'Невалідне значення' }),
+  name: z.string().min(1, { message: 'Обовʼязкове поле' }),
+  level: z.string().min(1, { message: 'Обовʼязкове поле' }),
+  duration: z.string().min(1, { message: 'Обовʼязкове поле' }),
+  countOfModules: z.string({ message: 'Поле обовʼязкове' }),
+  previewImage: z.any({ message: 'Зображення обовʼязкове.' }),
+  overview: z.string().min(1, { message: 'Обовʼязкове поле' }).array(),
+  goals: z.string().min(1, { message: 'Обовʼязкове поле' }).array(),
+  overviewImage: z.any({ message: 'Зображення обовʼязкове.' }),
+  courseDescription: z.string().min(1, { message: 'Обовʼязкове поле' }),
+  courseTitle: z.string().min(1, { message: 'Обовʼязкове поле' }),
+  microdata: z.optional(z.string()),
+  startDate: z.date({ message: 'Поле обовʼязкове' }),
+  courseProgramDescription: z.string().min(1, { message: 'Обовʼязкове поле' }),
+  courseProgram: z.object({
+    id: z.optional(z.string()),
+    title: z.string().min(1, { message: 'Обовʼязкове поле' }),
+    objective: z.string().min(1, { message: 'Обовʼязкове поле' }),
+    lessons: z.string().min(1, { message: 'Обовʼязкове поле' }).array(),
+  })
+    .array(),
 });

@@ -12,7 +12,7 @@ export const STUDENT_STORIES_LIST: Array<StudentStoryInterface> = [
     id: 2,
     name: 'Андрій',
     story: 'Навчання на курсі QA у Наталії було дуже корисним та пізнавальним досвідом. Отримавши глибокі знання з тестування програмного забезпечення, я зрозумів процеси та методології, що лежать в основі забезпечення якості продукту.',
-    image: '/feedback/feedback2.svg',
+    image: '/feedback/feedback2.webp',
     alt: 'Відгук про курси NIKO IT ACADEMY учня Андрія',
   },
   {

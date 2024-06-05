@@ -13,12 +13,7 @@ interface StudentsStoriesSectionProps {
 export const StudentsStoriesSection = ({ withoutBackground }: StudentsStoriesSectionProps) => {
   return (
     <Section
-      className={cn(
-        "bg-center bg-cover relative px-0 md:pb-[76px] lg:pb-[176px]",
-        !withoutBackground && 'bg-stories-section'
-      )}>
-      <div className="absolute inset-0 bg-gradient-to-b from-[#040309] from-55% to-[#040309] to-90% opacity-80"/>
-
+      className="bg-center bg-cover relative px-0 md:pb-[76px] lg:pb-[176px]">
       <div className="w-full z-10 relative">
         <div className="w-full flex md:w-1/2 lg:w-full">
           <Heading level={3} className="lg:whitespace-nowrap">

@@ -4,7 +4,7 @@ export const COURSES_LIST: Array<CourseInterface> = [
   {
     id: 1,
     name: 'Q.A. Engineer ',
-    previewImage: '/courses/qa-course.png',
+    previewImage: '/courses/qa-course.webp',
     level: 'Початківцям',
     duration: '3 місяці',
     countOfModules: 10,

@@ -19,8 +19,10 @@ export default function Home() {
       <MiniCourseSection/>
       <StudyFormatsSection/>
       <StudentsBenefitsSection/>
-      <StudentsStoriesSection/>
-      <FaqSection/>
+      <div className="bg-stories-section relative">
+        <StudentsStoriesSection/>
+        <FaqSection/>
+      </div>
       <ContactForm/>
 
       <JsonLd data={ORGANIZATION_MICRODATA}/>

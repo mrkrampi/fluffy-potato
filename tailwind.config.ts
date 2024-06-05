@@ -88,8 +88,8 @@ const config = {
         "accordion-up": "accordion-up 0.2s ease-out",
       },
       backgroundImage: {
-        'course-pattern': "url('/courses/course-section-background.png')",
-        'contact-form': "url('/backgrounds/contact-form-bg.png')",
+        'course-pattern': "url('/courses/course-section-background.webp')",
+        'contact-form': "url('/backgrounds/contact-form-bg.webp')",
         'stories-section': "url('/backgrounds/feedbacks-bg.webp')",
         'register-modal': "url('/backgrounds/register-modal-background.webp')"
       },

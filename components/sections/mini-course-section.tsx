@@ -31,7 +31,7 @@ export const MiniCourseSection = () => {
             <div className="xl:max-w-[50%] w-full">
               <div className="md:hidden xl:max-w-[50%] w-full relative min-h-[350px] md:min-h-[700px] xl:min-h-full">
                 <Image
-                  src="mini-course.png"
+                  src="/courses/mini-course.webp"
                   alt="Mini course"
                   fill
                   className="object-contain object-center"
@@ -77,7 +77,7 @@ export const MiniCourseSection = () => {
 
             <div className="hidden md:block xl:max-w-[50%] w-full relative min-h-[350px] md:min-h-[700px] xl:min-h-full">
               <Image
-                src="mini-course.png"
+                src="/courses/mini-course.webp"
                 alt="Mini course"
                 fill
                 className="object-contain object-center"
