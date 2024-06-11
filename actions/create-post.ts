@@ -39,6 +39,7 @@ export const createPost = async (values: z.infer<typeof CreatePostSchema>) => {
   });
 
   revalidatePath('/admin/blog');
+  revalidatePath('/blog');
 
   return {
     success: 'Пост створено',

@@ -5,6 +5,7 @@ import {
   integer,
   boolean,
   primaryKey,
+  json,
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import type { AdapterAccount } from 'next-auth/adapters';
@@ -121,7 +122,12 @@ export const courses = pgTable('courses', {
   overview: text('overview').notNull().array(),
   goals: text('goals').notNull().array(),
   overviewImageUrl: text('overview_image_url').notNull(),
-  description: text('description').notNull(),
+  courseDescription: text('course_description').notNull(),
+  courseTitle: text('course_title').notNull(),
+  microdata: text('microdata'),
+  startDate: timestamp('start_date').notNull(),
+  courseProgramDescription: text('course_program_description').notNull(),
+  courseProgram: json('course_program').notNull().array(),
 });
 
 export const allowedEmails = pgTable('allowed_emails', {
