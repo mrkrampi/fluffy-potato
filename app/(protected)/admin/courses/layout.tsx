@@ -24,12 +24,6 @@ const CoursesLayout = ({ children }: Readonly<PropsWithChildren>) => {
           >
             Курси
           </Link>
-          <Link
-            href="/admin/courses/program"
-            className={isActiveRoute('/admin/courses/program') ? 'text-black font-bold' : ''}
-          >
-            Програма курсу
-          </Link>
         </nav>
         <div className="grid gap-6">
           {children}
