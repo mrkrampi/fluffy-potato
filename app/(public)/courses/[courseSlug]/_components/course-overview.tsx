@@ -1,8 +1,9 @@
-import { CourseInterface } from '@/interfaces/course.interface';
 import Image from 'next/image';
 
+import { courses } from '@/db/schema';
+
 interface CourseOverviewProps {
-  course?: CourseInterface;
+  course?: typeof courses.$inferSelect;
 }
 
 export const CourseOverview = ({ course }: CourseOverviewProps) => {
@@ -24,7 +25,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
         </h1>
 
         <ul className="list-disc marker:text-primary-accent my-6">
-          {course.overview.map((item: string) => {
+          {(course.overview ?? []).map((item: string) => {
             return (
               <li key={item} className="text-primary-white font-medium md:text-xl lg:text-2xl my-6">
                 {item}
@@ -36,7 +37,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
 
       <div className="h-full min-h-[478px] w-full rounded-2xl relative overflow-hidden">
         <Image
-          src={course.overviewImage}
+          src={course.overviewImageUrl}
           alt={course.name}
           fill
           className="object-cover"

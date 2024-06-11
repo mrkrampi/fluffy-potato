@@ -19,6 +19,7 @@ import { createCourse } from '@/actions/create-course';
 import { SingleImageDropzone } from '@/components/single-image-dropzone';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { updateCourseData } from '@/actions/update-course';
 
 type Props = {
   course?: typeof courses.$inferSelect;
@@ -50,6 +51,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       goals: course?.goals ?? [],
       courseProgram: course?.courseProgram ? course.courseProgram as any : [],
       courseProgramDescription: course?.courseProgramDescription,
+      startDate: course?.startDate,
     },
   });
 
@@ -76,6 +78,14 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
   });
 
   const onSubmit = (values: z.infer<typeof CourseSchema>) => {
+    if (course) {
+      update(values)
+    } else {
+      create(values);
+    }
+  };
+
+  const create = (values: z.infer<typeof CourseSchema>) => {
     startTransition(async () => {
       try {
         const previewImage = await uploadPreviewImage();
@@ -96,7 +106,34 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
         form.reset();
       }
     });
-  };
+  }
+
+  const update = (values: z.infer<typeof CourseSchema>) => {
+    if (!course) {
+      return;
+    }
+
+    startTransition(async () => {
+      try {
+        const previewImage = await uploadPreviewImage();
+        const overviewImage = await uploadOverviewImage();
+
+        const response = await updateCourseData(course.id, {
+          ...values,
+          previewImage,
+          overviewImage,
+        });
+
+        if (response.success) {
+          toast.success(response.success);
+        }
+
+        router.push(`/admin/courses`);
+      } catch (error: any) {
+        form.reset();
+      }
+    });
+  }
 
   const onPreviewImageChange = (file?: File) => {
     setPreviewImageFile(file);
@@ -196,7 +233,20 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Заголовок курсу</FormLabel>
+                    <FormLabel>
+                      Тайтл
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Info className="w-4 h-4 ml-2"/>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Тайтл в вкладці браузера</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </FormLabel>
                     <FormControl>
                       <Input
                         {...field}
@@ -293,7 +343,20 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
                 control={form.control}
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Опис Курсу</FormLabel>
+                    <FormLabel>
+                      Metadata description
+
+                      <TooltipProvider>
+                        <Tooltip>
+                          <TooltipTrigger>
+                            <Info className="w-4 h-4 ml-2"/>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p>Опис курсу для metadata</p>
+                          </TooltipContent>
+                        </Tooltip>
+                      </TooltipProvider>
+                    </FormLabel>
                     <FormControl>
                       <Textarea
                         placeholder="Опис"
@@ -548,7 +611,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
           <div className="flex gap-4 justify-end">
             <Button disabled={isPending} onClick={form.handleSubmit(onSubmit)}>
               {isPending && <Loader className="h-4 w-4 mr-2 animate-spin"/>}
-              Створити
+              {course ? 'Оновити' : 'Створити'}
             </Button>
           </div>
         </form>

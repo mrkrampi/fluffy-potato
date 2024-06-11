@@ -2,7 +2,6 @@ import Image from 'next/image';
 import type { Metadata } from 'next';
 
 import { JsonLd } from '@/components/json-ld';
-import { ALL_COURSES_LIST } from '@/consts/courses';
 import { StudyFormatsSection } from '@/components/sections/study-formats-section';
 import { AboutTeacherSection } from '@/components/sections/about-teacher-section';
 import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
@@ -12,6 +11,7 @@ import { StudyGuideSection } from '@/app/(public)/courses/[courseSlug]/_componen
 import { CourseProgramSection } from '@/app/(public)/courses/[courseSlug]/_components/course-program-section';
 
 import courseProgram from '@/public/courses/course-program.webp';
+import { getAllCourses, getCourseBySlug } from '@/db/course-queries';
 
 interface CourseSlugPageProps {
   params: {
@@ -20,19 +20,20 @@ interface CourseSlugPageProps {
 }
 
 export async function generateStaticParams() {
-  return ALL_COURSES_LIST.map(({ slug }) => ({ courseSlug: slug }));
+  const coursesList = await getAllCourses();
+  return coursesList.map(({ slug }) => ({ courseSlug: slug }));
 }
 
-export function generateMetadata({ params: { courseSlug } }: CourseSlugPageProps): Metadata {
-  const activeCourse = ALL_COURSES_LIST.find((course) => course.slug === courseSlug);
+export async function generateMetadata({ params: { courseSlug } }: CourseSlugPageProps): Promise<Metadata> {
+  const activeCourse = await getCourseBySlug(courseSlug);
   return {
     title: activeCourse?.courseTitle,
     description: activeCourse?.courseDescription,
   };
 }
 
-const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
-  const activeCourse = ALL_COURSES_LIST.find((course) => course.slug === courseSlug);
+const CourseSlugPage = async ({ params: { courseSlug } }: CourseSlugPageProps) => {
+  const activeCourse = await getCourseBySlug(courseSlug);
 
   if (!activeCourse) {
     return null;
@@ -40,9 +41,9 @@ const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
 
   return (
     <>
-      <div className="md:mt-[104px]">
+      <div className="md:mt-[104px] overflow-x-hidden">
         <CourseSelector activeCourse={activeCourse}/>
-        <GoalsSection goals={activeCourse?.goals}/>
+        <GoalsSection goals={activeCourse?.goals ?? []}/>
 
         <div className="relative overflow-hidden">
           <StudyGuideSection/>
@@ -61,7 +62,7 @@ const CourseSlugPage = ({ params: { courseSlug } }: CourseSlugPageProps) => {
         <StudentsStoriesSection withoutBackground/>
       </div>
 
-      {activeCourse.microdata ? <JsonLd data={activeCourse.microdata}/> : null}
+      {activeCourse.microdata ? <JsonLd data={JSON.parse(activeCourse.microdata)}/> : null}
     </>
   );
 };

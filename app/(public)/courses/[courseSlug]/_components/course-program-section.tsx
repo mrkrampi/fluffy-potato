@@ -1,13 +1,13 @@
 import Image from 'next/image';
 
+import { courses } from '@/db/schema';
 import { Heading } from '@/components/markup/heading';
 import { Section } from '@/components/markup/section';
-import { CourseInterface, CourseProgram } from '@/interfaces/course.interface';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import { BlurredParagraph } from '@/components/markup/blurred-paragraph';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface CourseProgramSectionProps {
-  course: CourseInterface;
+  course: typeof courses.$inferSelect;
 }
 
 export const CourseProgramSection = ({ course: { courseProgram } }: CourseProgramSectionProps) => {
@@ -24,7 +24,7 @@ export const CourseProgramSection = ({ course: { courseProgram } }: CourseProgra
 
       <div className="mt-20 lg:mt-40">
         <Accordion type="multiple" className="w-full border-none">
-          {courseProgram?.map((program: CourseProgram, index: number) =>
+          {courseProgram?.map((program: any, index: number) =>
             (
               <AccordionItem key={program.id} value={program.title} className="border-b-2 border-primary-accent">
                 <AccordionTrigger

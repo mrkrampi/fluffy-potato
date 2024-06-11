@@ -9,8 +9,17 @@ import { CarouselWrapper } from '@/components/carousel-wrapper';
 
 import arrowBlack from '@/public/arrows/black.svg';
 import { Section } from '@/components/markup/section';
+import { getAllCourses } from '@/db/course-queries';
 
-export const CourseSection = () => {
+export const CourseSection = async () => {
+  const coursesData = getAllCourses();
+
+  const [
+    coursesList
+  ] = await Promise.all([
+    coursesData
+  ]);
+
   return (
     <Section className="md:max-w-[calc(100vw-16px)] lg:px-4 lg:pt-[120px]">
       <div className="max-w-[1600px] w-full mx-auto px-6 py-12 lg:py-[220px] md:px-8 md:pb-[350px] bg-center bg-cover bg-course-pattern rounded-3xl">
@@ -27,12 +36,12 @@ export const CourseSection = () => {
         </div>
 
         <div className="hidden md:flex flex-col gap-y-8 mt-10 md:mt-20 xl:mt-40">
-          {COURSES_LIST.map((course: CourseInterface) => (<CourseCard key={course.id} course={course}/>))}
+          {coursesList.map((course) => (<CourseCard key={course.id} course={course}/>))}
         </div>
 
         <div className="md:hidden mt-10 mb-28">
           <CarouselWrapper opts={{ loop: false }}>
-            {COURSES_LIST.map((course: CourseInterface) => (
+            {coursesList.map((course) => (
               <CarouselItem key={course.id} className="px-2">
                 <CourseCard course={course}/>
               </CarouselItem>

@@ -1,9 +1,9 @@
 import Link from 'next/link';
 
-import { CourseInterface } from '@/interfaces/course.interface';
+import { courses } from '@/db/schema';
 
 interface CourseCardProps {
-  course: CourseInterface;
+  course: typeof courses.$inferSelect;
 }
 
 export const CourseCard = ({ course }: CourseCardProps) => {
@@ -12,7 +12,7 @@ export const CourseCard = ({ course }: CourseCardProps) => {
       href={`/courses/${course.slug}`}
       className="flex flex-col justify-between px-4 py-12 md:p-12 bg-cover w-full h-[480px] md:h-[400px] rounded-md hover:shadow-lg relative group overflow-hidden">
       <div
-        style={{ backgroundImage: `url(${course.previewImage})` }}
+        style={{ backgroundImage: `url(${course.previewImageUrl})` }}
         className="absolute inset-0 bg-center bg-cover md:group-hover:scale-125 transition-transform duration-200"
       >
         <div className="absolute inset-0 bg-black/20"/>

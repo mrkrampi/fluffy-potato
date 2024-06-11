@@ -1,4 +1,11 @@
-export const CourseInformation = () => {
+import { courses } from '@/db/schema';
+import { formatDate } from '@/lib/utils';
+
+type Props = {
+  course: typeof courses.$inferSelect;
+}
+
+export const CourseInformation = ({course}: Readonly<Props>) => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-6 gap-x-6 gap-y-6 mx-2 md:mx-0">
       <div className="w-full bg-secondary-black lg:py-14 lg:px-16 py-6 px-8 md:p-10 flex flex-col md:flex-row gap-y-6 lg:gap-x-20 justify-between rounded-3xl md:col-span-2 lg:col-span-4">
@@ -7,7 +14,7 @@ export const CourseInformation = () => {
             Тривалість
           </div>
           <div className="lg:text-2xl font-medium text-right text-primary-blue mr-auto md:mr-0 mt-4">
-            3 місяці
+            {course.duration}
           </div>
         </div>
 
@@ -27,7 +34,7 @@ export const CourseInformation = () => {
             Старт курсу
           </div>
           <div className="md:text-xl lg:text-2xl font-medium text-right text-primary-white">
-            19 квітня
+            {formatDate(course.startDate, 'D MMMM')}
           </div>
         </div>
       </div>

@@ -17,6 +17,6 @@ export function formatTimestamp(time: Date): string {
   return moment(time).format('YYYY-MM-DD HH:mm:ss');
 }
 
-export function formatDate(date: Date): string {
-  return moment(date).locale('urk').utc().format('D MMMM YYYY');
+export function formatDate(date: Date, format = 'D MMMM YYYY'): string {
+  return moment(date).locale('urk').utc().format(format);
 }
