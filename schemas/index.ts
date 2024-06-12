@@ -127,3 +127,9 @@ export const UpsertFeedback = z.object({
   imageUrl: z.any({ message: 'Зображення обовʼязкове' }),
   imageAlt: z.string().min(1,{ message: 'Підпис до зображення обовʼязковий' }),
 });
+
+export const UpsertFaq = z.object({
+  id: z.optional(z.string()),
+  question: z.string().min(1, { message: 'Запитання обовʼязкове' }),
+  answer: z.string().min(1, { message: 'Відповідь обовʼязкова' }),
+});

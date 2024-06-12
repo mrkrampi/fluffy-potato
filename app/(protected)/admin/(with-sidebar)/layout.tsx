@@ -42,6 +42,13 @@ const WithSidebarLayout = ({ children }: Readonly<PropsWithChildren>) => {
           >
             Відгуки
           </Link>
+
+          <Link
+            href="/admin/faq"
+            className={isActiveRoute('/admin/faq') ? 'text-black font-bold' : ''}
+          >
+            FAQ
+          </Link>
         </nav>
         <div className="grid gap-6">
           {children}

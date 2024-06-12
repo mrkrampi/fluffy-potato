@@ -44,7 +44,7 @@ export const upsertFeedback = async (values: z.infer<typeof UpsertFeedback>) => 
     revalidatePath('/courses');
 
     return {
-      success: 'Вікдуг оновлений',
+      success: 'Відгук оновлений',
     };
   }
 

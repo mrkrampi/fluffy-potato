@@ -154,3 +154,13 @@ export const feedbacks = pgTable('feedbacks', {
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });
+
+export const faqs = pgTable('faqs', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  question: text('question').notNull(),
+  answer: text('answer').notNull(),
+  creationDate: timestamp('creation_date').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
+});

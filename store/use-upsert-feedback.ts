@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 
-import { fakeAuthors, feedbacks } from '@/db/schema';
+import { feedbacks } from '@/db/schema';
 
 type UseUpsertFeedback = {
   isOpen: boolean;

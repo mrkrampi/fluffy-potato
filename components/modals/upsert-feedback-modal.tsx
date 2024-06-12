@@ -7,21 +7,18 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useMemo, useState, useTransition } from 'react';
 
-import { UpsertAuthor, UpsertFeedback } from '@/schemas';
+import { UpsertFeedback } from '@/schemas';
 import { Input } from '@/components/ui/input';
 import { useEdgeStore } from '@/lib/edgestore';
 import { Button } from '@/components/ui/button';
 import { FormError } from '@/components/form-error';
-import { upsertAuthor } from '@/actions/upsert-author';
+import { Textarea } from '@/components/ui/textarea';
 import { FormSuccess } from '@/components/form-success';
-import { useUpsertAuthor } from '@/store/use-upsert-author';
+import { upsertFeedback } from '@/actions/upsert-feedback';
+import { useUpsertFeedback } from '@/store/use-upsert-feedback';
 import { SingleImageDropzone } from '@/components/single-image-dropzone';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { useUpsertFeedback } from '@/store/use-upsert-feedback';
-import { upsertFeedback } from '@/actions/upsert-feedback';
-import { feedbacks } from '@/db/schema';
-import { Textarea } from '@/components/ui/textarea';
 
 export const UpsertFeedbackModal = () => {
   const { close, isOpen, feedback } = useUpsertFeedback();

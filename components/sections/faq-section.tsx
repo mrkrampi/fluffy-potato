@@ -1,11 +1,14 @@
 import Image from 'next/image';
 
-import { FAQ_QUESTIONS_LIST } from '@/consts/faq-questions';
-import { FAQQuestion } from '@/interfaces/faq-question.interface';
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import { getFaqs } from '@/db/faq-queries';
 import { Section } from '@/components/markup/section';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-export const FaqSection = () => {
+export const FaqSection = async () => {
+  const faqData = getFaqs();
+
+  const [faqList] = await Promise.all([faqData]);
+
   return (
     <Section className="pb-9 md:pb-14 lg:pb-[152px]">
       <div className="max-w-[1612px] w-full xl:px-0 xl:mx-auto">
@@ -24,7 +27,7 @@ export const FaqSection = () => {
 
         <div className="w-full mt-12 md:mt-40 lg:mt-36">
           <Accordion type="multiple" className="w-full border-none">
-            {FAQ_QUESTIONS_LIST.map((item: FAQQuestion) =>
+            {faqList.map((item) =>
               (
                 <AccordionItem key={item.id} value={`item-${item.id}`} className="my-7">
                   <AccordionTrigger hideChevron className="hover:no-underline">
