@@ -60,7 +60,7 @@ const CourseSlugPage = async ({ params: { courseSlug } }: CourseSlugPageProps) =
         </div>
 
         <AboutTeacherSection/>
-        <StudyFormatsSection registerButton/>
+        <StudyFormatsSection registerButton course={activeCourse}/>
         <StudentsStoriesSection/>
       </div>
 

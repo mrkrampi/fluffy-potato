@@ -6,6 +6,7 @@ import {
   boolean,
   primaryKey,
   json,
+  numeric
 } from 'drizzle-orm/pg-core';
 import { relations } from 'drizzle-orm';
 import type { AdapterAccount } from 'next-auth/adapters';
@@ -161,6 +162,17 @@ export const faqs = pgTable('faqs', {
     .$defaultFn(() => crypto.randomUUID()),
   question: text('question').notNull(),
   answer: text('answer').notNull(),
+  creationDate: timestamp('creation_date').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
+});
+
+export const studyFormats = pgTable('study_formats', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  name: text('name').notNull(),
+  items: text('items').notNull().array(),
+  price: numeric('price', { precision: 10, scale: 2 }).notNull(),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });

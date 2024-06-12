@@ -1,14 +1,19 @@
-import { STUDY_FORMATS_LIST } from '@/consts/study-format';
-import { StudyFormatInterface } from '@/interfaces/study-format.interface';
-import { StudyFormatCard } from '@/components/cards/study-format-card';
+import { courses } from '@/db/schema';
 import { Section } from '@/components/markup/section';
 import { Heading } from '@/components/markup/heading';
+import { getStudyFormats } from '@/db/pricing-queries';
+import { StudyFormatCard } from '@/components/cards/study-format-card';
 
 interface StudyFormatCardProps {
   registerButton?: boolean;
+  course?: typeof courses.$inferSelect;
 }
 
-export const StudyFormatsSection = ({ registerButton }: StudyFormatCardProps) => {
+export const StudyFormatsSection = async ({ registerButton, course }: StudyFormatCardProps) => {
+  const studyFormatData = getStudyFormats();
+
+  const [studyFormatsList] = await Promise.all([studyFormatData]);
+
   return (
     <Section>
       <div className="w-full xl:mx-auto">
@@ -20,11 +25,12 @@ export const StudyFormatsSection = ({ registerButton }: StudyFormatCardProps) =>
 
         <div
           className="w-full flex mt-16 md:mt-20 xl:mt-40 gap-x-5 gap-y-14 overflow-x-auto flex-col md:flex-row md:max-w-[calc(100vw-64px)] max-w-[calc(100vw-32px)]">
-          {STUDY_FORMATS_LIST.map((item: StudyFormatInterface) =>
+          {studyFormatsList.map((studyFormat) =>
             (<StudyFormatCard
-              key={item.id}
-              studyFormat={item}
+              key={studyFormat.id}
+              studyFormat={studyFormat}
               registerButton={registerButton}
+              course={course}
             />))}
         </div>
       </div>

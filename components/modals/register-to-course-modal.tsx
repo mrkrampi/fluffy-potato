@@ -1,25 +1,27 @@
 'use client';
 
-import Image from 'next/image';
 import InputMask from 'react-input-mask';
 
+import { courses, studyFormats } from '@/db/schema';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { SocialEnum } from '@/enums/social.enum';
-import { formatNumberWithSpaces } from '@/lib/utils';
+import { formatDate, formatNumberWithSpaces } from '@/lib/utils';
 import { Heading } from '@/components/markup/heading';
 import { SocialButton } from '@/components/social-button';
-import { StudyFormatInterface } from '@/interfaces/study-format.interface';
 import { Dialog, DialogContent, DialogHeader, DialogTrigger } from '@/components/ui/dialog';
 
-import registerModalBackground from '@/public/backgrounds/register-modal-background.webp';
-
 type Props = {
-  studyFormat: StudyFormatInterface;
+  studyFormat: typeof studyFormats.$inferSelect;
+  course?: typeof courses.$inferSelect;
 }
 
-export const RegisterToCourseModal = ({ studyFormat }: Readonly<Props>) => {
+export const RegisterToCourseModal = ({ studyFormat, course }: Readonly<Props>) => {
+  if (!course) {
+    return null;
+  }
+
   return (
     <Dialog>
       <DialogTrigger asChild>
@@ -113,13 +115,15 @@ export const RegisterToCourseModal = ({ studyFormat }: Readonly<Props>) => {
               <div className="grid grid-cols-[310px,375px] items-center">
                 <span className="text-primary-white text-4xl">Повна ціна:</span>
                 <span className="text-primary-blue uppercase leading-none text-[40px] text-right">
-                    {formatNumberWithSpaces(studyFormat.price)} ₴
+                    {formatNumberWithSpaces(Number(studyFormat.price))} ₴
                   </span>
               </div>
 
               <div className="grid grid-cols-[310px,375px] items-center">
                 <span className="text-primary-white text-4xl">Старт курсу:</span>
-                <span className="text-primary-blue uppercase leading-none text-[40px] text-right">19 квітня</span>
+                <span className="text-primary-blue uppercase leading-none text-[40px] text-right">
+                  {formatDate(course.startDate, 'D MMMM')}
+                </span>
               </div>
 
               <span className="text-primary-white font-xl w-3/4 mt-10">

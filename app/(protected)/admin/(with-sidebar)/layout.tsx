@@ -49,6 +49,13 @@ const WithSidebarLayout = ({ children }: Readonly<PropsWithChildren>) => {
           >
             FAQ
           </Link>
+
+          <Link
+            href="/admin/study-formats"
+            className={isActiveRoute('/admin/study-formats') ? 'text-black font-bold' : ''}
+          >
+            Формати навчання
+          </Link>
         </nav>
         <div className="grid gap-6">
           {children}

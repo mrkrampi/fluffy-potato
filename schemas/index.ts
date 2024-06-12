@@ -133,3 +133,14 @@ export const UpsertFaq = z.object({
   question: z.string().min(1, { message: 'Запитання обовʼязкове' }),
   answer: z.string().min(1, { message: 'Відповідь обовʼязкова' }),
 });
+
+export const UpsertStudyFormat = z.object({
+  id: z.optional(z.string()),
+  name: z.string().min(1, { message: 'Імʼя обовʼязкове' }),
+  items: z.string().min(1, { message: 'Обовʼязкове поле' }).array(),
+  price: z.string()
+    .min(1, { message: 'Обовʼязкове поле' })
+    .refine((val) => !Number.isNaN(parseInt(val, 10)), {
+    message: "Очікувалось число"
+  }),
+});

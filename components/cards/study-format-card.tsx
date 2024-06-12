@@ -1,13 +1,14 @@
-import { StudyFormatInterface } from '@/interfaces/study-format.interface';
 import { RegisterToCourseModal } from '@/components/modals/register-to-course-modal';
 import { formatNumberWithSpaces } from '@/lib/utils';
+import { courses, studyFormats } from '@/db/schema';
 
 interface StudyFormatCardProps {
-  studyFormat: StudyFormatInterface;
+  studyFormat: typeof studyFormats.$inferSelect;
   registerButton?: boolean;
+  course?: typeof courses.$inferSelect;
 }
 
-export const StudyFormatCard = ({ studyFormat, registerButton }: StudyFormatCardProps) => {
+export const StudyFormatCard = ({ studyFormat, registerButton, course }: StudyFormatCardProps) => {
   return (
     <div className="bg-gradient-to-b from-[#191923] to-[#5a5ad2] p-3 w-full items-center rounded-3xl text-center group cursor-pointer md:min-w-[348px] lg:min-w-[420px]">
       <div className="w-full h-full border border-[#272eb6] pt-7 py-10 px-4 lg:px-0 flex flex-col justify-between items-center rounded-3xl">
@@ -19,7 +20,7 @@ export const StudyFormatCard = ({ studyFormat, registerButton }: StudyFormatCard
 
         <div>
           <ul className="list-none flex flex-col gap-y-5 xl:gap-y-6 text-primary-white xl:text-xl">
-            {studyFormat.description.map((item: string) =>
+            {studyFormat.items?.map((item: string) =>
               (
                 <li key={item}>[ {item} ]</li>
               ))}
@@ -27,9 +28,9 @@ export const StudyFormatCard = ({ studyFormat, registerButton }: StudyFormatCard
         </div>
 
         <div className="text-primary-white font-unbounded text-[32px] xl:text-4xl my-9 xl:opacity-0 group-hover:opacity-100 transition duration-200 ease-in-out flex flex-col">
-          {formatNumberWithSpaces(studyFormat.price)} ₴
+          {formatNumberWithSpaces(Number(studyFormat.price))} ₴
 
-          {registerButton && <RegisterToCourseModal studyFormat={studyFormat}/>}
+          {registerButton && <RegisterToCourseModal studyFormat={studyFormat} course={course}/>}
         </div>
       </div>
     </div>

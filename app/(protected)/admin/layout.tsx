@@ -7,6 +7,7 @@ import { UpsertFaqModal } from '@/components/modals/upsert-faq-modal';
 import { UpsertAuthorModal } from '@/components/modals/upsert-author-modal';
 import { UpsertFeedbackModal } from '@/components/modals/upsert-feedback-modal';
 import { CoverImageModal } from '@/app/(protected)/admin/(without-sidebar)/blog/editor/_components/cover-image-modal';
+import { UpsertStudyFormatModal } from '@/components/modals/upsert-study-format-modal';
 
 const AdminLayout = async ({ children }: Readonly<PropsWithChildren>) => {
   const session = await auth();
@@ -21,6 +22,7 @@ const AdminLayout = async ({ children }: Readonly<PropsWithChildren>) => {
         <UpsertAuthorModal/>
         <UpsertFeedbackModal/>
         <UpsertFaqModal/>
+        <UpsertStudyFormatModal/>
       </div>
     </SessionProvider>
   );
