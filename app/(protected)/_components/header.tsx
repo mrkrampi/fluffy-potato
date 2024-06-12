@@ -20,22 +20,10 @@ export const Header = () => {
           <Logo isDarkMode={false}/>
         </Link>
         <Link
-          href="/admin"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Дашборд
-        </Link>
-        <Link
           href="/admin/courses"
           className="text-muted-foreground transition-colors hover:text-foreground"
         >
-          Курси
-        </Link>
-        <Link
-          href="/admin/blog"
-          className="text-muted-foreground transition-colors hover:text-foreground"
-        >
-          Блог
+          Дашборд
         </Link>
         <Link
           href="/admin/settings"

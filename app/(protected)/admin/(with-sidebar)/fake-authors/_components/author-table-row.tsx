@@ -1,75 +1,64 @@
 'use client';
 
+import Image from 'next/image';
 import { toast } from 'sonner';
 import { useTransition } from 'react';
-import { useRouter } from 'next/navigation';
 import { Loader, MoreHorizontal } from 'lucide-react';
 
-import { posts, users } from '@/db/schema';
-import { Badge } from '@/components/ui/badge';
-import { formatTimestamp } from '@/lib/utils';
+import { fakeAuthors } from '@/db/schema';
+import { useEdgeStore } from '@/lib/edgestore';
 import { Button } from '@/components/ui/button';
-import { deletePost } from '@/actions/delete-post';
+import { deleteAuthor } from '@/actions/delete-author';
 import { TableCell, TableRow } from '@/components/ui/table';
-import { updatePublishStatus } from '@/actions/update-publish-status';
+import { useUpsertAuthor } from '@/store/use-upsert-author';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
 
 type Props = {
-  post: typeof posts.$inferSelect & { author: typeof users.$inferSelect };
+  author: typeof fakeAuthors.$inferSelect;
 }
 
-export const PostTableRow = ({ post }: Readonly<Props>) => {
-  const router = useRouter();
+export const AuthorTableRow = ({ author }: Readonly<Props>) => {
+  const { open } = useUpsertAuthor();
   const [pending, startTransition] = useTransition();
-
-  const onPostStatusChange = () => {
-    startTransition(async () => {
-      try {
-        const response = await updatePublishStatus(post.id, !post.isPublished);
-
-        if (response.success) {
-          toast.success(response.success);
-        }
-      } catch (error: any) {
-        toast.error(error.message);
-      }
-    });
-  };
-
-  const onDeletePost = () => {
-    startTransition(async () => {
-      try {
-        const response = await deletePost(post.id);
-
-        if (response.success) {
-          toast.success(response.success);
-        }
-      } catch (error: any) {
-        toast.error(error.message);
-      }
-    });
-  };
+  const { edgestore } = useEdgeStore();
 
   const onEditClick = () => {
-    router.push(`/admin/blog/editor/${post.id}`);
-  }
+    open(author);
+  };
+
+  const onDeleteClick = async () => {
+    startTransition(async () => {
+      try {
+        await edgestore.publicFiles.delete({ url: author.imageUrl });
+        const response = await deleteAuthor(author.id);
+
+        if (response.success) {
+          toast.success(response.success);
+        }
+      } catch (error: any) {
+        toast.error(error.message);
+      }
+    });
+  };
 
   return (
     <TableRow>
-      <TableCell className="font-medium">
-        {post.title}
-      </TableCell>
-
-      <TableCell>
-        <Badge variant="outline">{post.isPublished ? 'Опубліковано' : 'Чернетка'}</Badge>
+      <TableCell className="hidden sm:table-cell">
+        <Image
+          alt="Фото автора"
+          className="aspect-square rounded-md object-cover"
+          height="64"
+          src={author.imageUrl}
+          width="64"
+        />
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {post.author.name}
+        {author.name}
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {formatTimestamp(post.updatedAt)}
+        {author.position}
       </TableCell>
 
       <TableCell>
@@ -89,13 +78,7 @@ export const PostTableRow = ({ post }: Readonly<Props>) => {
             <DropdownMenuItem onClick={onEditClick}>Редагувати</DropdownMenuItem>
             <DropdownMenuItem
               disabled={pending}
-              onClick={onPostStatusChange}
-            >
-              {post.isPublished ? 'Відмінити публікацію' : 'Опублікувати'}
-            </DropdownMenuItem>
-            <DropdownMenuItem
-              disabled={pending}
-              onClick={onDeletePost}
+              onClick={onDeleteClick}
             >
               Видалити
             </DropdownMenuItem>

@@ -1,36 +1,29 @@
 'use client';
 
-import Image from 'next/image';
 import { toast } from 'sonner';
 import { useTransition } from 'react';
+import { useRouter } from 'next/navigation';
 import { Loader, MoreHorizontal } from 'lucide-react';
 
-import { fakeAuthors } from '@/db/schema';
+import { formatDate } from '@/lib/utils';
+import { courses } from '@/db/schema';
 import { Button } from '@/components/ui/button';
+import { deleteCourse } from '@/actions/delete-course';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
-import { useUpsertAuthor } from '@/store/use-upsert-author';
-import { useEdgeStore } from '@/lib/edgestore';
-import { deleteAuthor } from '@/actions/delete-author';
 
 type Props = {
-  author: typeof fakeAuthors.$inferSelect;
+  course: typeof courses.$inferSelect;
 }
 
-export const AuthorTableRow = ({ author }: Readonly<Props>) => {
-  const { open } = useUpsertAuthor();
+export const CourseTableRow = ({ course }: Readonly<Props>) => {
+  const router = useRouter();
   const [pending, startTransition] = useTransition();
-  const { edgestore } = useEdgeStore();
 
-  const onEditClick = () => {
-    open(author);
-  };
-
-  const onDeleteClick = async () => {
+  const onDeletePost = () => {
     startTransition(async () => {
       try {
-        await edgestore.publicFiles.delete({ url: author.imageUrl });
-        const response = await deleteAuthor(author.id);
+        const response = await deleteCourse(course.id);
 
         if (response.success) {
           toast.success(response.success);
@@ -41,24 +34,18 @@ export const AuthorTableRow = ({ author }: Readonly<Props>) => {
     });
   };
 
+  const onEditClick = () => {
+    router.push(`/admin/courses/${course.id}`);
+  }
+
   return (
     <TableRow>
-      <TableCell className="hidden sm:table-cell">
-        <Image
-          alt="Фото автора"
-          className="aspect-square rounded-md object-cover"
-          height="64"
-          src={author.imageUrl}
-          width="64"
-        />
+      <TableCell className="font-medium">
+        {course.name}
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {author.name}
-      </TableCell>
-
-      <TableCell className="hidden md:table-cell">
-        {author.position}
+        {formatDate(course.startDate)}
       </TableCell>
 
       <TableCell>
@@ -78,7 +65,7 @@ export const AuthorTableRow = ({ author }: Readonly<Props>) => {
             <DropdownMenuItem onClick={onEditClick}>Редагувати</DropdownMenuItem>
             <DropdownMenuItem
               disabled={pending}
-              onClick={onDeleteClick}
+              onClick={onDeletePost}
             >
               Видалити
             </DropdownMenuItem>

@@ -1,8 +1,8 @@
 import { redirect } from 'next/navigation';
 
 import { getPostById } from '@/db/post-queries';
-import { PostEditor } from '@/app/(protected)/admin/blog/_components/post-editor';
 import { getAllAuthors } from '@/db/author-queries';
+import { PostEditor } from '@/app/(protected)/admin/(without-sidebar)/blog/_components/post-editor';
 
 type Props = {
   params: {

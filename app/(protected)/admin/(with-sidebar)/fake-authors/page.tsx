@@ -1,6 +1,6 @@
-import { AddAuthorButton } from '@/app/(protected)/admin/settings/fake-authors/_components/add-author-button';
 import { getAllAuthors } from '@/db/author-queries';
-import { AuthorsTable } from '@/app/(protected)/admin/settings/fake-authors/_components/authors-table';
+import { AddAuthorButton } from '@/app/(protected)/admin/(with-sidebar)/fake-authors/_components/add-author-button';
+import { AuthorsTable } from '@/app/(protected)/admin/(with-sidebar)/fake-authors/_components/authors-table';
 
 const FakeAuthors = async () => {
   const authorsData = getAllAuthors();
@@ -13,10 +13,6 @@ const FakeAuthors = async () => {
 
   return (
     <div className="flex min-h-[calc(100vh_-_theme(spacing.16))] flex-1 flex-col gap-4 bg-muted/40 p-4 md:gap-8 md:p-10">
-      <div className="mx-auto grid w-full max-w-6xl gap-2">
-        <h1 className="text-3xl font-semibold">Автори</h1>
-      </div>
-
       <div className="ml-auto flex items-center gap-2">
         <AddAuthorButton/>
       </div>

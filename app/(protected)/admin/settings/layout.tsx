@@ -24,16 +24,13 @@ const SettingsLayout = ({ children }: Readonly<PropsWithChildren>) => {
           >
             Загальні
           </Link>
-          <Link
-            href="/admin/settings/fake-authors"
-            className={isActiveRoute('/admin/settings/fake-authors') ? 'text-black font-bold' : ''}
-          >
-            Автори для блогу</Link>
+
           <Link
             href="/admin/settings/allowed-emails"
             className={isActiveRoute('/admin/settings/allowed-emails') ? 'text-black font-bold' : ''}
           >
-            Дозволені Email</Link>
+            Дозволені Email
+          </Link>
         </nav>
         <div className="grid gap-6">
           {children}

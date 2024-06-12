@@ -1,6 +1,6 @@
 import { getCourseById } from '@/db/course-queries';
 import { redirect } from 'next/navigation';
-import { CourseForm } from '@/app/(protected)/admin/courses/_components/course-form';
+import { CourseForm } from '@/app/(protected)/admin/(with-sidebar)/courses/_components/course-form';
 
 type Props = {
   params: {

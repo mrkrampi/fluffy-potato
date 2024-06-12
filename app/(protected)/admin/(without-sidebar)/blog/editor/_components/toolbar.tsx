@@ -1,10 +1,11 @@
-import { fakeAuthors, posts } from '@/db/schema';
-import { Button } from '@/components/ui/button';
-import { Publish } from '@/app/(protected)/admin/blog/_components/publish';
-import { ArrowLeft, ImageIcon, Loader, SaveIcon } from 'lucide-react';
 import { useRouter } from 'next/navigation';
-import { EditPostMetadataModal } from '@/app/(protected)/admin/blog/_components/edit-post-metadata-modal';
+import { ArrowLeft, ImageIcon, Loader, SaveIcon } from 'lucide-react';
+
+import { Button } from '@/components/ui/button';
+import { fakeAuthors, posts } from '@/db/schema';
 import { useCoverImage } from '@/hooks/use-cover-image';
+import { Publish } from '@/app/(protected)/admin/(without-sidebar)/blog/_components/publish';
+import { EditPostMetadataModal } from '@/app/(protected)/admin/(without-sidebar)/blog/_components/edit-post-metadata-modal';
 
 type Props = {
   post: typeof posts.$inferSelect;

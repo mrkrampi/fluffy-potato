@@ -1,7 +1,7 @@
 import { courses } from '@/db/schema';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { CourseTableRow } from '@/app/(protected)/admin/courses/_components/course-table-row';
+import { CourseTableRow } from '@/app/(protected)/admin/(with-sidebar)/courses/_components/course-table-row';
 
 type Props = {
   coursesList: Array<typeof courses.$inferSelect>;

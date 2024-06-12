@@ -24,7 +24,7 @@ export const deleteAuthor = async (id: string) => {
   await db.delete(fakeAuthors).where(eq(fakeAuthors.id, id));
 
   revalidatePath('/admin/blog');
-  revalidatePath('/admin/settings/fake-authors');
+  revalidatePath('/admin/fake-authors');
 
   return {
     success: 'Видалення успішне',

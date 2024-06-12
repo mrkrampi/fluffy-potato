@@ -5,12 +5,12 @@ import dynamic from 'next/dynamic';
 import { Loader } from 'lucide-react';
 import { useMemo, useState, useTransition } from 'react';
 
-import { fakeAuthors, posts } from '@/db/schema';
 import { Cover } from '@/components/cover';
 import { PartialBlock } from '@blocknote/core';
 import { useEdgeStore } from '@/lib/edgestore';
+import { fakeAuthors, posts } from '@/db/schema';
 import { updatePostData } from '@/actions/update-post';
-import { Toolbar } from '@/app/(protected)/admin/blog/editor/_components/toolbar';
+import { Toolbar } from '@/app/(protected)/admin/(without-sidebar)/blog/editor/_components/toolbar';
 
 type Props = {
   post: typeof posts.$inferSelect;

@@ -1,37 +1,31 @@
-import { posts, users } from '@/db/schema';
+import { fakeAuthors } from '@/db/schema';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { PostTableRow } from '@/app/(protected)/admin/blog/_components/post-table-row';
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table';
+import { AuthorTableRow } from '@/app/(protected)/admin/(with-sidebar)/fake-authors/_components/author-table-row';
 
 type Props = {
-  postsList: Array<typeof posts.$inferSelect & { author: typeof users.$inferSelect }>;
+  authors: Array<typeof fakeAuthors.$inferSelect>;
 }
 
-export const PostsTable = ({ postsList }: Readonly<Props>) => {
+export const AuthorsTable = ({ authors }: Readonly<Props>) => {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Статті</CardTitle>
+        <CardTitle>Автори</CardTitle>
       </CardHeader>
 
       <CardContent>
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>
-                Заголовк
-              </TableHead>
+              <TableHead className="hidden w-[100px] sm:table-cell"/>
 
               <TableHead>
-                Статус
+                Імʼя
               </TableHead>
 
               <TableHead className="hidden md:table-cell">
-                Автор
-              </TableHead>
-
-              <TableHead className="hidden md:table-cell">
-                Остання зміна
+                Підпис
               </TableHead>
 
               <TableHead>
@@ -41,8 +35,8 @@ export const PostsTable = ({ postsList }: Readonly<Props>) => {
           </TableHeader>
 
           <TableBody>
-            {postsList.map((post) =>
-              ((<PostTableRow key={post.id} post={post}/>)))}
+            {authors.map((author) =>
+              ((<AuthorTableRow key={author.id} author={author}/>)))}
           </TableBody>
         </Table>
       </CardContent>

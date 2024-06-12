@@ -39,7 +39,7 @@ export const upsertAuthor = async (values: z.infer<typeof UpsertAuthor>) => {
     }).where(eq(fakeAuthors.id, id));
 
     revalidatePath('/admin/blog');
-    revalidatePath('/admin/settings/fake-authors');
+    revalidatePath('/admin/fake-authors');
     revalidatePath('/blog');
     revalidatePath('/blog/[articleSlug]', 'page');
 
@@ -55,7 +55,7 @@ export const upsertAuthor = async (values: z.infer<typeof UpsertAuthor>) => {
   });
 
   revalidatePath('/admin/blog');
-  revalidatePath('/admin/settings/fake-authors');
+  revalidatePath('/admin/fake-authors');
 
   return {
     success: 'Автор створений',
