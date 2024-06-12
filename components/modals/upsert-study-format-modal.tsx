@@ -35,7 +35,7 @@ export const UpsertStudyFormatModal = () => {
       id: studyFormat?.id,
       name: studyFormat?.name,
       items: studyFormat?.items ?? [],
-      price: Number(studyFormat?.price),
+      price: studyFormat?.price,
     }), [studyFormat]),
   });
 
@@ -45,7 +45,7 @@ export const UpsertStudyFormatModal = () => {
     form.setValue('id', studyFormat?.id);
     form.setValue('name', studyFormat?.name ?? '');
     form.setValue('items', studyFormat?.items ?? []);
-    form.setValue('price', Number(studyFormat?.price ?? 0));
+    form.setValue('price', studyFormat?.price ?? '');
   }, [studyFormat]);
 
   const onSubmit = (values: z.infer<typeof UpsertStudyFormat>) => {
