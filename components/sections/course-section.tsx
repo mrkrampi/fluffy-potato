@@ -1,10 +1,8 @@
 import Image from 'next/image';
 
-import { COURSES_LIST } from '@/consts/courses';
 import { Heading } from '@/components/markup/heading';
 import { CarouselItem } from '@/components/ui/carousel';
 import { CourseCard } from '@/components/cards/course-card';
-import { CourseInterface } from '@/interfaces/course.interface';
 import { CarouselWrapper } from '@/components/carousel-wrapper';
 
 import arrowBlack from '@/public/arrows/black.svg';

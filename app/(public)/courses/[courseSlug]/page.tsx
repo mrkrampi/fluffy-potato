@@ -10,6 +10,8 @@ import { CourseSelector } from '@/app/(public)/courses/[courseSlug]/_components/
 import { StudyGuideSection } from '@/app/(public)/courses/[courseSlug]/_components/study-guide-section';
 import { CourseProgramSection } from '@/app/(public)/courses/[courseSlug]/_components/course-program-section';
 
+export const fetchCache = 'force-no-store';
+
 import courseProgram from '@/public/courses/course-program.webp';
 import { getAllCourses, getCourseBySlug } from '@/db/course-queries';
 
@@ -59,7 +61,7 @@ const CourseSlugPage = async ({ params: { courseSlug } }: CourseSlugPageProps) =
 
         <AboutTeacherSection/>
         <StudyFormatsSection registerButton/>
-        <StudentsStoriesSection withoutBackground/>
+        <StudentsStoriesSection/>
       </div>
 
       {activeCourse.microdata ? <JsonLd data={JSON.parse(activeCourse.microdata)}/> : null}

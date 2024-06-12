@@ -51,7 +51,7 @@ const AboutUsPage = () => {
           <PerksSection/>
         </div>
 
-        <StudentsStoriesSection withoutBackground/>
+        <StudentsStoriesSection/>
 
         <ContactForm withCoursesLink/>
       </div>

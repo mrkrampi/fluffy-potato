@@ -5,7 +5,7 @@ import db from '@/db/drizzle';
 import authConfig from '@/auth.config';
 import { getUserById } from '@/db/queries';
 import { NextResponse } from 'next/server';
-import { checkIfEmailAllowed } from '@/db/allowed-emails-quesries';
+import { checkIfEmailAllowed } from '@/db/allowed-emails-queries';
 
 export const { handlers: { GET, POST }, auth, signIn, signOut } = NextAuth({
   pages: {

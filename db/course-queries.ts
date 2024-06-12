@@ -17,5 +17,7 @@ export const getCourseById = cache((id: string) => {
 });
 
 export const getAllCourses = cache(() => {
-  return db.query.courses.findMany();
+  return db.query.courses.findMany({
+    orderBy: (courses, { asc }) => [asc(courses.creationDate)],
+  });
 });

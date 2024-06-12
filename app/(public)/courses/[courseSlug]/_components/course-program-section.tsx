@@ -26,7 +26,7 @@ export const CourseProgramSection = ({ course: { courseProgram } }: CourseProgra
         <Accordion type="multiple" className="w-full border-none">
           {courseProgram?.map((program: any, index: number) =>
             (
-              <AccordionItem key={program.id} value={program.title} className="border-b-2 border-primary-accent">
+              <AccordionItem key={program.title} value={program.title} className="border-b-2 border-primary-accent">
                 <AccordionTrigger
                   hideChevron
                   className="hover:no-underline my-6 md:my-14 grid grid-cols-2 md:grid-cols-6 lg:grid-cols-7 gap-4 md:gap-8 lg:gap-10 lg:mx-5 md:mx-8 mx-2"

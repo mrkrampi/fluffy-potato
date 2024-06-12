@@ -7,7 +7,7 @@ import { RegisterSchema } from '@/schemas';
 import { getUserByEmail } from '@/db/queries';
 import db from '@/db/drizzle';
 import { users } from '@/db/schema';
-import { checkIfEmailAllowed } from '@/db/allowed-emails-quesries';
+import { checkIfEmailAllowed } from '@/db/allowed-emails-queries';
 
 export const signUp = async (values: z.infer<typeof RegisterSchema>): Promise<{ success?: string; error?: string }> => {
   const validatedFields = RegisterSchema.safeParse(values);

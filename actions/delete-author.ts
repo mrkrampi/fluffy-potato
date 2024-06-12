@@ -5,7 +5,7 @@ import { revalidatePath } from 'next/cache';
 
 import db from '@/db/drizzle';
 import { eq } from 'drizzle-orm';
-import { fakeAuthors, posts } from '@/db/schema';
+import { fakeAuthors } from '@/db/schema';
 import { getAuthorById } from '@/db/author-queries';
 
 export const deleteAuthor = async (id: string) => {

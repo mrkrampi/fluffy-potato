@@ -1,4 +1,4 @@
-import { getAllowedEmails } from '@/db/allowed-emails-quesries';
+import { getAllowedEmails } from '@/db/allowed-emails-queries';
 import { AddAllowedEmail } from '@/app/(protected)/admin/settings/allowed-emails/_components/add-allowed-email';
 import { AllowedEmailsTable } from '@/app/(protected)/admin/settings/allowed-emails/_components/allowed-emails-table';
 

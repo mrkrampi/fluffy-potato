@@ -2,14 +2,11 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 import { Button } from '@/components/ui/button';
-import { COURSES_LIST } from '@/consts/courses';
 import { SocialEnum } from '@/enums/social.enum';
 import { Logo } from '@/components/drawings/logo';
 import { SocialButton } from '@/components/social-button';
 
 export const Footer = () => {
-  const firstCourseSlug = COURSES_LIST.at(0)?.slug;
-
   return (
     <footer className="w-full h-full bg-primary-black md:pt-[100px] lg:pt-[200px]">
       <div className="border-l-primary-white md:pt-0 border-b-2">
@@ -75,7 +72,7 @@ export const Footer = () => {
                 size="lg"
                 className="bg-primary-accent rounded-3xl px-6 py-3 min-w-36 xl:min-w-fit hover:bg-primary-white hover:text-primary-accent"
               >
-                <Link href={`/courses/${firstCourseSlug}`}>Курси</Link>
+                <Link href={`/courses`}>Курси</Link>
               </Button>
 
               <Button

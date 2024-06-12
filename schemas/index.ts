@@ -119,3 +119,11 @@ export const CourseSchema = z.object({
   })
     .array(),
 });
+
+export const UpsertFeedback = z.object({
+  id: z.optional(z.string()),
+  name: z.string().min(1, { message: 'Імʼя обовʼязкове' }),
+  feedback: z.string().min(1, { message: 'Відгук обовʼязковий' }),
+  imageUrl: z.any({ message: 'Зображення обовʼязкове' }),
+  imageAlt: z.string().min(1,{ message: 'Підпис до зображення обовʼязковий' }),
+});

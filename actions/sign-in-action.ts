@@ -7,7 +7,7 @@ import { signIn } from '@/auth';
 import { LoginSchema } from '@/schemas';
 import { getUserByEmail } from '@/db/queries';
 import { DEFAULT_LOGIN_REDIRECT } from '@/routes';
-import { checkIfEmailAllowed } from '@/db/allowed-emails-quesries';
+import { checkIfEmailAllowed } from '@/db/allowed-emails-queries';
 
 export const signInAction = async (values: z.infer<typeof LoginSchema>) => {
   const validatedFields = LoginSchema.safeParse(values);

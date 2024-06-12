@@ -1,16 +1,14 @@
-import { STUDENT_STORIES_LIST } from '@/consts/student-stories';
-import { StudentStoryCard } from '@/components/cards/student-story-card';
-import { StudentStoryInterface } from '@/interfaces/student-story.interface';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
-import { cn } from '@/lib/utils';
-import { Heading } from '@/components/markup/heading';
 import { Section } from '@/components/markup/section';
+import { getFeedbacks } from '@/db/feedbacks-queries';
+import { Heading } from '@/components/markup/heading';
+import { StudentStoryCard } from '@/components/cards/student-story-card';
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel';
 
-interface StudentsStoriesSectionProps {
-  withoutBackground?: boolean;
-}
+export const StudentsStoriesSection = async () => {
+  const feedbacksData = getFeedbacks();
 
-export const StudentsStoriesSection = ({ withoutBackground }: StudentsStoriesSectionProps) => {
+  const [feedbacks] = await Promise.all([feedbacksData]);
+
   return (
     <Section
       className="bg-center bg-cover relative px-0 md:pb-[76px] lg:pb-[176px]">
@@ -29,10 +27,10 @@ export const StudentsStoriesSection = ({ withoutBackground }: StudentsStoriesSec
             }}
           >
             <CarouselContent className="ml-0 mb-6">
-              {STUDENT_STORIES_LIST.map((story: StudentStoryInterface) =>
+              {feedbacks.map((feedback) =>
                 (
-                  <CarouselItem key={story.id} className="px-2 md:px-3 md:basis-1/2 xl:basis-1/3">
-                    <StudentStoryCard story={story}/>
+                  <CarouselItem key={feedback.id} className="px-2 md:px-3 md:basis-1/2 xl:basis-1/3">
+                    <StudentStoryCard feedback={feedback}/>
                   </CarouselItem>
                 ))}
             </CarouselContent>

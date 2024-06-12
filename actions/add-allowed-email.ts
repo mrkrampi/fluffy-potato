@@ -7,7 +7,7 @@ import db from '@/db/drizzle';
 import { auth } from '@/auth';
 import { allowedEmails } from '@/db/schema';
 import { CreateAllowedEmail } from '@/schemas';
-import { checkIfEmailAllowed } from '@/db/allowed-emails-quesries';
+import { checkIfEmailAllowed } from '@/db/allowed-emails-queries';
 
 export const addAllowedEmail = async (values: z.infer<typeof CreateAllowedEmail>) => {
   const session = await auth();

@@ -96,6 +96,8 @@ export const fakeAuthors = pgTable('fake_authors', {
   name: text('name').notNull(),
   position: text('position').notNull(),
   imageUrl: text('image_url').notNull(),
+  creationDate: timestamp('creation_date').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });
 
 export const postsRelations = relations(posts, ({ one }) => ({
@@ -128,6 +130,8 @@ export const courses = pgTable('courses', {
   startDate: timestamp('start_date').notNull(),
   courseProgramDescription: text('course_program_description').notNull(),
   courseProgram: json('course_program').notNull().array(),
+  creationDate: timestamp('creation_date').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });
 
 export const allowedEmails = pgTable('allowed_emails', {
@@ -135,4 +139,18 @@ export const allowedEmails = pgTable('allowed_emails', {
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   email: text('email').notNull().unique(),
+  creationDate: timestamp('creation_date').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
+});
+
+export const feedbacks = pgTable('feedbacks', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  name: text('name').notNull(),
+  feedback: text('feedback').notNull(),
+  imageUrl: text('image_url').notNull(),
+  imageAlt: text('image_alt').notNull(),
+  creationDate: timestamp('creation_date').notNull().defaultNow(),
+  updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });
