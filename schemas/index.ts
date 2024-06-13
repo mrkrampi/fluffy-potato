@@ -81,6 +81,12 @@ export const ContactFormSchema = z.object({
   request: z.string({ message: 'Обовʼязкове поле' }),
 });
 
+export const CourseRegisterFormSchema = z.object({
+  name: z.string().min(1,{ message: 'Обовʼязкове поле' }),
+  email: z.string().min(1,{ message: 'Обовʼязкове поле' }).email({ message: 'Невалідний email адрес' }),
+  phone: z.string().min(1,{ message: 'Обовʼязкове поле' }).regex(phoneRegex, 'Невалідний номер телефону'),
+});
+
 export const UpsertAuthor = z.object({
   id: z.optional(z.string()),
   name: z.string({ message: 'Імʼя обовʼязкове.' }),
