@@ -1,13 +1,14 @@
 import type { Metadata } from 'next';
 import { redirect } from 'next/navigation';
 
+import { JsonLd } from '@/components/json-ld';
 import { Section } from '@/components/markup/section';
 import { ContactForm } from '@/components/contact-form';
 import { getPublishedPostBySlug } from '@/db/post-queries';
 import { Article } from '@/app/(public)/blog/[articleSlug]/_components/article';
 import { ArticleBreadcrumbs } from '@/app/(public)/blog/[articleSlug]/_components/article-breadcrumbs';
-import { JsonLd } from '@/components/json-ld';
 import { BlogHeaderSection } from '@/app/(public)/blog/_components/blog-header-section';
+import { ScrollProgressBar } from '@/components/scroll-progress-bar';
 
 export const fetchCache = 'force-no-store';
 
@@ -47,6 +48,10 @@ const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => 
 
   return (
     <>
+      <ScrollProgressBar
+        className="md:top-[104px] top-20"
+      />
+
       <div className="lg:hidden">
         <BlogHeaderSection/>
       </div>
