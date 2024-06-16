@@ -20,3 +20,13 @@ export function formatTimestamp(time: Date): string {
 export function formatDate(date: Date, format = 'D MMMM YYYY'): string {
   return moment(date).locale('urk').utc().format(format);
 }
+
+export function isJson(str: string): boolean {
+  try {
+    JSON.parse(str);
+  } catch (e) {
+    return false;
+  }
+
+  return true;
+}

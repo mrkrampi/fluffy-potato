@@ -33,7 +33,6 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
   const [previewImageFile, setPreviewImageFile] = useState<File | string | undefined>(course?.previewImageUrl);
   const [overviewImageFile, setOverviewImageFile] = useState<File | string | undefined>(course?.overviewImageUrl);
 
-
   const form = useForm<z.infer<typeof CourseSchema>>({
     resolver: zodResolver(CourseSchema),
     defaultValues: {

@@ -14,6 +14,7 @@ export const fetchCache = 'force-no-store';
 
 import courseProgram from '@/public/courses/course-program.webp';
 import { getAllCourses, getCourseBySlug } from '@/db/course-queries';
+import { isJson } from '@/lib/utils';
 
 interface CourseSlugPageProps {
   params: {
@@ -64,7 +65,7 @@ const CourseSlugPage = async ({ params: { courseSlug } }: CourseSlugPageProps) =
         <StudentsStoriesSection/>
       </div>
 
-      {activeCourse.microdata ? <JsonLd data={JSON.parse(activeCourse.microdata)}/> : null}
+      {activeCourse.microdata && isJson(activeCourse.microdata) ? <JsonLd data={JSON.parse(activeCourse.microdata)}/> : null}
     </>
   );
 };
