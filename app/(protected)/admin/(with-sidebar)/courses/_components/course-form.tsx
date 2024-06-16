@@ -3,7 +3,7 @@
 import * as z from 'zod';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import { useState, useTransition } from 'react';
+import { useEffect, useState, useTransition } from 'react';
 import { Info, Loader, Trash } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm, useFieldArray, Controller } from 'react-hook-form';
@@ -53,6 +53,24 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       startDate: course?.startDate,
     },
   });
+
+  useEffect(() => {
+    form.setValue('name', course?.name || '');
+    form.setValue('level', course?.level || '');
+      form.setValue('duration', course?.duration || '');
+      form.setValue('countOfModules', course?.countOfModules?.toString() || '');
+      form.setValue('slug', course?.slug || '');
+      form.setValue('courseTitle', course?.courseTitle || '');
+      form.setValue('courseDescription', course?.courseDescription || '');
+      form.setValue('microdata', course?.microdata ?? '');
+      form.setValue('previewImage', course?.previewImageUrl || '');
+      form.setValue('overviewImage', course?.previewImageUrl || '');
+      form.setValue('overview', course?.overview ?? []);
+      form.setValue('goals', course?.goals ?? []);
+      form.setValue('courseProgram', course?.courseProgram ? course.courseProgram as any : [] || '');
+      form.setValue('courseProgramDescription', course?.courseProgramDescription || '');
+      form.setValue('startDate', course?.startDate || undefined);
+  }, [course]);
 
   const { control } = form;
 
