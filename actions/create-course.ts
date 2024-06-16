@@ -60,7 +60,7 @@ export const createCourse = async (values: z.infer<typeof CourseSchema>) => {
     countOfModules: Number(countOfModules),
     duration,
     level,
-    startDate,
+    startDate: startDate ?? new Date(),
     courseProgramDescription,
   });
 
