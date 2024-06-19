@@ -26,7 +26,7 @@ type Props = {
 }
 
 export const CourseForm = ({ course }: Readonly<Props>) => {
-  console.log(courses);
+  console.log(course);
   const router = useRouter();
   const { edgestore } = useEdgeStore();
   const [isPending, startTransition] = useTransition();
