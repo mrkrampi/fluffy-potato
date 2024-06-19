@@ -71,6 +71,7 @@ export const updateCourseData = async (id: string, values: z.infer<typeof Course
   revalidatePath('/courses');
   revalidatePath(`/courses/${slug}`, 'page');
   revalidatePath(`/admin/courses`);
+  revalidatePath(`/admin/courses/${id}`);
 
   return {
     success: 'Курс оновлено',
