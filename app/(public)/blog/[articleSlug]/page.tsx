@@ -30,6 +30,9 @@ export async function generateMetadata({ params: { articleSlug } }: Readonly<Pro
   return {
     title: `${article?.title} | NIKO IT ACADEMY`,
     description: article?.metadata,
+    alternates: {
+      canonical: `${process.env.BASE_URL}/blog/${articleSlug}`,
+    }
   };
 }
 

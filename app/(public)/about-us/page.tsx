@@ -19,6 +19,9 @@ import aboutUsImg from '@/public/about-us.webp';
 export const metadata: Metadata = {
   title: siteConfig.aboutUsTitle,
   description: siteConfig.aboutUsDescription,
+  alternates: {
+    canonical: `${process.env.BASE_URL}/about-us`,
+  }
 };
 
 const AboutUsPage = () => {

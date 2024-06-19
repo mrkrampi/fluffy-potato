@@ -1,3 +1,5 @@
+import type { Metadata } from 'next';
+
 import { ContactForm } from '@/components/contact-form';
 import { FaqSection } from '@/components/sections/faq-section';
 import { HeroSection } from '@/components/sections/hero-section';
@@ -9,6 +11,12 @@ import { StudentsBenefitsSection } from '@/components/sections/students-benefits
 import { StudentsStoriesSection } from '@/components/sections/students-stories-section';
 import { JsonLd } from '@/components/json-ld';
 import { FAQ_MICRODATA, ORGANIZATION_MICRODATA } from '@/consts/microdata';
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: `${process.env.BASE_URL}/`,
+  }
+}
 
 export default function Home() {
   return (

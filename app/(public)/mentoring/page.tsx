@@ -14,6 +14,9 @@ import Image from 'next/image';
 export const metadata: Metadata = {
   title: siteConfig.mentoringTitle,
   description: siteConfig.mentoringDescription,
+  alternates: {
+    canonical: `${process.env.BASE_URL}/mentoring`,
+  }
 };
 
 const MentoringPage = () => {

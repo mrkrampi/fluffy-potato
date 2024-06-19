@@ -6,7 +6,7 @@ import heroBackground from '@/public/backgrounds/hero-background.webp';
 
 export const HeroSection = () => {
   return (
-    <section className="h-[623px] md:h-[887px] lg:h-[1098px] pt-20 md:pt-[104px] mx-auto bg-no-repeat flex flex-col justify-center rounded-3xl overflow-hidden relative w-[calc(100vw-16px)]">
+    <section className="h-[623px] md:h-[585px] lg:h-[866px] pt-20 md:pt-[104px] mx-auto bg-no-repeat flex flex-col justify-center rounded-3xl overflow-hidden relative w-[calc(100vw-16px)]">
       <Image
         src={heroBackground}
         alt="Background"

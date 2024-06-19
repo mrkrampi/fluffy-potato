@@ -32,6 +32,9 @@ export async function generateMetadata({ params: { courseSlug } }: CourseSlugPag
   return {
     title: activeCourse?.courseTitle,
     description: activeCourse?.courseDescription,
+    alternates: {
+      canonical: `${process.env.BASE_URL}/courses/${courseSlug}`,
+    }
   };
 }
 

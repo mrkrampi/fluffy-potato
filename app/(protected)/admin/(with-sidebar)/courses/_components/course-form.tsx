@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useState, useTransition } from 'react';
 import { Info, Loader, Trash } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useForm, useFieldArray, Controller } from 'react-hook-form';
+import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
 import { courses } from '@/db/schema';
 import { CourseSchema } from '@/schemas';
@@ -48,7 +48,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       overviewImage: course?.previewImageUrl,
       overview: course?.overview ?? [],
       goals: course?.goals ?? [],
-      courseProgram: course?.courseProgram ? course.courseProgram as any : [],
+      courseProgram: [],
       courseProgramDescription: course?.courseProgramDescription,
       startDate: course?.startDate,
     },
@@ -67,7 +67,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       form.setValue('overviewImage', course?.previewImageUrl || '');
       form.setValue('overview', course?.overview ?? []);
       form.setValue('goals', course?.goals ?? []);
-      form.setValue('courseProgram', course?.courseProgram ? course.courseProgram as any : [] || '');
+      // form.setValue('courseProgram', course?.courseProgram ? course.courseProgram as any : []);
       form.setValue('courseProgramDescription', course?.courseProgramDescription || '');
       form.setValue('startDate', course?.startDate || undefined);
   }, [course]);
@@ -102,6 +102,12 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
     }
   };
 
+  const transformUrlToLink = (text: string): string => {
+    const urlPattern = /(https?:\/\/[^\s]+)/g;
+
+    return text.replace(urlPattern, '<a href="$1">$1</a>');
+  }
+
   const create = (values: z.infer<typeof CourseSchema>) => {
     startTransition(async () => {
       try {
@@ -112,6 +118,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
           ...values,
           previewImage,
           overviewImage,
+          overview: values.overview.map((o: string) => transformUrlToLink(o)),
         });
 
         if (response.success) {
@@ -139,6 +146,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
           ...values,
           previewImage,
           overviewImage,
+          overview: values.overview.map((o: string) => transformUrlToLink(o)),
         });
 
         if (response.success) {

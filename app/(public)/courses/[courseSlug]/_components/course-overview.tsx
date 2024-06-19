@@ -27,9 +27,8 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
         <ul className="list-disc marker:text-primary-accent my-6">
           {(course.overview ?? []).map((item: string) => {
             return (
-              <li key={item} className="text-primary-white font-medium md:text-xl lg:text-2xl my-6">
-                {item}
-              </li>
+              <li key={item} className="text-primary-white font-medium md:text-xl lg:text-2xl my-6"
+                  dangerouslySetInnerHTML={{ __html: item }}/>
             );
           })}
         </ul>

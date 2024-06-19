@@ -7,6 +7,9 @@ import { getAllCourses } from '@/db/course-queries';
 export const metadata: Metadata = {
   title: siteConfig.coursesTitle,
   description: siteConfig.coursesDescription,
+  alternates: {
+    canonical: `${process.env.BASE_URL}/courses`,
+  }
 };
 
 const CoursesPage = async () => {

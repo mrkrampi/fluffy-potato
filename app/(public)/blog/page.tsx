@@ -10,6 +10,9 @@ import { BlogHeaderSection } from '@/app/(public)/blog/_components/blog-header-s
 export const metadata: Metadata = {
   title: siteConfig.blogTitle,
   description: siteConfig.blogDescription,
+  alternates: {
+    canonical: `${process.env.BASE_URL}/blog`,
+  }
 };
 
 type Props = {
