@@ -60,7 +60,7 @@ const CourseSlugPage = async ({ params: { courseSlug } }: CourseSlugPageProps) =
             className="object-cover -rotate-90 opacity-50 md:w-3/4 absolute md:top-[1100px] md:-right-24 lg:-right-28 lg:top-[700px]"
           />
 
-          {activeCourse.courseProgram ? <CourseProgramSection course={activeCourse}/> : null}
+          {activeCourse.courseProgram?.length ? <CourseProgramSection course={activeCourse}/> : null}
         </div>
 
         <AboutTeacherSection/>
