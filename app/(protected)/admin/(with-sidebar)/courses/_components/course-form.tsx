@@ -103,9 +103,11 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
   };
 
   const transformUrlToLink = (text: string): string => {
-    const urlPattern = /(https?:\/\/[^\s]+)/g;
+    const urlPattern = /(^|\s)(https?:\/\/[^\s<]+)(\s|$)/g;
 
-    return text.replace(urlPattern, '<a href="$1">$1</a>');
+    return text.replace(urlPattern, (match, p1, url, p3) => {
+      return match.includes('<a href') ? match : `${p1}<a href="${url}">${url}</a>${p3}`;
+    });
   }
 
   const create = (values: z.infer<typeof CourseSchema>) => {

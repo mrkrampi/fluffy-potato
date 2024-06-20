@@ -107,7 +107,7 @@ export const CourseSchema = z.object({
   name: z.string().min(1, { message: 'Обовʼязкове поле' }),
   level: z.string().min(1, { message: 'Обовʼязкове поле' }),
   duration: z.string().min(1, { message: 'Обовʼязкове поле' }),
-  countOfModules: z.string({ message: 'Поле обовʼязкове' }),
+  countOfModules: z.optional(z.string({ message: 'Поле обовʼязкове' })),
   previewImage: z.any({ message: 'Зображення обовʼязкове.' }),
   overview: z.string().min(1, { message: 'Обовʼязкове поле' }).array(),
   goals: z.string().min(1, { message: 'Обовʼязкове поле' }).array(),
