@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title: siteConfig.coursesTitle,
   description: siteConfig.coursesDescription,
   alternates: {
-    canonical: `${process.env.BASE_URL}/courses`,
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/courses`,
   }
 };
 

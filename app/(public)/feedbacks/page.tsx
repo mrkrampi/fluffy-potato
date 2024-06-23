@@ -6,7 +6,7 @@ export const metadata: Metadata = {
   title: siteConfig.feedbacksTitle,
   description: siteConfig.feedbacksDescription,
   alternates: {
-    canonical: `${process.env.BASE_URL}/feedbacks`,
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/feedbacks`,
   }
 };
 

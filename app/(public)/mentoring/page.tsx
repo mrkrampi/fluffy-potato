@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   title: siteConfig.mentoringTitle,
   description: siteConfig.mentoringDescription,
   alternates: {
-    canonical: `${process.env.BASE_URL}/mentoring`,
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/mentoring`,
   }
 };
 

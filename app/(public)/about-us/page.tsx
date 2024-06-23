@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: siteConfig.aboutUsTitle,
   description: siteConfig.aboutUsDescription,
   alternates: {
-    canonical: `${process.env.BASE_URL}/about-us`,
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/about-us`,
   }
 };
 

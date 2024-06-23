@@ -14,7 +14,7 @@ import { FAQ_MICRODATA, ORGANIZATION_MICRODATA } from '@/consts/microdata';
 
 export const metadata: Metadata = {
   alternates: {
-    canonical: `${process.env.BASE_URL}/`,
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/`,
   }
 }
 

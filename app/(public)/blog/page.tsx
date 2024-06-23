@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   title: siteConfig.blogTitle,
   description: siteConfig.blogDescription,
   alternates: {
-    canonical: `${process.env.BASE_URL}/blog`,
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/blog`,
   }
 };
 
