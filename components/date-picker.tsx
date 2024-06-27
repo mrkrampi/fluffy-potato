@@ -35,7 +35,7 @@ export const DatePicker = ({ selected, onSelect }: Readonly<Props>) => {
         </Button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
-        <Calendar mode="single" selected={selected} onSelect={handleOnSelect} initialFocus/>
+        <Calendar mode="single" selected={selected as any} onSelect={handleOnSelect} initialFocus/>
       </PopoverContent>
     </Popover>
   );
