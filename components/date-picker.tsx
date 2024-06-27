@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { CalendarIcon } from 'lucide-react';
+import { CalendarIcon, Trash } from 'lucide-react';
 import { SelectSingleEventHandler } from 'react-day-picker';
 
 import { cn, formatDate } from '@/lib/utils';
@@ -11,7 +11,7 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import moment from 'moment';
 
 type Props = {
-  selected?: Date;
+  selected: Date | null | undefined;
   onSelect?: (date?: Date) => void;
 }
 

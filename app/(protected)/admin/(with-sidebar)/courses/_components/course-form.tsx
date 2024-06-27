@@ -3,9 +3,9 @@
 import * as z from 'zod';
 import { toast } from 'sonner';
 import { useRouter } from 'next/navigation';
-import { useEffect, useState, useTransition } from 'react';
 import { Info, Loader, Trash } from 'lucide-react';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useEffect, useState, useTransition, MouseEvent } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
 import { courses } from '@/db/schema';
@@ -67,7 +67,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       form.setValue('overviewImage', course?.previewImageUrl || '');
       form.setValue('overview', course?.overview ?? []);
       form.setValue('goals', course?.goals ?? []);
-      // form.setValue('courseProgram', course?.courseProgram ? course.courseProgram as any : []);
+      form.setValue('courseProgram', course?.courseProgram ? course.courseProgram as any : []);
       form.setValue('courseProgramDescription', course?.courseProgramDescription || '');
       form.setValue('startDate', course?.startDate || undefined);
   }, [course]);
@@ -207,6 +207,11 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
 
     return uploadImageResponse.url;
   };
+
+  const onClearStartDate = (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    form.setValue('startDate', null);
+  }
 
   return (
     <div>
@@ -469,10 +474,16 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
                 <FormItem>
                   <FormLabel>Дата початку курсу</FormLabel>
                   <FormControl>
-                    <DatePicker
-                      selected={field.value}
-                      onSelect={field.onChange}
-                    />
+                    <div className="flex">
+                      <DatePicker
+                        selected={field.value}
+                        onSelect={field.onChange}
+                      />
+
+                      <Button className="ml-2" variant="ghost" onClick={onClearStartDate}>
+                        <Trash className="w-4 h-4 text-rose-400"/>
+                      </Button>
+                    </div>
                   </FormControl>
                   <FormMessage/>
                 </FormItem>

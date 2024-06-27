@@ -128,7 +128,7 @@ export const courses = pgTable('courses', {
   courseDescription: text('course_description').notNull(),
   courseTitle: text('course_title').notNull(),
   microdata: text('microdata'),
-  startDate: timestamp('start_date').notNull(),
+  startDate: timestamp('start_date'),
   courseProgramDescription: text('course_program_description').notNull(),
   courseProgram: json('course_program').notNull().array(),
   creationDate: timestamp('creation_date').notNull().defaultNow(),

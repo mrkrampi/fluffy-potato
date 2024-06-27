@@ -45,7 +45,7 @@ export const CourseTableRow = ({ course }: Readonly<Props>) => {
       </TableCell>
 
       <TableCell className="hidden md:table-cell">
-        {formatDate(course.startDate)}
+        {course.startDate ? formatDate(course.startDate) : ''}
       </TableCell>
 
       <TableCell>

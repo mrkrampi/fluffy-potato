@@ -115,7 +115,7 @@ export const CourseSchema = z.object({
   courseDescription: z.string().min(1, { message: 'Обовʼязкове поле' }),
   courseTitle: z.string().min(1, { message: 'Обовʼязкове поле' }),
   microdata: z.optional(z.string()),
-  startDate: z.optional(z.date({ message: 'Поле обовʼязкове' })),
+  startDate: z.optional(z.date()).nullable(),
   courseProgramDescription: z.string().min(1, { message: 'Обовʼязкове поле' }),
   courseProgram: z.object({
     id: z.optional(z.string()),

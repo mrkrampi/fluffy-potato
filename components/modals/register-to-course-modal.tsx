@@ -184,12 +184,18 @@ export const RegisterToCourseModal = ({ studyFormat, course }: Readonly<Props>) 
                   </span>
                 </div>
 
-                <div className="grid grid-cols-[310px,375px] items-center">
-                  <span className="text-primary-white text-4xl">Старт курсу:</span>
-                  <span className="text-primary-blue uppercase leading-none text-[40px] text-right">
-                  {formatDate(course.startDate, 'D MMMM')}
-                </span>
-                </div>
+                {
+                  course.startDate
+                    ? (
+                      <div className="grid grid-cols-[310px,375px] items-center">
+                        <span className="text-primary-white text-4xl">Старт курсу:</span>
+                        <span className="text-primary-blue uppercase leading-none text-[40px] text-right">
+                          {formatDate(course.startDate, 'D MMMM')}
+                        </span>
+                      </div>
+                    )
+                    : null
+                }
 
                 <span className="text-primary-white font-xl w-3/4 mt-10">
                   Заповніть форму зворотнього звʼязку, і наш менеджер звʼяжеться з вами протягом 24х годин.
