@@ -48,7 +48,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       overviewImage: course?.previewImageUrl,
       overview: course?.overview ?? [],
       goals: course?.goals ?? [],
-      courseProgram: [],
+      courseProgram: course?.courseProgram ? course.courseProgram as any : [],
       courseProgramDescription: course?.courseProgramDescription,
       startDate: course?.startDate,
     },
