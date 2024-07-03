@@ -12,7 +12,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
   }
 
   return (
-    <div className="mt-20 md:mt-24 py-10 md:pt-8 md:pb-20 lg:py-[104px] grid grid-cols-1 lg:grid-cols-2 gap-6 mx-2 md:mx-0 px-8 md:px-24 relative rounded-3xl overflow-hidden">
+    <div className="mt-20 md:mt-24 py-10 md:pt-8 md:pb-20 lg:py-[104px] grid grid-cols-1 lg:grid-cols-2 gap-6 mx-2 md:mx-0 px-8 md:px-16 lg:px-24 relative rounded-3xl overflow-hidden">
       <Image
         src="/backgrounds/course-overview-bg.png"
         alt="Overview bg"
@@ -20,7 +20,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
         className="object-cover object-center"
       />
       <div className="z-10">
-        <h1 className="text-primary-white lg:text-[64px] md:text-[54px] text-[32px] text-center uppercase">
+        <h1 className="text-primary-white lg:text-[64px] md:text-[54px] text-[32px] text-center uppercase break-words hyphens-auto">
           {course.name}
         </h1>
 

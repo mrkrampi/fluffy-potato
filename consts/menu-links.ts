@@ -3,7 +3,7 @@ import { MenuLinkInterface } from '@/interfaces/menu-link.interface';
 export const MENU_LINKS_LIST: Array<MenuLinkInterface> = [
   {
     title: 'Курси',
-    link: `courses`,
+    link: `courses/business-analyst`,
   },
   {
     title: 'Менторство',
@@ -25,4 +25,4 @@ export const MENU_LINKS_LIST: Array<MenuLinkInterface> = [
     title: 'FAQ',
     link: 'faq',
   },
-]
+];

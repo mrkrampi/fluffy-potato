@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BlockNoteView } from '@blocknote/mantine';
 import { getDefaultReactSlashMenuItems, SuggestionMenuController, useCreateBlockNote } from '@blocknote/react';
 import { BlockNoteSchema, defaultBlockSpecs, filterSuggestionItems, insertOrUpdateBlock, PartialBlock } from '@blocknote/core';
@@ -38,12 +37,6 @@ const insertChooseBlock = (editor: typeof schema.BlockNoteEditor) => ({
 const Editor = ({ initialContent, editable = false, onChange, theme = 'light' }: Readonly<Props>) => {
   Link.options.HTMLAttributes.rel = null;
 
-  const [isInited, setIsInited] = useState(false);
-
-  useEffect(() => {
-    setIsInited(true);
-  }, []);
-
   const { edgestore } = useEdgeStore();
 
   const handleUpload = async (file: File) => {
@@ -69,10 +62,6 @@ const Editor = ({ initialContent, editable = false, onChange, theme = 'light' }:
       console.log(e);
     }
   };
-
-  if (!isInited) {
-    return null;
-  }
 
   return (
     <BlockNoteView

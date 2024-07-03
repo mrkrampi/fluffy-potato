@@ -18,8 +18,11 @@ export const Article = ({ article }: Readonly<Props>) => {
       {
         ssr: false,
         loading: () => (
-          <div className="text-primary-white">
-            <div dangerouslySetInnerHTML={{ __html: article?.htmlContent ?? '' }}/>
+          <div className="text-primary-white relative">
+            <div className="opacity-0" dangerouslySetInnerHTML={{ __html: article?.htmlContent ?? '' }}/>
+            <div className="absolute left-1/2 -translate-x-1/2 top-20">
+              <Loader className="animate-spin w-10 h-10"/>
+            </div>
           </div>
         ),
       }),

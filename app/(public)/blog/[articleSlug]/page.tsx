@@ -9,6 +9,7 @@ import { Article } from '@/app/(public)/blog/[articleSlug]/_components/article';
 import { ArticleBreadcrumbs } from '@/app/(public)/blog/[articleSlug]/_components/article-breadcrumbs';
 import { BlogHeaderSection } from '@/app/(public)/blog/_components/blog-header-section';
 import { ScrollProgressBar } from '@/components/scroll-progress-bar';
+import { BlogHeader } from '@/app/(public)/blog/[articleSlug]/_components/blog-header';
 
 export const fetchCache = 'force-no-store';
 
@@ -32,7 +33,7 @@ export async function generateMetadata({ params: { articleSlug } }: Readonly<Pro
     description: article?.metadata,
     alternates: {
       canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/blog/${articleSlug}`,
-    }
+    },
   };
 }
 
@@ -55,9 +56,7 @@ const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => 
         className="md:top-[104px] top-20"
       />
 
-      <div className="lg:hidden">
-        <BlogHeaderSection/>
-      </div>
+      <BlogHeader/>
 
       <Section className="overflow-hidden">
         <div className="lg:max-w-[750px] lg:px-0 mx-auto">

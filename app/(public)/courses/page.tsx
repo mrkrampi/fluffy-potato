@@ -3,6 +3,7 @@ import { redirect } from 'next/navigation';
 
 import { siteConfig } from '@/config/site';
 import { getAllCourses } from '@/db/course-queries';
+import { RedirectType } from 'next/dist/client/components/redirect';
 
 export const metadata: Metadata = {
   title: siteConfig.coursesTitle,
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
 
 const CoursesPage = async () => {
   const courses = await getAllCourses();
-  return redirect(`/courses/${courses.at(0)?.slug}`);
+  return redirect(`/courses/${courses.at(0)?.slug}`, RedirectType.replace);
 };
 
 export default CoursesPage;
