@@ -20,7 +20,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
         className="object-cover object-center"
       />
       <div className="z-10">
-        <h1 className="text-primary-white lg:text-[64px] md:text-[54px] text-[32px] text-center uppercase break-words hyphens-auto">
+        <h1 className="text-primary-white lg:text-[3vw] md:text-[54px] text-[32px] text-center uppercase">
           {course.name}
         </h1>
 
