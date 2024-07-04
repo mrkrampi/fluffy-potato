@@ -133,6 +133,7 @@ export const courses = pgTable('courses', {
   courseProgram: json('course_program').notNull().array(),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
+  overviewImageCover: boolean('overview_image_cover').notNull().default(true),
 });
 
 export const allowedEmails = pgTable('allowed_emails', {

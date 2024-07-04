@@ -39,7 +39,7 @@ export const CourseOverview = ({ course }: CourseOverviewProps) => {
           src={course.overviewImageUrl}
           alt={course.name}
           fill
-          className="object-contain"
+          className={course.overviewImageCover ? 'object-cover' : 'object-contain'}
         />
       </div>
     </div>
