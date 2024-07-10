@@ -12,7 +12,7 @@ export const WhyUsSection = () => {
         <WhyUsCard item={WHY_US_LIST[3]}/>
       </div>
       <h3 className="text-[32px] md:text-[40px] lg:text-5xl font-unbounded z-10 col-span-3 uppercase">
-        Чому обирають саме Niko Academy?
+        Чому обирають саме Niko IT Academy?
       </h3>
     </Section>
   );

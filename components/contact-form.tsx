@@ -77,6 +77,8 @@ export const ContactForm = ({ isModalMode, isBlogMode, withCoursesLink }: Readon
           <div
             className="text-primary-white font-unbounded uppercase text-3xl md:text-[48px] lg:text-[64px] leading-[1.1] text-center lg:w-3/4">
             Ваш запит прийнято в обробку
+            <br/>
+            Менеджер скоро зв&apos;яжеться з вами
           </div>
         </div>
 

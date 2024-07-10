@@ -1,6 +1,15 @@
 import { Section } from '@/components/markup/section';
 import { DESCRIPTION, LIST, TITLE } from '@/app/(public)/offert/_const';
 import { TermsList } from '@/app/(public)/offert/_components/terms-list';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site';
+
+export const metadata: Metadata = {
+  title: siteConfig.offertTitle,
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/offert`,
+  }
+};
 
 const OffertPage = () => {
   return (

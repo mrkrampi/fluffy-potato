@@ -1,5 +1,14 @@
 import { Section } from '@/components/markup/section';
 import { DESCRIPTION, GRATITUDE, PARAGRAPHS, QUESTIONS_PARAGRAPH, TITLE } from '@/app/(public)/policy/_const';
+import type { Metadata } from 'next';
+import { siteConfig } from '@/config/site';
+
+export const metadata: Metadata = {
+  title: siteConfig.policyTitle,
+  alternates: {
+    canonical: `${process.env.NEXT_PUBLIC_BASE_URL}/policy`,
+  }
+};
 
 const PolicyPage = () => {
   return (

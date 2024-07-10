@@ -14,4 +14,6 @@ export const siteConfig = {
   blogDescription: 'Відповіді на питання про світ IT та сучасний IT ринок та його тенденції, Ви можете знайти в нашому блозі.',
   feedbacksDescription: 'Реальні відгуки випускників | NIKO IT ACADEMY',
   mentoringDescription: 'Індивідуальне навчання з ментором онлайн на нашій онлайн платформі',
+  offertTitle: 'Публічна оферта | NIKO IT ACADEMY',
+  policyTitle: 'Політика конфіденційності | NIKO IT ACADEMY',
 }
