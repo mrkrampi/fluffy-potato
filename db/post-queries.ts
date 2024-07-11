@@ -1,5 +1,5 @@
 import { cache } from 'react';
-import { and, eq } from 'drizzle-orm';
+import { and, eq, lt, gt } from 'drizzle-orm';
 
 import db from '@/db/drizzle';
 import { posts } from '@/db/schema';
@@ -42,3 +42,44 @@ export const getPostById = cache(async (id: string) => {
     where: eq(posts.id, id),
   });
 });
+
+export const getNeighborPosts = async (slug: string): Promise<{
+  previousPost?: typeof posts.$inferSelect;
+  nextPost?: typeof posts.$inferSelect;
+}> => {
+  const currentPost = await getPostBySlug(slug);
+
+  if (!currentPost) {
+    return {
+      previousPost: undefined,
+      nextPost: undefined,
+    };
+  }
+
+  let previousPost = await db.query.posts.findFirst({
+    where: gt(posts.publishDate, currentPost?.publishDate),
+    orderBy: (posts, { asc }) => [asc(posts.publishDate)],
+  });
+
+  if (!previousPost) {
+    previousPost = await db.query.posts.findFirst({
+      orderBy: (posts, { asc }) => [asc(posts.publishDate)],
+    })
+  }
+
+  let nextPost = await db.query.posts.findFirst({
+    where: lt(posts.publishDate, currentPost?.publishDate),
+    orderBy: (posts, { desc }) => [desc(posts.publishDate)],
+  });
+
+  if (!nextPost) {
+    nextPost = await db.query.posts.findFirst({
+      orderBy: (posts, { desc }) => [desc(posts.publishDate)],
+    })
+  }
+
+  return {
+    nextPost,
+    previousPost,
+  }
+};

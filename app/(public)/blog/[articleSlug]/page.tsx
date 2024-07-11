@@ -4,12 +4,12 @@ import { redirect } from 'next/navigation';
 import { JsonLd } from '@/components/json-ld';
 import { Section } from '@/components/markup/section';
 import { ContactForm } from '@/components/contact-form';
-import { getPublishedPostBySlug } from '@/db/post-queries';
-import { Article } from '@/app/(public)/blog/[articleSlug]/_components/article';
-import { ArticleBreadcrumbs } from '@/app/(public)/blog/[articleSlug]/_components/article-breadcrumbs';
-import { BlogHeaderSection } from '@/app/(public)/blog/_components/blog-header-section';
 import { ScrollProgressBar } from '@/components/scroll-progress-bar';
+import { getNeighborPosts, getPublishedPostBySlug } from '@/db/post-queries';
+import { Article } from '@/app/(public)/blog/[articleSlug]/_components/article';
 import { BlogHeader } from '@/app/(public)/blog/[articleSlug]/_components/blog-header';
+import { PostsSwitcher } from '@/app/(public)/blog/[articleSlug]/_components/posts-switcher';
+import { ArticleBreadcrumbs } from '@/app/(public)/blog/[articleSlug]/_components/article-breadcrumbs';
 
 export const fetchCache = 'force-no-store';
 
@@ -39,11 +39,14 @@ export async function generateMetadata({ params: { articleSlug } }: Readonly<Pro
 
 const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => {
   const articleData = getPublishedPostBySlug(articleSlug);
+  const neighborPostsData = getNeighborPosts(articleSlug);
 
   const [
     article,
+    neighborPosts,
   ] = await Promise.all([
     articleData,
+    neighborPostsData,
   ]);
 
   if (!article) {
@@ -68,6 +71,11 @@ const ArticleSlugPage = async ({ params: { articleSlug } }: Readonly<Props>) => 
         </div>
 
         <ContactForm/>
+
+        <PostsSwitcher
+          previousPost={neighborPosts.previousPost}
+          nextPost={neighborPosts.nextPost}
+        />
       </Section>
 
       {!!article.microdata && <JsonLd data={JSON.parse(article.microdata)}/>}
