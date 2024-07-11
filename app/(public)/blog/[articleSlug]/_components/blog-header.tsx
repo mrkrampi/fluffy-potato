@@ -1,7 +1,4 @@
-'use client';
-
 import Image from 'next/image';
-import { useMedia } from 'react-use';
 
 import { Heading } from '@/components/markup/heading';
 import { Section } from '@/components/markup/section';
@@ -10,16 +7,10 @@ import blogImage1 from '@/public/blog/blog-image-1.svg';
 import blogImage2 from '@/public/blog/blog-image-2.svg';
 
 export const BlogHeader = () => {
-  const isTablet = useMedia('(max-width: 1024px)');
-
-  if (!isTablet) {
-    return null;
-  }
-
   return (
-    <Section className="relative pb-0 overflow-hidden mx-0 max-w-full md:max-w-full">
+    <Section className="relative pb-0 overflow-hidden mx-0 max-w-full md:max-w-full lg:hidden">
       <div className="relative z-10 flex flex-col justify-center items-center mt-16">
-        <Heading className="text-[40px]">
+        <Heading className="text-[40px]" level={0}>
           Блог
         </Heading>
 

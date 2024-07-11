@@ -5,11 +5,13 @@ const DEFAULT_CLASS_NAME = 'font-unbounded text-primary-white tracking-tighter t
 
 interface HeadingProps {
   className?: string;
-  level?: 1 | 2 | 3 | 4 | 5 | 6;
+  level?: 0 | 1 | 2 | 3 | 4 | 5 | 6;
 }
 
 export const Heading = ({ level, className, children }: PropsWithChildren<HeadingProps>) => {
   switch (level) {
+    case 0:
+      return <p className={cn(DEFAULT_CLASS_NAME, className)}>{children}</p>;
     case 1:
       return <h1 className={cn(DEFAULT_CLASS_NAME, className)}>{children}</h1>;
     case 2:
