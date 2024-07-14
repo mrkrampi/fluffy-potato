@@ -41,6 +41,7 @@ export const upsertFeedback = async (values: z.infer<typeof UpsertFeedback>) => 
 
     revalidatePath('/admin/feedbacks');
     revalidatePath('/');
+    revalidatePath('/feedbacks');
     revalidatePath('/courses');
 
     return {
@@ -57,6 +58,7 @@ export const upsertFeedback = async (values: z.infer<typeof UpsertFeedback>) => 
 
   revalidatePath('/admin/feedbacks');
   revalidatePath('/');
+  revalidatePath('/feedbacks');
   revalidatePath('/about-us', 'page');
 
   return {

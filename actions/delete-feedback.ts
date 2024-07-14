@@ -25,6 +25,7 @@ export const deleteFeedback = async (id: typeof feedbacks.$inferSelect['id']) =>
 
   revalidatePath('/admin/feedbacks');
   revalidatePath('/');
+  revalidatePath('/feedbacks');
   revalidatePath('/about-us');
 
   return {
