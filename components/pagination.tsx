@@ -1,12 +1,14 @@
+'use client';
+
 import { cn } from '@/lib/utils';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import Link from 'next/link';
 
 type Props = {
   countOfPages: number;
+  typeOfPages: 'circle' | 'order';
 }
 
-export const Pagination = ({ countOfPages }: Readonly<Props>) => {
+export const Pagination = ({ countOfPages, typeOfPages }: Readonly<Props>) => {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
@@ -30,7 +32,6 @@ export const Pagination = ({ countOfPages }: Readonly<Props>) => {
   };
 
   const handlePageChange = (page: number) => {
-    console.log(page);
     router.push(pathname + `?page=${page}`, { scroll: false });
   };
 
@@ -42,18 +43,30 @@ export const Pagination = ({ countOfPages }: Readonly<Props>) => {
       />
 
       {
-        new Array(countOfPages).fill(null).map((_, index) => ((
-          <div
-            key={index}
-            className={cn(
-              'border-[1px] border-primary-accent text-primary-white font-semibold w-8 h-8 rounded-md flex items-center justify-center cursor-pointer',
-              index + 1 === currentPage && 'bg-primary-accent',
-            )}
-            onClick={() => handlePageChange(index + 1)}
-          >
-            {index + 1}
-          </div>
-        )))
+        new Array(countOfPages).fill(null).map((_, index) =>
+          typeOfPages === 'order'
+            ? (
+              <div
+                key={index}
+                className={cn(
+                  'border-[1px] border-primary-accent text-primary-white font-semibold w-8 h-8 rounded-md flex items-center justify-center cursor-pointer',
+                  index + 1 === currentPage && 'bg-primary-accent',
+                )}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </div>
+            )
+            : (
+              <div
+                key={index}
+                className={cn(
+                  'border-[1px] border-primary-accent rounded-full w-6 h-6',
+                  index + 1 === currentPage && 'bg-primary-accent',
+                )}
+                onClick={() => handlePageChange(index + 1)}
+              />
+            ))
       }
 
       <div

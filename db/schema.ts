@@ -153,6 +153,7 @@ export const feedbacks = pgTable('feedbacks', {
   feedback: text('feedback').notNull(),
   imageUrl: text('image_url').notNull(),
   imageAlt: text('image_alt').notNull(),
+  rating: integer('rating').notNull().default(5),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });
