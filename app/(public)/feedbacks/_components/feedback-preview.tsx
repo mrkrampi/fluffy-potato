@@ -60,6 +60,7 @@ export const FeedbackPreview = ({ feedbacksList, selectedFeedbackId }: Readonly<
           loop: true,
         }}
         plugins={[
+          // @ts-ignore
           Autoplay({
             delay: 8e3,
           }),
