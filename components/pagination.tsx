@@ -38,7 +38,7 @@ export const Pagination = ({ countOfPages, typeOfPages }: Readonly<Props>) => {
   return (
     <div className="flex gap-2 items-center">
       <div
-        className="mx-4 cursor-pointer w-11 lg:w-[106px] h-1 bg-primary-white relative before:absolute before:border-b-4 before:border-l-4 before:border-primary-white before:w-4 before:h-4 before:rotate-45 before:left-0 before:top-1/2 before:-translate-y-1/2"
+        className="hidden md:block mx-4 cursor-pointer w-11 lg:w-[106px] h-1 bg-primary-white relative before:absolute before:border-b-4 before:border-l-4 before:border-primary-white before:w-4 before:h-4 before:rotate-45 before:left-0 before:top-1/2 before:-translate-y-1/2"
         onClick={previousPage}
       />
 
@@ -70,7 +70,7 @@ export const Pagination = ({ countOfPages, typeOfPages }: Readonly<Props>) => {
       }
 
       <div
-        className="mx-4 cursor-pointer w-11 lg:w-[106px] h-1 bg-primary-white relative before:absolute before:border-t-4 before:border-r-4 before:border-primary-white before:w-4 before:h-4 before:rotate-45 before:right-0 before:top-1/2 before:-translate-y-1/2"
+        className="hidden md:block mx-4 cursor-pointer w-11 lg:w-[106px] h-1 bg-primary-white relative before:absolute before:border-t-4 before:border-r-4 before:border-primary-white before:w-4 before:h-4 before:rotate-45 before:right-0 before:top-1/2 before:-translate-y-1/2"
         onClick={nextPage}
       />
     </div>
