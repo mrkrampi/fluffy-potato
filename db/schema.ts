@@ -166,7 +166,22 @@ export const faqs = pgTable('faqs', {
   answer: text('answer').notNull(),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
+  categoryId: text('category_id').references(() => faqCategory.id, { onDelete: 'cascade' }),
 });
+
+export const faqCategory = pgTable('faq_category', {
+  id: text('id')
+    .primaryKey()
+    .$defaultFn(() => crypto.randomUUID()),
+  name: text('name').notNull().unique(),
+});
+
+export const faqRelations = relations(faqs, ({ one }) => ({
+  category: one(faqCategory, {
+    fields: [faqs.categoryId],
+    references: [faqCategory.id],
+  }),
+}));
 
 export const studyFormats = pgTable('study_formats', {
   id: text('id')

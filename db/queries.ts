@@ -12,7 +12,6 @@ export const getUserByEmail = async (email: string) => {
 };
 
 export const getUserById = unstable_cache((id: string) => {
-  console.log('getUserById');
   return db.query.users.findFirst({
     where: eq(users.id, id),
   });

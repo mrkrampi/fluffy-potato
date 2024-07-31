@@ -1,13 +1,13 @@
-import { IFaq } from '@/interfaces/model-types';
+import { IFaqCategory } from '@/interfaces/model-types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { FaqTableRow } from '@/app/(protected)/admin/(with-sidebar)/faq/_components/faq-table-row';
+import { FaqCategoryTableRow } from '@/app/(protected)/admin/(with-sidebar)/faq-category/_components/faq-category-table-row';
 
 type Props = {
-  faqList: Array<IFaq>;
+  categories: Array<IFaqCategory>;
 }
 
-export const FaqTable = ({ faqList }: Readonly<Props>) => {
+export const FaqCategoryTable = ({ categories }: Readonly<Props>) => {
   return (
     <Card>
       <CardHeader>
@@ -19,15 +19,7 @@ export const FaqTable = ({ faqList }: Readonly<Props>) => {
           <TableHeader>
             <TableRow>
               <TableHead>
-                Питання
-              </TableHead>
-
-              <TableHead className="hidden md:table-cell">
-                Відповідь
-              </TableHead>
-
-              <TableHead className="hidden md:table-cell">
-                Категорія
+                Назва
               </TableHead>
 
               <TableHead>
@@ -37,8 +29,8 @@ export const FaqTable = ({ faqList }: Readonly<Props>) => {
           </TableHeader>
 
           <TableBody>
-            {faqList.map((faq) =>
-              ((<FaqTableRow key={faq.id} faq={faq}/>)))}
+            {categories.map((category) =>
+              ((<FaqCategoryTableRow key={category.id} category={category}/>)))}
           </TableBody>
         </Table>
       </CardContent>

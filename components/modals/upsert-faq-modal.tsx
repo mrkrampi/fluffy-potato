@@ -14,10 +14,16 @@ import { FormError } from '@/components/form-error';
 import { Textarea } from '@/components/ui/textarea';
 import { useUpsertFaq } from '@/store/use-upsert-faq';
 import { FormSuccess } from '@/components/form-success';
+import { IFaqCategory } from '@/interfaces/model-types';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Dialog, DialogClose, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 
-export const UpsertFaqModal = () => {
+type Props = {
+  categories: Array<IFaqCategory>;
+}
+
+export const UpsertFaqModal = ({ categories }: Readonly<Props>) => {
   const { close, isOpen, faq } = useUpsertFaq();
   const [pending, startTransition] = useTransition();
   const [error, setError] = useState<string | undefined>('');
@@ -29,6 +35,7 @@ export const UpsertFaqModal = () => {
       id: faq?.id,
       answer: faq?.answer,
       question: faq?.question,
+      categoryId: faq?.categoryId ?? '',
     }), [faq]),
   });
 
@@ -36,6 +43,7 @@ export const UpsertFaqModal = () => {
     form.setValue('id', faq?.id);
     form.setValue('answer', faq?.answer ?? '');
     form.setValue('question', faq?.question ?? '');
+    form.setValue('categoryId', faq?.categoryId ?? '');
   }, [faq]);
 
   const onSubmit = (values: z.infer<typeof UpsertFaq>) => {
@@ -91,6 +99,42 @@ export const UpsertFaqModal = () => {
                         placeholder="Lorem impsum..."
                         {...field}
                       />
+                    </FormControl>
+                    <FormMessage/>
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                name="categoryId"
+                control={form.control}
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Категорія</FormLabel>
+                    <FormControl>
+                      <Select onValueChange={field.onChange} defaultValue={field.value}>
+                        <SelectTrigger
+                          id="model"
+                          className="items-start [&_[data-description]]:hidden"
+                        >
+                          <SelectValue placeholder="Select a model"/>
+                        </SelectTrigger>
+                        <SelectContent>
+                          {
+                            categories.map((category) => ((
+                              <SelectItem key={category.id} value={category.id}>
+                                <div className="flex items-center gap-3 text-muted-foreground">
+                                  <div className="grid gap-0.5">
+                                    <p>
+                                      {category.name}
+                                    </p>
+                                  </div>
+                                </div>
+                              </SelectItem>
+                            )))
+                          }
+                        </SelectContent>
+                      </Select>
                     </FormControl>
                     <FormMessage/>
                   </FormItem>

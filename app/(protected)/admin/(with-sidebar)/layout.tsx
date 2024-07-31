@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { PropsWithChildren } from 'react';
+import { usePathname } from 'next/navigation';
 
 const WithSidebarLayout = ({ children }: Readonly<PropsWithChildren>) => {
   const pathname = usePathname();
@@ -48,6 +48,13 @@ const WithSidebarLayout = ({ children }: Readonly<PropsWithChildren>) => {
             className={isActiveRoute('/admin/faq') ? 'text-black font-bold' : ''}
           >
             FAQ
+          </Link>
+
+          <Link
+            href="/admin/faq-category"
+            className={isActiveRoute('/admin/faq-category') ? 'text-black font-bold' : ''}
+          >
+            Категорія FAQ
           </Link>
 
           <Link

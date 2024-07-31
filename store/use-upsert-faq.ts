@@ -1,17 +1,17 @@
 import { create } from 'zustand';
 
-import { faqs } from '@/db/schema';
+import { IFaq } from '@/interfaces/model-types';
 
 type UserUpsertFaq = {
   isOpen: boolean;
-  faq: typeof faqs.$inferSelect | undefined,
-  open: (author?: typeof faqs.$inferSelect) => void;
+  faq: IFaq | undefined,
+  open: (author?: IFaq) => void;
   close: () => void;
 }
 
 export const useUpsertFaq = create<UserUpsertFaq>((set) => ({
   isOpen: false,
   faq: undefined,
-  open: (faq?: typeof faqs.$inferSelect) => set({ faq, isOpen: true }),
+  open: (faq?: IFaq) => set({ faq, isOpen: true }),
   close: () => set({ faq: undefined, isOpen: false }),
 }));

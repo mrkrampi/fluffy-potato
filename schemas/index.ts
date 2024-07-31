@@ -138,6 +138,12 @@ export const UpsertFaq = z.object({
   id: z.optional(z.string()),
   question: z.string().min(1, { message: 'Запитання обовʼязкове' }),
   answer: z.string().min(1, { message: 'Відповідь обовʼязкова' }),
+  categoryId: z.string().min(1, 'Категорія обовʼязкова')
+});
+
+export const UpsertFaqCategory = z.object({
+  id: z.optional(z.string()),
+  name: z.string().min(1, 'Поле обовʼязкове'),
 });
 
 export const UpsertStudyFormat = z.object({

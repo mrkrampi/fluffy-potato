@@ -9,8 +9,9 @@ import { auth } from '@/auth';
 import { faqs } from '@/db/schema';
 import { UpsertFaq } from '@/schemas';
 import { getFaqById } from '@/db/faq-queries';
+import { ActionResult } from '@/interfaces/action-result';
 
-export const upsertFaq = async (values: z.infer<typeof UpsertFaq>) => {
+export const upsertFaq = async (values: z.infer<typeof UpsertFaq>): Promise<ActionResult> => {
   const session = await auth();
 
   if (!session?.user) {
@@ -23,7 +24,7 @@ export const upsertFaq = async (values: z.infer<typeof UpsertFaq>) => {
     throw new Error('Невалідні поля');
   }
 
-  const { id, question, answer } = validatedFields.data;
+  const { id, question, answer, categoryId } = validatedFields.data;
 
   if (id) {
     const faqFromDb = await getFaqById(id);
@@ -35,6 +36,7 @@ export const upsertFaq = async (values: z.infer<typeof UpsertFaq>) => {
     await db.update(faqs).set({
       answer,
       question,
+      categoryId,
     }).where(eq(faqs.id, id));
 
     revalidatePath('/admin/feedbacks');
@@ -48,6 +50,7 @@ export const upsertFaq = async (values: z.infer<typeof UpsertFaq>) => {
   await db.insert(faqs).values({
     answer,
     question,
+    categoryId,
   });
 
   revalidatePath('/admin/feedbacks');

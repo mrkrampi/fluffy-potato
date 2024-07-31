@@ -4,29 +4,31 @@ import { toast } from 'sonner';
 import { useTransition } from 'react';
 import { Loader, MoreHorizontal } from 'lucide-react';
 
-import { IFaq } from '@/interfaces/model-types';
+import { IFaq, IFaqCategory } from '@/interfaces/model-types';
 import { Button } from '@/components/ui/button';
 import { deleteFaq } from '@/actions/delete-faq';
 import { useUpsertFaq } from '@/store/use-upsert-faq';
 import { TableCell, TableRow } from '@/components/ui/table';
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuTrigger } from '@/components/ui/dropdown-menu';
+import { useUpsertFaqCategory } from '@/store/use-upsert-faq-category';
+import { deleteFaqCategory } from '@/actions/delete-faq-category';
 
 type Props = {
-  faq: IFaq;
+  category: IFaqCategory;
 }
 
-export const FaqTableRow = ({ faq }: Readonly<Props>) => {
-  const { open } = useUpsertFaq();
+export const FaqCategoryTableRow = ({ category }: Readonly<Props>) => {
+  const { open } = useUpsertFaqCategory();
   const [pending, startTransition] = useTransition();
 
   const onEditClick = () => {
-    open(faq);
+    open(category);
   };
 
   const onDeleteClick = async () => {
     startTransition(async () => {
       try {
-        const response = await deleteFaq(faq.id);
+        const response = await deleteFaqCategory(category.id);
 
         if (response.success) {
           toast.success(response.success);
@@ -41,19 +43,7 @@ export const FaqTableRow = ({ faq }: Readonly<Props>) => {
     <TableRow>
       <TableCell className="hidden md:table-cell">
         <span className="line-clamp-2">
-          {faq.question}
-        </span>
-      </TableCell>
-
-      <TableCell className="hidden md:table-cell">
-        <span className="line-clamp-2">
-          {faq.answer}
-        </span>
-      </TableCell>
-
-      <TableCell className="hidden md:table-cell">
-        <span className="line-clamp-2">
-          {faq.category?.name}
+          {category.name}
         </span>
       </TableCell>
 
