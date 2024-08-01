@@ -29,24 +29,32 @@ export const FeedbackTableRow = ({ feedback }: Readonly<Props>) => {
   const onDeleteClick = async () => {
     startTransition(async () => {
       try {
-        await edgestore.publicFiles.delete({ url: feedback.imageUrl });
+        await deleteImage();
         const response = await deleteFeedback(feedback.id);
 
         if (response.success) {
           toast.success(response.success);
         }
       } catch (error: any) {
+        console.log(error);
         toast.error(error.message);
       }
     });
   };
+
+  const deleteImage = async () => {
+    try {
+      await edgestore.publicFiles.delete({ url: feedback.imageUrl });
+    } catch (e) {
+    }
+  }
 
   return (
     <TableRow>
       <TableCell className="hidden sm:table-cell">
         <Image
           alt="Фото автора"
-          className="aspect-square rounded-md object-cover"
+          className="aspect-square rounded-full object-cover"
           height="64"
           src={feedback.imageUrl}
           width="64"

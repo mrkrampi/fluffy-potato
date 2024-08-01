@@ -137,14 +137,10 @@ body,
     fill: #231f20;
 }
 
-.hack {
-    pointer-events: none;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 99vw;
-    height: 99vh;
-    max-width: 99vw;
-    max-height: 99vh;
-    z-index: 5000;
+input:-webkit-autofill,
+input:-webkit-autofill:focus {
+    transition: background-color 600000s 0s, color 600000s 0s;
+}
+input[data-autocompleted] {
+    background-color: transparent !important;
 }
