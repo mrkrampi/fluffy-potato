@@ -49,11 +49,16 @@ export const upsertFeedback = async (values: z.infer<typeof UpsertFeedback>) => 
     };
   }
 
+  const greatestOrderFeedback = await db.query.feedbacks.findFirst({
+    orderBy: (feedbacks, { desc }) => [desc(feedbacks.order)],
+  })
+
   await db.insert(feedbacks).values({
     name,
     feedback,
     imageUrl,
     imageAlt,
+    order: (greatestOrderFeedback?.order ?? 0) + 1,
   });
 
   revalidatePath('/admin/feedbacks');

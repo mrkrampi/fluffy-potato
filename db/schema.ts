@@ -156,6 +156,7 @@ export const feedbacks = pgTable('feedbacks', {
   rating: integer('rating').notNull().default(5),
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
+  order: integer('order').notNull().default(1),
 });
 
 export const faqs = pgTable('faqs', {
