@@ -1,14 +1,14 @@
 'use server';
 
 import * as z from 'zod';
-import { eq, sql } from 'drizzle-orm';
+import { eq } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 
 import db from '@/db/drizzle';
 import { auth } from '@/auth';
-import { courses, courseToStudyFormats } from '@/db/schema';
-import { getCourseById } from '@/db/course-queries';
 import { CourseSchema } from '@/schemas';
+import { getCourseById } from '@/db/course-queries';
+import { courses, courseToStudyFormats } from '@/db/schema';
 
 export const updateCourseData = async (id: string, values: z.infer<typeof CourseSchema>) => {
   const session = await auth();
