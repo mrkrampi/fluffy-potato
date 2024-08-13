@@ -134,6 +134,7 @@ export const courses = pgTable('courses', {
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
   overviewImageCover: boolean('overview_image_cover').notNull().default(true),
+  studyFormat: text('study_plan').references(() => studyFormats.id, { onDelete: 'set null' }),
 });
 
 export const allowedEmails = pgTable('allowed_emails', {
@@ -194,3 +195,36 @@ export const studyFormats = pgTable('study_formats', {
   creationDate: timestamp('creation_date').notNull().defaultNow(),
   updatedAt: timestamp('updated_at').notNull().defaultNow().$onUpdate(() => new Date()),
 });
+
+export const courseRelation = relations(courses, ({ many }) => ({
+  courseToStudyFormats: many(courseToStudyFormats),
+}));
+
+export const studyFormatRelation = relations(studyFormats, ({ many }) => ({
+  courseToStudyFormats: many(courseToStudyFormats),
+}));
+
+export const courseToStudyFormats = pgTable(
+  'course_to_study_formats',
+  {
+    courseId: text('courseId')
+      .notNull()
+      .references(() => courses.id, { onDelete: 'cascade' }),
+    studyFormatId: text('study_format_id')
+      .notNull()
+      .references(() => studyFormats.id, { onDelete: 'cascade' }),
+  },
+  (t) => ({
+    pk: primaryKey({ columns: [t.courseId, t.studyFormatId] }),
+  }),
+);
+export const courseToStudyFormatRelations = relations(courseToStudyFormats, ({ one }) => ({
+  course: one(courses, {
+    fields: [courseToStudyFormats.courseId],
+    references: [courses.id],
+  }),
+  studyFormat: one(studyFormats, {
+    fields: [courseToStudyFormats.studyFormatId],
+    references: [studyFormats.id],
+  }),
+}));

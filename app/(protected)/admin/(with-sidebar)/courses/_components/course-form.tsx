@@ -8,7 +8,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useEffect, useState, useTransition, MouseEvent } from 'react';
 import { Controller, useFieldArray, useForm } from 'react-hook-form';
 
-import { courses } from '@/db/schema';
 import { CourseSchema } from '@/schemas';
 import { Input } from '@/components/ui/input';
 import { useEdgeStore } from '@/lib/edgestore';
@@ -16,16 +15,20 @@ import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import { DatePicker } from '@/components/date-picker';
 import { createCourse } from '@/actions/create-course';
+import { updateCourseData } from '@/actions/update-course';
+import { ICourse, IStudyFormat } from '@/interfaces/model-types';
 import { SingleImageDropzone } from '@/components/single-image-dropzone';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { updateCourseData } from '@/actions/update-course';
+import { Checkbox } from '@/components/ui/checkbox';
+import { formatNumberWithSpaces } from '@/lib/utils';
 
 type Props = {
-  course?: typeof courses.$inferSelect;
+  course?: ICourse;
+  studyFormats: Array<IStudyFormat>;
 }
 
-export const CourseForm = ({ course }: Readonly<Props>) => {
+export const CourseForm = ({ course, studyFormats }: Readonly<Props>) => {
   const router = useRouter();
   const { edgestore } = useEdgeStore();
   const [isPending, startTransition] = useTransition();
@@ -51,6 +54,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       courseProgram: course?.courseProgram ? course.courseProgram as any : [],
       courseProgramDescription: course?.courseProgramDescription,
       startDate: course?.startDate,
+      studyFormats: course?.courseToStudyFormats?.map((c) => c.studyFormatId) ?? [],
     },
   });
 
@@ -70,6 +74,7 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
       form.setValue('courseProgram', course?.courseProgram ? course.courseProgram as any : []);
       form.setValue('courseProgramDescription', course?.courseProgramDescription || '');
       form.setValue('startDate', course?.startDate || undefined);
+      form.setValue('studyFormats', course?.courseToStudyFormats?.map((c) => c.studyFormatId) ?? []);
   }, [course]);
 
   const { control } = form;
@@ -466,6 +471,52 @@ export const CourseForm = ({ course }: Readonly<Props>) => {
                 )}
               />
             </div>
+
+            <FormField
+              control={form.control}
+              name="studyFormats"
+              render={() => (
+                <FormItem>
+                  <div className="mb-4">
+                    <FormLabel className="text-base">Формати навчання</FormLabel>
+                  </div>
+                  {studyFormats?.map((item) => (
+                    <FormField
+                      key={item.id}
+                      control={form.control}
+                      name="studyFormats"
+                      render={({ field }) => {
+                        return (
+                          <FormItem
+                            key={item.id}
+                            className="flex flex-row items-start space-x-3 space-y-0"
+                          >
+                            <FormControl>
+                              <Checkbox
+                                checked={field.value?.includes(item.id)}
+                                onCheckedChange={(checked) => {
+                                  return checked
+                                    ? field.onChange([...field.value, item.id])
+                                    : field.onChange(
+                                      field.value?.filter(
+                                        (value) => value !== item.id
+                                      )
+                                    )
+                                }}
+                              />
+                            </FormControl>
+                            <FormLabel className="font-normal">
+                              {item.name} ({formatNumberWithSpaces(Number(item.price))} ₴)
+                            </FormLabel>
+                          </FormItem>
+                        )
+                      }}
+                    />
+                  ))}
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
             <FormField
               name="startDate"

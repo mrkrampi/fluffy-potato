@@ -1,12 +1,12 @@
 'use server';
 
 import * as z from 'zod';
-import { eq } from 'drizzle-orm';
+import { eq, sql } from 'drizzle-orm';
 import { revalidatePath } from 'next/cache';
 
 import db from '@/db/drizzle';
 import { auth } from '@/auth';
-import { courses } from '@/db/schema';
+import { courses, courseToStudyFormats } from '@/db/schema';
 import { getCourseById } from '@/db/course-queries';
 import { CourseSchema } from '@/schemas';
 
@@ -45,6 +45,7 @@ export const updateCourseData = async (id: string, values: z.infer<typeof Course
     level,
     startDate,
     courseProgramDescription,
+    studyFormats,
   } = validatedFields.data;
 
   await db.update(courses)
@@ -66,6 +67,19 @@ export const updateCourseData = async (id: string, values: z.infer<typeof Course
       courseProgramDescription,
     })
     .where(eq(courses.id, id));
+
+  await db
+    .delete(courseToStudyFormats)
+    .where(eq(courseToStudyFormats.courseId, id));
+
+  const insertStudyPlans = studyFormats.map((studyFormat) => {
+    return db.insert(courseToStudyFormats).values({
+      courseId: id,
+      studyFormatId: studyFormat,
+    })
+  });
+
+  await Promise.all(insertStudyPlans);
 
   revalidatePath('/');
   revalidatePath('/courses');

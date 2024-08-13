@@ -15,6 +15,7 @@ export const fetchCache = 'force-no-store';
 import courseProgram from '@/public/courses/course-program.webp';
 import { getAllCourses, getCourseBySlug } from '@/db/course-queries';
 import { isJson } from '@/lib/utils';
+import { ICourse } from '@/interfaces/model-types';
 
 interface CourseSlugPageProps {
   params: {
@@ -45,6 +46,10 @@ const CourseSlugPage = async ({ params: { courseSlug } }: CourseSlugPageProps) =
     return null;
   }
 
+  const availableStudyFormats = (activeCourse as ICourse)
+    ?.courseToStudyFormats
+    ?.map(({ studyFormatId }) => studyFormatId);
+
   return (
     <>
       <div className="md:mt-[104px] overflow-x-hidden">
@@ -64,7 +69,11 @@ const CourseSlugPage = async ({ params: { courseSlug } }: CourseSlugPageProps) =
         </div>
 
         <AboutTeacherSection/>
-        <StudyFormatsSection registerButton course={activeCourse}/>
+        <StudyFormatsSection
+          registerButton
+          course={activeCourse}
+          formatsToShow={availableStudyFormats}
+        />
         <StudentsStoriesSection/>
       </div>
 

@@ -124,6 +124,7 @@ export const CourseSchema = z.object({
     lessons: z.string().min(1, { message: 'Обовʼязкове поле' }).array(),
   })
     .array(),
+  studyFormats: z.string().array(),
 });
 
 export const UpsertFeedback = z.object({

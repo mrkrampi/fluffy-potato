@@ -1,6 +1,7 @@
 import { getCourseById } from '@/db/course-queries';
 import { redirect } from 'next/navigation';
 import { CourseForm } from '@/app/(protected)/admin/(with-sidebar)/courses/_components/course-form';
+import { getStudyFormats } from '@/db/pricing-queries';
 
 export const fetchCache = 'force-no-store';
 
@@ -12,11 +13,14 @@ type Props = {
 
 const EditCoursePage = async ({ params }: Readonly<Props>) => {
   const courseData = getCourseById(params.courseId);
+  const studyFormatsData = getStudyFormats();
 
   const [
     course,
+    studyFormats,
   ] = await Promise.all([
     courseData,
+    studyFormatsData,
   ]);
 
   if (!course) {
@@ -25,6 +29,7 @@ const EditCoursePage = async ({ params }: Readonly<Props>) => {
 
   return (
     <CourseForm
+      studyFormats={studyFormats}
       course={course}
     />
   )

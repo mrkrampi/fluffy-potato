@@ -1,10 +1,10 @@
-import { studyFormats } from '@/db/schema';
+import { IStudyFormat } from '@/interfaces/model-types';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Table, TableBody, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { StudyFormatTableRow } from '@/app/(protected)/admin/(with-sidebar)/study-formats/_components/study-format-table-row';
 
 type Props = {
-  studyFormatsList: Array<typeof studyFormats.$inferSelect>;
+  studyFormatsList: Array<IStudyFormat>;
 }
 
 export const StudyFormatsTable = ({ studyFormatsList }: Readonly<Props>) => {

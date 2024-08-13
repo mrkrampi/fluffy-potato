@@ -1,4 +1,4 @@
-import { courses } from '@/db/schema';
+import { ICourse } from '@/interfaces/model-types';
 import { Section } from '@/components/markup/section';
 import { Heading } from '@/components/markup/heading';
 import { getStudyFormats } from '@/db/pricing-queries';
@@ -6,13 +6,17 @@ import { StudyFormatCard } from '@/components/cards/study-format-card';
 
 interface StudyFormatCardProps {
   registerButton?: boolean;
-  course?: typeof courses.$inferSelect;
+  course?: ICourse;
+  formatsToShow?: Array<string>;
 }
 
-export const StudyFormatsSection = async ({ registerButton, course }: StudyFormatCardProps) => {
+export const StudyFormatsSection = async ({ registerButton, course, formatsToShow }: StudyFormatCardProps) => {
   const studyFormatData = getStudyFormats();
 
   const [studyFormatsList] = await Promise.all([studyFormatData]);
+
+  const visibleFormats = studyFormatsList
+    .filter((studyFormat) => formatsToShow?.length ? formatsToShow.includes(studyFormat.id) : true);
 
   return (
     <Section>
@@ -25,7 +29,7 @@ export const StudyFormatsSection = async ({ registerButton, course }: StudyForma
 
         <div
           className="w-full flex mt-16 md:mt-20 xl:mt-40 gap-x-5 gap-y-14 overflow-x-auto flex-col md:flex-row md:max-w-[calc(100vw-64px)] max-w-[calc(100vw-32px)]">
-          {studyFormatsList.map((studyFormat) =>
+          {visibleFormats.map((studyFormat) =>
             (<StudyFormatCard
               key={studyFormat.id}
               studyFormat={studyFormat}
