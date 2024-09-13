@@ -39,8 +39,9 @@ export const upsertFaq = async (values: z.infer<typeof UpsertFaq>): Promise<Acti
       categoryId,
     }).where(eq(faqs.id, id));
 
-    revalidatePath('/admin/feedbacks');
+    revalidatePath('/admin/faq');
     revalidatePath('/');
+    revalidatePath('/faq');
 
     return {
       success: 'FAQ оновлений',
@@ -53,8 +54,9 @@ export const upsertFaq = async (values: z.infer<typeof UpsertFaq>): Promise<Acti
     categoryId,
   });
 
-  revalidatePath('/admin/feedbacks');
+  revalidatePath('/admin/faq');
   revalidatePath('/');
+  revalidatePath('/faq');
 
   return {
     success: 'FAQ створений',
